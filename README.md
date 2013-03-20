@@ -7,5 +7,6 @@ if it does `rm -rf .git`
 `git remote add origin https://YOUR_USER_NAME@bitbucket.org/cbarron1/metrovania.git`
 `git fetch`
 `git pull origin master`
+`git add FILES YOU CHANGED/*`
 `git commit -m 'comment the commit'`
 `git push -u origin --all`
