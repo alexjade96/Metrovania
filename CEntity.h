@@ -48,6 +48,7 @@ class CEntity {
 		bool	Crouch;
 		bool	PointUpDiagonal;
 		bool	PointDownDiagonal;
+		bool	morphBall;
 
 	public:
 		int		Type;

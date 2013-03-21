@@ -11,21 +11,38 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 	switch(sym) {
 		case SDLK_LEFT: {
 			Player.MoveLeft = true;
+			Player.Crouch = false;
 			break;
 		}
 
 		case SDLK_RIGHT: {
 			Player.MoveRight = true;
+			Player.Crouch = false;
 			break;
 		}
 
 		case SDLK_SPACE: {
-   		Player.Jump();
+   			Player.Jump();
 	        break;
 		}
 
+		case SDLK_UP: {
+			if (Player.morphBall) {
+				Player.morphBall = false;
+				Player.Crouch = true;
+			} else if (Player.Crouch) {
+				Player.Crouch = false;
+			}
+			break;
+		}
+
 		case SDLK_DOWN: {
-			Player.Crouch = true;
+			if (Player.Crouch) {
+				Player.morphBall = true;
+				Player.Crouch = false;
+			} else {
+				Player.Crouch = true;
+			}
 			break;
 		}
 
@@ -64,7 +81,6 @@ void CApp::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
 		}
 
 		case SDLK_DOWN: {
-			Player.Crouch = false;
 			break;
 		}
 
