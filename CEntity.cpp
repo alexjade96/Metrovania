@@ -22,6 +22,7 @@ CEntity::CEntity() {
 	Crouch = false;
 	PointUpDiagonal = false;
 	PointDownDiagonal = false;
+	morphBall = false;
 
 	Type = 	ENTITY_TYPE_GENERIC;
 
@@ -117,32 +118,63 @@ void CEntity::OnCleanup() {
 //------------------------------------------------------------------------------
 void CEntity::OnAnimate() {
 	if(MoveLeft) {
-		CurrentFrameCol = 1;
-		CurrentFrameRow = 0;
+		if (morphBall) {
+			CurrentFrameCol = 3;
+			CurrentFrameRow = 0;
+			Anim_Control.MaxFrames = 8;
+		} else {
+			CurrentFrameCol = 1;
+			CurrentFrameRow = 0;
+		}
 	}else
 
 	if(MoveRight) {
+		if (morphBall) {
+			CurrentFrameCol = 2;
+			CurrentFrameRow = 0;
+			Anim_Control.MaxFrames = 8;
+		} else {
 		CurrentFrameCol = 0;
 		CurrentFrameRow = 0;
+		}
 	}
 
-	if(Crouch) {
+	else if(Crouch) {
 		CurrentFrameRow = 11;
 		Anim_Control.MaxFrames = 0;
 		StopMove();
 	}
 
-	if(PointUpDiagonal){
+	else if(PointUpDiagonal){
 		CurrentFrameRow = 12;
 		Anim_Control.MaxFrames = 0;
 		StopMove();
 	}
 
-	if(PointDownDiagonal){
+	else if(PointDownDiagonal){
 		CurrentFrameRow = 13;
 		Anim_Control.MaxFrames = 0;
 		StopMove();
 	}
+	
+	else if (morphBall) {
+		if (CurrentFrameCol == 0) CurrentFrameCol = 2;
+		if (CurrentFrameCol == 1) CurrentFrameCol = 3;
+		CurrentFrameRow = 0;
+		Anim_Control.MaxFrames = 8;	
+	}	
+	
+	else {
+		if (CurrentFrameCol == 0 || CurrentFrameCol == 2) {
+			CurrentFrameCol = 0;
+			CurrentFrameRow = 10;
+		}
+		if (CurrentFrameCol == 1 || CurrentFrameCol == 3) {
+			CurrentFrameCol = 1;
+			CurrentFrameRow = 10;
+		}	
+		Anim_Control.MaxFrames = 0;
+	}	
 
 	Anim_Control.OnAnimate();
 }

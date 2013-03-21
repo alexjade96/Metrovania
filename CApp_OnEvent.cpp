@@ -49,10 +49,16 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 		case SDLK_w: {
 			Player.PointUpDiagonal = true;
 			break;
-		}
+		}  
 
 		case SDLK_s: {
 			Player.PointDownDiagonal = true;
+			break;
+		}
+
+		case SDLK_m: {
+			Player.Crouch = false;
+			Player.morphBall = false;
 			break;
 		}
 
