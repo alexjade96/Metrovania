@@ -27,6 +27,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 		}
 
 		case SDLK_UP: {
+			SDL_EnableKeyRepeat(0, 10000);
 			if (Player.morphBall) {
 				Player.morphBall = false;
 				Player.Crouch = true;
@@ -37,6 +38,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 		}
 
 		case SDLK_DOWN: {
+			SDL_EnableKeyRepeat(0, 10000);
 			if (Player.Crouch) {
 				Player.morphBall = true;
 				Player.Crouch = false;
@@ -47,11 +49,15 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 		}
 
 		case SDLK_w: {
+			Player.morphBall = false;
+			Player.Crouch = false;
 			Player.PointUpDiagonal = true;
 			break;
 		}  
 
 		case SDLK_s: {
+			Player.morphBall = false;
+			Player.Crouch = false;
 			Player.PointDownDiagonal = true;
 			break;
 		}
