@@ -188,12 +188,12 @@ void CEntity::OnAnimate() {
 	else {
 		if (CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6) {
 			CurrentFrameCol = 0;
-			if(PointUp) CurrentFrameRow = 12;
+			if(PointUp) CurrentFrameRow = 11;
 			else CurrentFrameRow = 10;
 		}
 		else {
 			CurrentFrameCol = 1;
-			if(PointUp) CurrentFrameRow = 12;
+			if(PointUp) CurrentFrameRow = 11;
 			else CurrentFrameRow = 10;
 		}	
 		Anim_Control.MaxFrames = 0;

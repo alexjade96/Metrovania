@@ -91,7 +91,6 @@ void CApp::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
 
 		case SDLK_UP: {
 			Player.PointUp = false;
-			break;
 		}
 
 		case SDLK_DOWN: {
