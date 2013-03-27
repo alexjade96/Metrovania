@@ -45,6 +45,11 @@ class CEntity {
 
 		bool	MoveLeft;
 		bool	MoveRight;
+		bool	Crouch;
+		bool	PointUpDiagonal;
+		bool	PointDownDiagonal;
+		bool	morphBall;
+		bool	PointUp;
 
 	public:
 		int		Type;

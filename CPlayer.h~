@@ -20,12 +20,6 @@ class CPlayer : public CEntity {
         void OnAnimate();
 
         bool OnCollision(CEntity* Entity);
-
-	bool	Crouch;
-	bool	PointUpDiagonal;
-	bool	PointDownDiagonal;
-	bool	morphBall;
-	bool	PointUp;
 };
 
 //=============================================================================

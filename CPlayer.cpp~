@@ -39,8 +39,7 @@ void CPlayer::OnAnimate() {
 		Anim_Control.MaxFrames = 10;
 	}else{
 		Anim_Control.MaxFrames = 0;
-	}
-	if(MoveLeft) {
+	}if(MoveLeft) {
 		if (morphBall) {
 			CurrentFrameCol = 3;
 			CurrentFrameRow = 0;
