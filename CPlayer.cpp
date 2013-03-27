@@ -21,6 +21,14 @@ bool CPlayer::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //-----------------------------------------------------------------------------
 void CPlayer::OnLoop() {
 	CEntity::OnLoop();
+	if(CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6){
+		faceRight = true;
+		faceLeft = false;
+	}
+	else{
+		faceRight = false;
+		faceLeft = true;
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -41,8 +49,6 @@ void CPlayer::OnAnimate() {
 		Anim_Control.MaxFrames = 0;
 	}
 	if(MoveLeft) {
-		faceLeft = true;
-		faceRight = false;
 		CurrentFrameRow = 0;
 		if (morphBall) {
 			CurrentFrameCol = 3;
@@ -57,8 +63,6 @@ void CPlayer::OnAnimate() {
 	}else
 
 	if(MoveRight) {
-		faceLeft = false;
-		faceRight = true;
 		CurrentFrameRow = 0;
 		if (morphBall) {
 			CurrentFrameCol = 2;
