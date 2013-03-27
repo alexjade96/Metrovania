@@ -45,6 +45,8 @@ class CEntity {
 
 		bool	MoveLeft;
 		bool	MoveRight;
+		bool	faceLeft;
+		bool	faceRight;
 
 	public:
 		int		Type;

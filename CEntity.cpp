@@ -19,6 +19,8 @@ CEntity::CEntity() {
 
 	MoveLeft  = false;
 	MoveRight = false;
+	faceLeft = false;
+	faceRight = true;
 
 	Type = 	ENTITY_TYPE_GENERIC;
 

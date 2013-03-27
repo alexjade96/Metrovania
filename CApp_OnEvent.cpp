@@ -43,8 +43,9 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			if (Player.Crouch) {
 				Player.morphBall = true;
 				Player.Crouch = false;
-			} else {
+			}else if(!Player.morphBall) {
 				Player.Crouch = true;
+				Player.morphBall = false;
 			}
 			break;
 		}

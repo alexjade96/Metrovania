@@ -41,75 +41,73 @@ void CPlayer::OnAnimate() {
 		Anim_Control.MaxFrames = 0;
 	}
 	if(MoveLeft) {
+		faceLeft = true;
+		faceRight = false;
+		CurrentFrameRow = 0;
 		if (morphBall) {
 			CurrentFrameCol = 3;
-			CurrentFrameRow = 0;
 			Anim_Control.MaxFrames = 8;
 		} else if (PointUpDiagonal) {
 			CurrentFrameCol = 5;
-			CurrentFrameRow = 0;
 		} else if (PointDownDiagonal) {
 			CurrentFrameCol = 7;
-			CurrentFrameRow = 0;
 		} else {
 			CurrentFrameCol = 1;
-			CurrentFrameRow = 0;
 		}
 	}else
 
 	if(MoveRight) {
+		faceLeft = false;
+		faceRight = true;
+		CurrentFrameRow = 0;
 		if (morphBall) {
 			CurrentFrameCol = 2;
-			CurrentFrameRow = 0;
 			Anim_Control.MaxFrames = 8;
 		}
 		else if (PointUpDiagonal) {
 			CurrentFrameCol = 4;
-			CurrentFrameRow = 0;
 		}
 		else if (PointDownDiagonal) {
 			CurrentFrameCol = 6;
-			CurrentFrameRow = 0;
 		}
 		else {
 		CurrentFrameCol = 0;
-		CurrentFrameRow = 0;
 		}
 	}
 
 	else if(PointUpDiagonal && !morphBall){
-		if (CurrentFrameCol == 0) CurrentFrameCol = 4;
-		if (CurrentFrameCol == 1) CurrentFrameCol = 5;
+		if (faceRight) CurrentFrameCol = 4;
+		if (faceLeft) CurrentFrameCol = 5;
 		if (!Crouch) CurrentFrameRow = 10;
 		else CurrentFrameRow = 11;
 		Anim_Control.MaxFrames = 0;
 	}
 
 	else if(PointDownDiagonal && !morphBall){
-		if (CurrentFrameCol == 0) CurrentFrameCol = 6;
-		if (CurrentFrameCol == 1) CurrentFrameCol = 7;
+		if (faceRight) CurrentFrameCol = 6;
+		if (faceLeft) CurrentFrameCol = 7;
 		if (!Crouch) CurrentFrameRow = 10;
 		else CurrentFrameRow = 11;
 		Anim_Control.MaxFrames = 0;
 	}
 
 	else if(Crouch) {
-		if (CurrentFrameCol == 4 || CurrentFrameCol == 6) CurrentFrameCol = 0;
-		if (CurrentFrameCol == 5 || CurrentFrameCol == 7) CurrentFrameCol = 1;
+		if (faceRight) CurrentFrameCol = 0;
+		if (faceLeft) CurrentFrameCol = 1;
 		CurrentFrameRow = 11;
 		Anim_Control.MaxFrames = 0;
 	}
 
 
 	else if (morphBall) {
-		if (CurrentFrameCol == 0 || CurrentFrameCol == 5 || CurrentFrameCol == 7) CurrentFrameCol = 2;
-		if (CurrentFrameCol == 1 || CurrentFrameCol == 6 || CurrentFrameCol == 8) CurrentFrameCol = 3;
+		if (faceRight) CurrentFrameCol = 2;
+		if (faceLeft) CurrentFrameCol = 3;
 		CurrentFrameRow = 0;
 		Anim_Control.MaxFrames = 8;	
 	}	
 
 	else {
-		if (CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6) {
+		if (faceRight) {
 			CurrentFrameCol = 0;
 			if(PointUp) CurrentFrameRow = 12;
 			else CurrentFrameRow = 10;
