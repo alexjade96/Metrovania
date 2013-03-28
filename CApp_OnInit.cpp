@@ -25,14 +25,21 @@ bool CApp::OnInit() {
     	return false;
     }
 
-    Player.X = 100;
-    Player2.X = 500;
+	if(Enemy1.OnLoad("images/Enemy1.png", 40, 17, 5) == false) {
+	return false;
+	}
 
-    CEntity::EntityList.push_back(&Player);
-    CEntity::EntityList.push_back(&Player2);
+	Player.X = 100;
+	Player2.X = 500;
+	Enemy1.X = 150;
+	Enemy1.Y = 300;
+
+	CEntity::EntityList.push_back(&Player);
+	CEntity::EntityList.push_back(&Player2);
+	CEntity::EntityList.push_back(&Enemy1);
 
 	CCamera::CameraControl.TargetMode = TARGET_MODE_CENTER;
-    CCamera::CameraControl.SetTarget(&Player.X, &Player.Y);
+   	CCamera::CameraControl.SetTarget(&Player.X, &Player.Y);
 
     return true;
 }
