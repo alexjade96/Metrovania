@@ -17,15 +17,12 @@ CEntity::CEntity() {
 	Width 	= 0;
 	Height 	= 0;
 
-	MoveLeft  = false;
-	MoveRight = false;
 	faceLeft = false;
 	faceRight = true;
 
 	Type = 	ENTITY_TYPE_GENERIC;
 
 	Dead = false;
-	Flags = ENTITY_FLAG_GRAVITY;
 
 	SpeedX = 0;
 	SpeedY = 0;

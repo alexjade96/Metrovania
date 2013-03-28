@@ -3,10 +3,13 @@
 
 //=============================================================================
 CSamus::CSamus() {
+	Flags = ENTITY_FLAG_GRAVITY;
 	Crouch = false;
 	PointUpDiagonal = false;
 	PointDownDiagonal = false;
 	morphBall = false;
+	MoveLeft  = false;
+	MoveRight = false;
 }
 
 //=============================================================================
