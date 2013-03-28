@@ -9,7 +9,7 @@ class CSamus : public CEntity {
     public:
         CSamus();
 
-		bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+	bool OnLoad(char* File, int Width, int Height, int MaxFrames);
 
         void OnLoop();
 
