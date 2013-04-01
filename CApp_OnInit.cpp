@@ -30,9 +30,10 @@ bool CApp::OnInit() {
 	}
 
 	Player.X = 100;
+	Player.Y = 560;
 	Player2.X = 500;
 	Enemy1.X = 150;
-	Enemy1.Y = 300;
+	Enemy1.Y = 560;
 
 	CEntity::EntityList.push_back(&Player);
 	CEntity::EntityList.push_back(&Player2);

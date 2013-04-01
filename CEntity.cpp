@@ -20,8 +20,6 @@ CEntity::CEntity() {
 	faceLeft = false;
 	faceRight = true;
 
-	Type = 	ENTITY_TYPE_GENERIC;
-
 	Dead = false;
 
 	SpeedX = 0;
@@ -149,6 +147,8 @@ void CEntity::OnMove(float MoveX, float MoveY) {
 
 			X += NewX;
 			Y += NewY;
+
+
 		}else{
 			if(PosValid((int)(X + NewX), (int)(Y))) {
 				X += NewX;
@@ -166,6 +166,7 @@ void CEntity::OnMove(float MoveX, float MoveY) {
 				SpeedY = 0;
 			}
 		}
+		
 
 		MoveX += -NewX;
 		MoveY += -NewY;

@@ -4,8 +4,17 @@
 //=============================================================================
 
 CTurtle::CTurtle() {
-	MoveRight = true;
-	MoveLeft = false;
+
+	Type = 	ENTITY_TYPE_GENERIC;
+
+	Flags = ENTITY_FLAG_NONE;
+
+	MoveRight = false;
+	faceRight = false;
+	MoveLeft = true;
+	faceLeft = true;
+
+	SpeedX = 10;
 }
 
 //=============================================================================
@@ -21,7 +30,7 @@ bool CTurtle::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //=============================================================================
 void CTurtle::OnLoop(){
 	CEntity::OnLoop();
-	if(CurrentFrameRow == 0){
+	if(CurrentFrameCol == 0){
 		faceRight = true;
 		faceLeft = false;
 	}
@@ -37,6 +46,22 @@ void CTurtle::OnLoop(){
 		MoveLeft = true;
 		MoveRight = false;
 	}
+
+	if(SpeedX == 0){
+		if(faceRight){
+			faceRight = false;
+			MoveRight = false;
+			faceLeft = true;
+			MoveLeft = true;
+			}
+		else{
+			faceLeft = false;
+			MoveLeft = false;
+			faceRight = true;
+			MoveRight = true;
+		}
+	}
+	
 }
 
 //=============================================================================
@@ -52,22 +77,13 @@ void CTurtle::OnCleanup() {
 //=============================================================================
 void CTurtle::OnAnimate() {
 	Anim_Control.MaxFrames = 5;
-	CurrentFrameCol = 0;
+	CurrentFrameRow = 0;
 	if(MoveLeft) {
-		CurrentFrameRow = 0;
+		CurrentFrameCol = 1;
 	} else {
-		CurrentFrameRow = 1;
+		CurrentFrameCol = 0;
 	}
 }
 //=============================================================================
 bool CTurtle::OnCollision(CEntity* Entity) {
-	if(faceRight){
-		MoveLeft = true;
-		MoveRight = false;
-	}
-	else{ 
-		MoveRight = true;
-		MoveLeft = false;
-	}
-	return true;
 }

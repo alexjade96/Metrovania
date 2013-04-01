@@ -4,6 +4,7 @@
 //=============================================================================
 CSamus::CSamus() {
 	Flags = ENTITY_FLAG_GRAVITY;
+	Type = 	ENTITY_TYPE_PLAYER;
 	Crouch = false;
 	PointUpDiagonal = false;
 	PointDownDiagonal = false;
