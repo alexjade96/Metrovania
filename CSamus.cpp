@@ -8,6 +8,7 @@ CSamus::CSamus() {
 	Crouch = false;
 	PointUpDiagonal = false;
 	PointDownDiagonal = false;
+	PointUp = false;
 	morphBall = false;
 	MoveLeft  = false;
 	MoveRight = false;
