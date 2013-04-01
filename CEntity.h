@@ -14,7 +14,8 @@
 enum {
 	ENTITY_TYPE_GENERIC = 0,
 
-	ENTITY_TYPE_PLAYER
+	ENTITY_TYPE_PLAYER,
+	ENTITY_TYPE_INSECT
 };
 
 //==============================================================================
@@ -101,7 +102,7 @@ class CEntity {
 	public:
 		bool    Collides(int oX, int oY, int oW, int oH);
 
-	private:
+	protected:
 		bool 	PosValid(int NewX, int NewY);
 
 		bool 	PosValidTile(CTile* Tile);

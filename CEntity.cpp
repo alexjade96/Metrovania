@@ -149,7 +149,30 @@ void CEntity::OnMove(float MoveX, float MoveY) {
 			Y += NewY;
 
 
-		}else{
+		}else if (Type & ENTITY_TYPE_INSECT){
+			if(PosValid((int)(X + NewX), (int)(Y))) {
+				X += NewX;
+			}else{
+				if (faceLeft) {
+					faceLeft = false;
+					faceRight = true;
+				} else {
+					faceRight = false;
+					faceLeft = true;
+				}		
+				SpeedX = 0;
+			}
+
+			if(PosValid((int)(X), (int)(Y + NewY))) {
+				Y += NewY;
+			}else{
+    				if(MoveY > 0) {
+    				    CanJump = true;
+ 			        }
+				
+				SpeedY = 0;
+			}
+		} else {
 			if(PosValid((int)(X + NewX), (int)(Y))) {
 				X += NewX;
 			}else{
@@ -164,8 +187,8 @@ void CEntity::OnMove(float MoveX, float MoveY) {
  			        }
 				
 				SpeedY = 0;
-			}
-		}
+			}		
+		}	
 		
 
 		MoveX += -NewX;

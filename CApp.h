@@ -18,6 +18,7 @@
 
 #include "CSamus.h"
 #include "CTurtle.h"
+#include "CInsect.h"
 
 //==============================================================================
 class CApp : public CEvent {
@@ -28,7 +29,8 @@ class CApp : public CEvent {
 
         CSamus		Player;
         CSamus		Player2;
-	CTurtle		Enemy1;
+		CTurtle		Enemy1;
+		CInsect		Enemy2;
 
     public:
         CApp();
