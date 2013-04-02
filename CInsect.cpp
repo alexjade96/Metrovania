@@ -68,12 +68,12 @@ void CInsect::OnCleanup() {
 void CInsect::OnAnimate() {
 	CurrentFrameCol = 0;
 	if (CanJump && jumpTimer < 100) {
-		CurrentFrameRow = 2;
-		Anim_Control.MaxFrames = 0;
-		jumpTimer++;
-	} else {
 		CurrentFrameRow = 0;
 		Anim_Control.MaxFrames = 2;
+		jumpTimer++;
+	} else {
+		CurrentFrameRow = 2;
+		Anim_Control.MaxFrames = 0;
 	}	
 		
 }
