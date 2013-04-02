@@ -27,7 +27,7 @@ class CSamus : public CEntity {
 	bool	morphBall;
 	bool	PointUp;
 
-	SDL_Surface*	Surf_Health;
+	SDL_Surface*	Surf_Health
 };
 
 //=============================================================================
