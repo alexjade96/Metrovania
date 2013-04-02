@@ -55,7 +55,6 @@ class CEntity {
 		bool	Dead;
 		int		Flags;
 		int	health;
-		int	healthTimer;
 
 	protected:
 		float	SpeedX;

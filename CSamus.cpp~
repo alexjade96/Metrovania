@@ -40,7 +40,7 @@ void CSamus::OnLoop() {
 
 	if(healthTimer < 100)healthTimer++;
 
-	std::cout<<health<<std::endl;
+	std::cout<<healthTimer<<std::endl;
 
 	if(health <= 0) Dead = true;
 

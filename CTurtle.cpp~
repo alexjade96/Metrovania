@@ -1,27 +1,26 @@
 //=============================================================================
-#include "CInsect.h"
+#include "CTurtle.h"
 #include "CSamus.h"
 
 //=============================================================================
 
-CInsect::CInsect() {
+CTurtle::CTurtle() {
 
-	Type = 	ENTITY_TYPE_INSECT;
+	Type = 	ENTITY_TYPE_GENERIC;
 
-	Flags = ENTITY_FLAG_GRAVITY;
+	Flags = ENTITY_FLAG_NONE;
 
 	MoveRight = false;
 	faceRight = false;
 	MoveLeft = true;
 	faceLeft = true;
-	jumpTimer = 0;
 
 	SpeedX = 10;
 }
 
 //=============================================================================
 
-bool CInsect::OnLoad(char* File, int Width, int Height, int MaxFrames) {
+bool CTurtle::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false){
 	return false;
 	}
@@ -30,57 +29,69 @@ bool CInsect::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 }
 
 //=============================================================================
-void CInsect::OnLoop(){
+void CTurtle::OnLoop(){
 	CEntity::OnLoop();
-
-	if(faceRight && SpeedY != 0) {
+	if(CurrentFrameCol == 0){
+		faceRight = true;
+		faceLeft = false;
+	}
+	else{
+		faceRight = false;
+		faceLeft = true;
+	}
+	if(faceRight) {
 		MoveRight = true;
 		MoveLeft = false;
 	}
-	else if (faceLeft && SpeedY != 0){
+	else{
 		MoveLeft = true;
 		MoveRight = false;
 	}
-	
-	if (SpeedY == 0) {
-		MoveLeft = false;
-		MoveRight = false;
-	}	
-	
-	if(CanJump && jumpTimer >= 100) {
-		jumpTimer = 0;
-		Jump();
-	}	
+
+	if(SpeedX == 0){
+		if(faceRight){
+			faceRight = false;
+			MoveRight = false;
+			faceLeft = true;
+			MoveLeft = true;
+			}
+		else{
+			faceLeft = false;
+			MoveLeft = false;
+			faceRight = true;
+			MoveRight = true;
+		}
+	}
 	
 }
 
 //=============================================================================
-void CInsect::OnRender(SDL_Surface* Surf_Display) {
+void CTurtle::OnRender(SDL_Surface* Surf_Display) {
 	CEntity::OnRender(Surf_Display);
 }
 
 //=============================================================================
-void CInsect::OnCleanup() {
+void CTurtle::OnCleanup() {
 	CEntity::OnCleanup();
 }
 
 //=============================================================================
-void CInsect::OnAnimate() {
-	CurrentFrameCol = 0;
-	if (CanJump && jumpTimer < 100) {
-		CurrentFrameRow = 2;
-		Anim_Control.MaxFrames = 0;
-		jumpTimer++;
+void CTurtle::OnAnimate() {
+	Anim_Control.MaxFrames = 5;
+	CurrentFrameRow = 0;
+	if(MoveLeft) {
+		CurrentFrameCol = 1;
 	} else {
-		CurrentFrameRow = 0;
-		Anim_Control.MaxFrames = 2;
-	}	
-		
+		CurrentFrameCol = 0;
+	}
 }
 //=============================================================================
-bool CInsect::OnCollision(CEntity* Entity) {
-	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
+bool CTurtle::OnCollision(CEntity* Entity) {
+
+	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer <= 0){
 		Entity->health--;
-		Entity->healthTimer = 0;
+		Entity->healthTimer=100;
 	}
+
+
 }
