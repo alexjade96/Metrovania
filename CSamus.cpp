@@ -1,6 +1,7 @@
 //=============================================================================
 #include "CSamus.h"
 #include "CApp.h"
+#include <iostream>
 //=============================================================================
 CSamus::CSamus() {
 	Flags = ENTITY_FLAG_GRAVITY;
@@ -43,6 +44,8 @@ void CSamus::OnLoop() {
 	if(healthTimer < 100)healthTimer++;
 
 	if(health >= 10) Dead = true;
+	
+	std::cout << SpeedY << std::endl;
 
 }
 
@@ -65,9 +68,14 @@ void CSamus::OnAnimate() {
 	}else{
 		Anim_Control.MaxFrames = 0;
 	}
+	
+	
 	if(MoveLeft) {
 		CurrentFrameRow = 0;
-		if (morphBall) {
+		if (!CanJump && !morphBall) {
+			CurrentFrameCol = 9;
+			Anim_Control.MaxFrames = 8;
+		} else if (morphBall) {
 			CurrentFrameCol = 3;
 			Anim_Control.MaxFrames = 8;
 		} else if (PointUpDiagonal) {
@@ -77,11 +85,14 @@ void CSamus::OnAnimate() {
 		} else {
 			CurrentFrameCol = 1;
 		}
-	}else
-
-	if(MoveRight) {
+	}
+	
+	else if(MoveRight) {
 		CurrentFrameRow = 0;
-		if (morphBall) {
+		if (!CanJump && !morphBall) {
+			CurrentFrameCol = 8;
+			Anim_Control.MaxFrames = 8;
+		} else if (morphBall) {
 			CurrentFrameCol = 2;
 			Anim_Control.MaxFrames = 8;
 		}
