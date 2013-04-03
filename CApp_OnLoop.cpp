@@ -30,6 +30,9 @@ void CApp::OnLoop() {
     char Buffer[255];
     sprintf(Buffer, "%d", CFPS::FPSControl.GetFPS());
     SDL_WM_SetCaption(Buffer, Buffer);
+
+
+	if (Player.Dead==true) Running = false;
 }
 
 //==============================================================================

@@ -16,7 +16,9 @@
 #include "CEvent.h"
 #include "CSurface.h"
 
-#include "CPlayer.h"
+#include "CSamus.h"
+#include "CTurtle.h"
+#include "CInsect.h"
 
 //==============================================================================
 class CApp : public CEvent {
@@ -25,8 +27,10 @@ class CApp : public CEvent {
 
         SDL_Surface*    Surf_Display;
 
-        CPlayer			Player;
-        CPlayer			Player2;
+        CSamus		Player;
+        CSamus		Player2;
+		CTurtle		Enemy1;
+		CInsect		Enemy2;
 
     public:
         CApp();

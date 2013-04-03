@@ -1,15 +1,15 @@
 //=============================================================================
-#ifndef _CPLAYER_H_
-    #define _CPLAYER_H_
+#ifndef _CSAMUS_H_
+    #define _CSAMUS_H_
 
 #include "CEntity.h"
 
 //=============================================================================
-class CPlayer : public CEntity {
+class CSamus : public CEntity {
     public:
-        CPlayer();
+        CSamus();
 
-		bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+	bool OnLoad(char* File, int Width, int Height, int MaxFrames);
 
         void OnLoop();
 
@@ -20,6 +20,14 @@ class CPlayer : public CEntity {
         void OnAnimate();
 
         bool OnCollision(CEntity* Entity);
+
+	bool	Crouch;
+	bool	PointUpDiagonal;
+	bool	PointDownDiagonal;
+	bool	morphBall;
+	bool	PointUp;
+
+	SDL_Surface*	Surf_Health;
 };
 
 //=============================================================================
