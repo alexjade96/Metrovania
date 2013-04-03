@@ -17,13 +17,21 @@ bool CApp::OnInit() {
 
     SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
 
-    if(Player.OnLoad("images/samusanim.png", 30, 40, 10) == false) {
-    	return false;
-    }
 
-   /* if(Player2.OnLoad("images/samusanim.png", 30, 40, 10) == false) {
-    	return false;
-    } */
+	metroid = false;
+	castlevania = true;
+
+	if(metroid){
+		if(Samus.OnLoad("images/samusanim.png", 30, 40, 10) == false) {
+			return false;
+		}
+	}
+
+	if(castlevania){
+		if(Simon.OnLoad("images/simonanim.png", 30, 50, 12) == false){
+			return false;
+		}
+	}
 
 	if(Enemy1.OnLoad("images/Enemy1.png", 40, 17, 5) == false) {
 	return false;
@@ -33,21 +41,29 @@ bool CApp::OnInit() {
 	return false;	
 	}	
 
-	Player.X = 100;
-	Player.Y = 560;
-	//Player2.X = 500;
+	if(metroid){
+		Samus.X = 100;
+		Samus.Y = 500;
+	}
+
+	if(castlevania){
+		Simon.X = 100;
+		Simon.Y = 500;
+	}
+
 	Enemy1.X = 150;
 	Enemy1.Y = 560;
 	Enemy2.X = 600;
 	Enemy2.Y = 560;
 
-	CEntity::EntityList.push_back(&Player);
-	//CEntity::EntityList.push_back(&Player2);
+	if(metroid) CEntity::EntityList.push_back(&Samus);
+	if(castlevania) CEntity::EntityList.push_back(&Simon);
 	CEntity::EntityList.push_back(&Enemy1);
 	CEntity::EntityList.push_back(&Enemy2);
 
 	CCamera::CameraControl.TargetMode = TARGET_MODE_CENTER;
-   	CCamera::CameraControl.SetTarget(&Player.X, &Player.Y);
+   	if(metroid) CCamera::CameraControl.SetTarget(&Samus.X, &Samus.Y);
+	if(castlevania) CCamera::CameraControl.SetTarget(&Simon.X, &Simon.Y);
 
     return true;
 }

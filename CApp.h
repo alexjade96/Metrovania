@@ -17,6 +17,7 @@
 #include "CSurface.h"
 
 #include "CSamus.h"
+#include "CSimon.h"
 #include "CTurtle.h"
 #include "CInsect.h"
 
@@ -27,8 +28,8 @@ class CApp : public CEvent {
 
         SDL_Surface*    Surf_Display;
 
-        CSamus		Player;
-        CSamus		Player2;
+                CSamus		Samus;
+		CSimon		Simon;
 		CTurtle		Enemy1;
 		CInsect		Enemy2;
 
@@ -53,6 +54,8 @@ class CApp : public CEvent {
         void OnRender();
 
         void OnCleanup();
+	bool metroid;
+	bool castlevania;
 };
 
 //==============================================================================

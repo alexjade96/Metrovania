@@ -32,7 +32,8 @@ void CApp::OnLoop() {
     SDL_WM_SetCaption(Buffer, Buffer);
 
 
-	if (Player.Dead==true) Running = false;
+	if(metroid) if(Samus.Dead==true) Running = false;
+	if(castlevania) if(Simon.Dead==true) Running = false;
 }
 
 //==============================================================================
