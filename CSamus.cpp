@@ -44,8 +44,6 @@ void CSamus::OnLoop() {
 	if(healthTimer < 100)healthTimer++;
 
 	if(health >= 10) Dead = true;
-	
-	std::cout << SpeedY << std::endl;
 
 }
 
@@ -157,8 +155,6 @@ void CSamus::OnAnimate() {
 
 //------------------------------------------------------------------------------
 bool CSamus::OnCollision(CEntity* Entity) {
-	Jump();
-
 	return true;
 }
 
