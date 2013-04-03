@@ -32,7 +32,7 @@ bool CSamus::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //-----------------------------------------------------------------------------
 void CSamus::OnLoop() {
 	CEntity::OnLoop();
-	if(CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6){
+	if(CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6 || CurrentFrameCol == 8){
 		faceRight = true;
 		faceLeft = false;
 	}
