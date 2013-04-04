@@ -17,10 +17,6 @@ bool CApp::OnInit() {
 
     SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
 
-
-	metroid = false;
-	castlevania = true;
-
 	if(metroid){
 		if(Samus.OnLoad("images/samusanim.png", 30, 40, 10) == false) {
 			return false;

@@ -37,6 +37,8 @@ class CApp : public CEvent {
         CApp();
 
         int OnExecute();
+        
+        int OnTitle();
 
     public:
         bool OnInit();
@@ -54,6 +56,9 @@ class CApp : public CEvent {
         void OnRender();
 
         void OnCleanup();
+        
+        
+        
 	bool metroid;
 	bool castlevania;
 };
