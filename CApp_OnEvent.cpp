@@ -24,6 +24,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			}
 	
 			case SDLK_SPACE: {
+				SDL_EnableKeyRepeat(0, 10000);
 	   			Samus.Jump();
 		        break;
 			}
@@ -86,6 +87,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			}
 	
 			case SDLK_SPACE: {
+				SDL_EnableKeyRepeat(0, 10000);
 	   			Simon.Jump();
 		        break;
 			}
