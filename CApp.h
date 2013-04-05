@@ -39,6 +39,8 @@ class CApp : public CEvent {
         int OnExecute();
         
         int OnTitle();
+        
+        int OnGameOver();
 
     public:
         bool OnInit();

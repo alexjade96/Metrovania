@@ -10,6 +10,8 @@ bool CApp::OnInit() {
     if((Surf_Display = SDL_SetVideoMode(WWIDTH, WHEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
         return false;
     }
+    
+    OnTitle();
 
     if(CArea::AreaControl.OnLoad("./maps/1.area") == false) {
     	return false;

@@ -33,9 +33,6 @@ int CApp::OnExecute() {
 //==============================================================================
 int main(int argc, char* argv[]) {
     CApp theApp;
-	if (theApp.OnTitle()!=0) {
-		return -1; 
-	}
     return theApp.OnExecute();
 }
 
