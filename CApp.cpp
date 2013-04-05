@@ -22,6 +22,7 @@ int CApp::OnExecute() {
         }
 
         OnLoop();
+        if (!Running) break;
         OnRender();
     }
 

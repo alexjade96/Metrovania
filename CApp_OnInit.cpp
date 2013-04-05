@@ -11,7 +11,7 @@ bool CApp::OnInit() {
         return false;
     }
     
-    OnTitle();
+    if (OnTitle() != 0) Running = false;
 
     if(CArea::AreaControl.OnLoad("./maps/1.area") == false) {
     	return false;
