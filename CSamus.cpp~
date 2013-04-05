@@ -163,4 +163,3 @@ bool CSamus::OnCollision(CEntity* Entity) {
 
 void CSamus::BulletDeincrement(){
 	BulletCount--;
-}

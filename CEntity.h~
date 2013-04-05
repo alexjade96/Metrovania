@@ -57,7 +57,7 @@ class CEntity {
 		int	health;
 		int	healthTimer;
 
-	public:
+	protected:
 		float	SpeedX;
 		float	SpeedY;
 

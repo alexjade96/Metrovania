@@ -73,7 +73,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					Bullet[Samus.BulletCount].faceLeft = false;
 					Bullet[Samus.BulletCount].MoveRight = true;
 					Bullet[Samus.BulletCount].MoveLeft = false;
-					Bullet[Samus.BulletCount].X = Samus.X+50;
+					Bullet[Samus.BulletCount].X = Samus.X+30;
 					Bullet[Samus.BulletCount].Y = Samus.Y+20;
 					Bullet[Samus.BulletCount].SpeedX = 10;
 				}
@@ -83,7 +83,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					Bullet[Samus.BulletCount].MoveRight = false;
 					Bullet[Samus.BulletCount].MoveLeft = true;
 					Bullet[Samus.BulletCount].X = Samus.X;
-					Bullet[Samus.BulletCount].Y = Samus.Y+50;
+					Bullet[Samus.BulletCount].Y = Samus.Y+20;
 					Bullet[Samus.BulletCount].SpeedX = -10;
 				}
 				CEntity::EntityList.push_back(&Bullet[Samus.BulletCount]);

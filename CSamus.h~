@@ -21,8 +21,6 @@ class CSamus : public CEntity {
 
         bool OnCollision(CEntity* Entity);
 
-	void BulletDeincrement();
-
 	bool	Crouch;
 	bool	PointUpDiagonal;
 	bool	PointDownDiagonal;

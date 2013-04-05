@@ -9,7 +9,7 @@
 CC=g++
 
 # Objects
-OBJECTS=CAnimation.o CApp.o CApp_OnCleanup.o CApp_OnEvent.o CApp_OnInit.o CApp_OnLoop.o CApp_OnRender.o CArea.o CCamera.o CEntity.o CEvent.o CFPS.o CMap.o CSamus.o CSurface.o CTile.o CEntityCol.o CTurtle.o CInsect.o CSimon.o CApp_OnTitle.o CApp_OnGameOver.o CShot.o
+OBJECTS=CAnimation.o CApp.o CApp_OnCleanup.o CApp_OnEvent.o CApp_OnInit.o CApp_OnLoop.o CApp_OnRender.o CArea.o CCamera.o CEntity.o CEvent.o CFPS.o CMap.o CSamus.o CSurface.o CTile.o CEntityCol.o CTurtle.o CInsect.o CSimon.o CApp_OnTitle.o CApp_OnGameOver.o
 
 # Compiler flags
 CPPFLAGS=-Wall -g `sdl-config --cflags`
