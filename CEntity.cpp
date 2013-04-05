@@ -297,6 +297,14 @@ bool CEntity::PosValidTile(CTile* Tile) {
 	if(Tile->TypeID == TILE_TYPE_BLOCK) {
 		return false;
 	}
+	
+	if (Tile->TypeID == TILE_TYPE_DAMAGE) {
+		if (healthTimer >= 100)	{
+			health++;
+			healthTimer=0;
+		}
+		return false;	
+	}	
 
 	return true;
 }

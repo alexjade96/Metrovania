@@ -10,7 +10,8 @@ enum {
 
     TILE_TYPE_NORMAL,
     TILE_TYPE_BLOCK,
-    Tile_TYPE_DIAGONAL
+    TILE_TYPE_DIAGONAL,
+    TILE_TYPE_DAMAGE
 };
 
 //==============================================================================
