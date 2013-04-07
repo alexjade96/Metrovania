@@ -15,7 +15,8 @@ enum {
 	ENTITY_TYPE_GENERIC = 0,
 
 	ENTITY_TYPE_PLAYER,
-	ENTITY_TYPE_INSECT
+	ENTITY_TYPE_INSECT,
+	ENTITY_TYPE_BULLET
 };
 
 //==============================================================================

@@ -30,8 +30,6 @@ class CSamus : public CEntity {
 	bool	PointUp;
 
 	SDL_Surface*	Surf_Health;
-
-	int	BulletCount;
 };
 
 //=============================================================================

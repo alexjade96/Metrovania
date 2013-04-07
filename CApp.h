@@ -33,7 +33,6 @@ class CApp : public CEvent {
 		CSimon		Simon;
 		CTurtle		Enemy1;
 		CInsect		Enemy2;
-		CShot		Bullet[10];
 
     public:
         CApp();

@@ -64,7 +64,6 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			}
 
 			case SDLK_q: {
-				SDL_EnableKeyRepeat(0, 10000);
 				CShot* Bullet = new CShot;
 				Bullet->OnLoad("images/SuperMetroidSamus.gif", 9, 9, 0);
 				if(Samus.faceRight){

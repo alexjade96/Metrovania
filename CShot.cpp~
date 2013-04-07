@@ -45,6 +45,7 @@ void CShot::OnAnimate() {
 
 //------------------------------------------------------------------------------
 bool CShot::OnCollision(CEntity* Entity) {
+	OnCleanup();
 	return true;
 }
 

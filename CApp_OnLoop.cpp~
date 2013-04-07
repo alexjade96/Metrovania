@@ -49,7 +49,7 @@ void CApp::OnLoop() {
 		if((*i)->Type == ENTITY_TYPE_BULLET && (*i)->Dead == true){
 			delete(*i);
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
-			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
+			if(i == CEntity::EntityList.end()) EntityList.pop_back();
 		}
 	}
 }

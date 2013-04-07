@@ -342,7 +342,6 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 		Entity->Collides(NewX + Col_X, NewY + Col_Y, Width - Col_Width - 1, Height - Col_Height - 1) == true) {
 
 		if(this->Type == ENTITY_TYPE_PLAYER && Entity->Type == ENTITY_TYPE_BULLET) return true;
-		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_BULLET) return true;
 
 		CEntityCol EntityCol;
 
