@@ -343,6 +343,7 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 
 		if(this->Type == ENTITY_TYPE_PLAYER && Entity->Type == ENTITY_TYPE_BULLET) return true;
 		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_BULLET) return true;
+		if(this->Type == ENTITY_TYPE_BULLET && Entity->Type == ENTITY_TYPE_BULLET) return true;
 
 		CEntityCol EntityCol;
 
