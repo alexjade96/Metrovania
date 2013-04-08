@@ -23,6 +23,8 @@ class CSimon : public CEntity {
 
 	bool	Crouch;
 
+	bool	Taunt;
+
 	SDL_Surface*	Surf_Health;
 };
 

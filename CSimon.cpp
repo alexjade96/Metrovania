@@ -7,6 +7,7 @@ CSimon::CSimon() {
 	Flags = ENTITY_FLAG_GRAVITY;
 	Type = 	ENTITY_TYPE_PLAYER;
 	Crouch = false;
+	Taunt = false;
 	MoveLeft  = false;
 	MoveRight = false;
 	
@@ -64,8 +65,14 @@ void CSimon::OnAnimate() {
 	}else{
 		Anim_Control.MaxFrames = 0;
 	}
+
+	if(Taunt){
+		Anim_Control.MaxFrames = 8;
+		CurrentFrameCol = 2;
+		CurrentFrameRow = 0;
+	}
 	
-	if(!CanJump) {
+	else if(!CanJump) {
 		if(faceRight) CurrentFrameCol = 0;
 		else CurrentFrameCol = 1;
 		CurrentFrameRow = 13;
