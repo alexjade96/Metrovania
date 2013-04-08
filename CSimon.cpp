@@ -65,8 +65,14 @@ void CSimon::OnAnimate() {
 		Anim_Control.MaxFrames = 0;
 	}
 	
+	if(!CanJump) {
+		if(faceRight) CurrentFrameCol = 0;
+		else CurrentFrameCol = 1;
+		CurrentFrameRow = 13;
+		Anim_Control.MaxFrames = 0;
+	}
 	
-	if(MoveLeft) {
+	else if(MoveLeft) {
 		CurrentFrameRow = 0;
 		CurrentFrameCol = 1;
 	}
