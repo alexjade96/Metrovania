@@ -83,7 +83,15 @@ void CSimon::OnAnimate() {
 	}
 
 	else {
-		if (faceRight) {
+		if (faceLeft && Crouch) {
+			CurrentFrameCol = 1;
+			CurrentFrameRow = 14;
+		}
+		else if (faceRight && Crouch) {
+			CurrentFrameCol = 0;
+			CurrentFrameRow = 14;
+		}
+		else if (faceRight) {
 			CurrentFrameCol = 0;
 			CurrentFrameRow = 12;
 		}
