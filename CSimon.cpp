@@ -9,6 +9,8 @@ CSimon::CSimon() {
 	Crouch = false;
 	MoveLeft  = false;
 	MoveRight = false;
+	
+	MaxSpeedX = 5;
 
 	health = 0;
 	healthTimer = 0;
