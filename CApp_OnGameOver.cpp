@@ -41,8 +41,21 @@ int CApp::OnGameOver() {
 		SDL_Flip(Surf_Display);
 		SDL_Delay(1000);
 	} else if (castlevania) {
-		CSurface::OnDraw(Surf_Display, simonDeath, 285, 232, 0, 0, 65,32);
+		CSurface::OnDraw(Surf_Display, simonDeath, 285, 220, 0, 0, 65,50);
 		SDL_Flip(Surf_Display);
+		SDL_Delay(1000);
+		CSurface::OnDraw(Surf_Display, gameover, 0, 0);
+		CSurface::OnDraw(Surf_Display, simonDeath, 285,220, 0,50, 65, 50);
+		SDL_Flip(Surf_Display);
+		SDL_Delay(500);
+		CSurface::OnDraw(Surf_Display, gameover, 0, 0);
+		CSurface::OnDraw(Surf_Display, simonDeath, 285,220, 0, 100, 65, 50);
+		SDL_Flip(Surf_Display);
+		SDL_Delay(500);
+		CSurface::OnDraw(Surf_Display, gameover, 0, 0);
+		CSurface::OnDraw(Surf_Display, simonDeath, 285, 220, 0, 150, 65, 50);
+		SDL_Flip(Surf_Display);
+		SDL_Delay(1500);
 	}		
 	
 	SDL_Delay(1000);
