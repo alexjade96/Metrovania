@@ -9,6 +9,7 @@ CShot::CShot(){
 	Flags = ENTITY_FLAG_NONE;
 	Type = ENTITY_TYPE_BULLET;
 	MaxSpeedX = 12;
+	MaxSpeedY = 12;
 }
 
 //-----------------------------------------------------------------------------
