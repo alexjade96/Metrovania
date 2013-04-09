@@ -125,6 +125,28 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					Bullet->SpeedX = -12;
 					Bullet->SpeedY = 12;
 				}
+				if(Samus.PointUp){ //trap the up shots
+					if(Samus.faceRight){
+						Bullet->faceRight = true;
+						Bullet->faceLeft = false;
+						Bullet->MoveRight = true;
+						Bullet->MoveLeft = false;
+						Bullet->X = Samus.X+18;
+						Bullet->Y = Samus.Y-5;
+						Bullet->SpeedX = 0;
+						Bullet->SpeedY = -12;
+					}
+					if(Samus.faceLeft){
+						Bullet->faceRight = false;
+						Bullet->faceLeft = true;
+						Bullet->MoveRight = false;
+						Bullet->MoveLeft = true;
+						Bullet->X = Samus.X+13;
+						Bullet->Y = Samus.Y-5;
+						Bullet->SpeedX = 0;
+						Bullet->SpeedY = -12;
+					}
+				}
 				CEntity::EntityList.push_back(Bullet);
 				break;
 			}
