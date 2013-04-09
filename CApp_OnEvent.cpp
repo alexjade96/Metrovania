@@ -92,8 +92,8 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					Bullet->MoveLeft = false;
 					Bullet->X = Samus.X+30;
 					Bullet->Y = Samus.Y-4;
-					Bullet->SpeedX = 12;
-					Bullet->SpeedY = -12;
+					Bullet->SpeedX = 8.4853;
+					Bullet->SpeedY = -8.4853;
 				}
 				if(Samus.faceLeft && Samus.PointUpDiagonal){
 					Bullet->faceRight = false;
@@ -102,8 +102,8 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					Bullet->MoveLeft = true;
 					Bullet->X = Samus.X;
 					Bullet->Y = Samus.Y;
-					Bullet->SpeedX = -12;
-					Bullet->SpeedY = -12;
+					Bullet->SpeedX = -8.4853;
+					Bullet->SpeedY = -8.4853;
 				}
 				if(Samus.faceRight && Samus.PointDownDiagonal){
 					Bullet->faceRight = true;
@@ -112,8 +112,8 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					Bullet->MoveLeft = false;
 					Bullet->X = Samus.X+30;
 					Bullet->Y = Samus.Y+25;
-					Bullet->SpeedX = 12;
-					Bullet->SpeedY = 12;
+					Bullet->SpeedX = 8.4853;
+					Bullet->SpeedY = 8.4853;
 				}
 				if(Samus.faceLeft && Samus.PointDownDiagonal){
 					Bullet->faceRight = false;
@@ -122,8 +122,8 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					Bullet->MoveLeft = true;
 					Bullet->X = Samus.X;
 					Bullet->Y = Samus.Y+18;
-					Bullet->SpeedX = -12;
-					Bullet->SpeedY = 12;
+					Bullet->SpeedX = -8.4853;
+					Bullet->SpeedY = 8.4853;
 				}
 				if(Samus.PointUp){ //trap the up shots
 					if(Samus.faceRight){
@@ -173,8 +173,8 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 						Bullet->MoveLeft = false;
 						Bullet->X = Samus.X+30;
 						Bullet->Y = Samus.Y+3;
-						Bullet->SpeedX = 12;
-						Bullet->SpeedY = -12;
+						Bullet->SpeedX = 8.4853;
+						Bullet->SpeedY = -8.4853;
 					}
 					if(Samus.faceLeft && Samus.PointUpDiagonal){
 						Bullet->faceRight = false;
@@ -183,8 +183,28 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 						Bullet->MoveLeft = true;
 						Bullet->X = Samus.X;
 						Bullet->Y = Samus.Y+8;
-						Bullet->SpeedX = -12;
-						Bullet->SpeedY = -12;
+						Bullet->SpeedX = -8.4853;
+						Bullet->SpeedY = -8.4853;
+					}
+					if(Samus.faceRight && Samus.PointDownDiagonal){
+						Bullet->faceRight = true;
+						Bullet->faceLeft = false;
+						Bullet->MoveRight = true;
+						Bullet->MoveLeft = false;
+						Bullet->X = Samus.X+30;
+						Bullet->Y = Samus.Y+30;
+						Bullet->SpeedX = 8.4853;
+						Bullet->SpeedY = 8.4853;
+					}
+					if(Samus.faceLeft && Samus.PointDownDiagonal){
+						Bullet->faceRight = false;
+						Bullet->faceLeft = true;
+						Bullet->MoveRight = false;
+						Bullet->MoveLeft = true;
+						Bullet->X = Samus.X;
+						Bullet->Y = Samus.Y+25;
+						Bullet->SpeedX = -8.4853;
+						Bullet->SpeedY = 8.4853;
 					}
 				}
 				CEntity::EntityList.push_back(Bullet);
