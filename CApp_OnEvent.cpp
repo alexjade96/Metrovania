@@ -129,9 +129,9 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					if(Samus.faceRight){
 						Bullet->faceRight = true;
 						Bullet->faceLeft = false;
-						Bullet->MoveRight = true;
+						Bullet->MoveRight = false;
 						Bullet->MoveLeft = false;
-						Bullet->X = Samus.X+18;
+						Bullet->X = Samus.X+8;
 						Bullet->Y = Samus.Y-5;
 						Bullet->SpeedX = 0;
 						Bullet->SpeedY = -12;
@@ -140,10 +140,50 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 						Bullet->faceRight = false;
 						Bullet->faceLeft = true;
 						Bullet->MoveRight = false;
-						Bullet->MoveLeft = true;
-						Bullet->X = Samus.X+13;
+						Bullet->MoveLeft = false;
+						Bullet->X = Samus.X+8;
 						Bullet->Y = Samus.Y-5;
 						Bullet->SpeedX = 0;
+						Bullet->SpeedY = -12;
+					}
+				}
+				if(Samus.Crouch){ //trap the crouching
+					if(Samus.faceRight){
+						Bullet->faceRight = true;
+						Bullet->faceLeft = false;
+						Bullet->MoveRight = true;
+						Bullet->MoveLeft = false;
+						Bullet->X = Samus.X+30;
+						Bullet->Y = Samus.Y+22;
+						Bullet->SpeedX = 12;
+					}
+					if(Samus.faceLeft){
+						Bullet->faceRight = false;
+						Bullet->faceLeft = true;
+						Bullet->MoveRight = false;
+						Bullet->MoveLeft = true;
+						Bullet->X = Samus.X;
+						Bullet->Y = Samus.Y+22;
+						Bullet->SpeedX = -12;
+					}
+					if(Samus.faceRight && Samus.PointUpDiagonal){
+						Bullet->faceRight = true;
+						Bullet->faceLeft = false;
+						Bullet->MoveRight = true;
+						Bullet->MoveLeft = false;
+						Bullet->X = Samus.X+30;
+						Bullet->Y = Samus.Y+3;
+						Bullet->SpeedX = 12;
+						Bullet->SpeedY = -12;
+					}
+					if(Samus.faceLeft && Samus.PointUpDiagonal){
+						Bullet->faceRight = false;
+						Bullet->faceLeft = true;
+						Bullet->MoveRight = false;
+						Bullet->MoveLeft = true;
+						Bullet->X = Samus.X;
+						Bullet->Y = Samus.Y+8;
+						Bullet->SpeedX = -12;
 						Bullet->SpeedY = -12;
 					}
 				}
