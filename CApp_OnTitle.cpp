@@ -7,6 +7,7 @@ int CApp::OnTitle() {
 	if ((title = CSurface::OnLoad("./images/titleScreen/TitleScreen.png")) == false) return -1;
 	SDL_Surface* arrow;
 	if ((arrow = CSurface::OnLoad("./images/titleScreen/arrow.png")) == false) return -1;
+	SDL_Surface* intro;
 
 
 	CSurface::OnDraw(Surf_Display, title, 0,0);
@@ -57,11 +58,52 @@ int CApp::OnTitle() {
 							}	
 							break;
 						case SDLK_RETURN:
-							if (choice1) { 
+							if (choice1) {
 								metroid=true;
 								castlevania=false;
 								titleRunning=false;
 							} else { 
+								if (( intro = CSurface::OnLoad("./images/titleScreen/simonintro.png")) == false) return -1;
+								CSurface::OnDraw(Surf_Display, title, 0,0);
+								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
+								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 0, 80, 80);
+								SDL_Flip(Surf_Display);
+								SDL_Delay(1000);
+								CSurface::OnDraw(Surf_Display, title, 0,0);
+								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
+								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 80, 80, 80);
+								SDL_Flip(Surf_Display);
+								SDL_Delay(200);
+								CSurface::OnDraw(Surf_Display, title, 0,0);
+								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
+								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 160, 80, 80);
+								SDL_Flip(Surf_Display);
+								SDL_Delay(200);
+								CSurface::OnDraw(Surf_Display, title, 0,0);
+								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
+								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 240, 80, 80);
+								SDL_Flip(Surf_Display);
+								SDL_Delay(200);
+								CSurface::OnDraw(Surf_Display, title, 0,0);
+								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
+								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 320, 80, 80);
+								SDL_Flip(Surf_Display);
+								SDL_Delay(200);
+								CSurface::OnDraw(Surf_Display, title, 0,0);
+								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
+								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 400, 80, 80);
+								SDL_Flip(Surf_Display);
+								SDL_Delay(200);
+								CSurface::OnDraw(Surf_Display, title, 0,0);
+								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
+								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 480, 80, 80);
+								SDL_Flip(Surf_Display);
+								SDL_Delay(200);
+								CSurface::OnDraw(Surf_Display, title, 0,0);
+								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
+								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 560, 80, 80);
+								SDL_Flip(Surf_Display);
+								SDL_Delay(1000);
 								castlevania=true;
 								metroid=false;
 								titleRunning=false;
