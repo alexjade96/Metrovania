@@ -21,6 +21,7 @@
 #include "CTurtle.h"
 #include "CInsect.h"
 #include "CShot.h"
+#include "CExplode.h"
 
 //==============================================================================
 class CApp : public CEvent {

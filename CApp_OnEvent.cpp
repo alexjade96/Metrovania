@@ -66,7 +66,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			case SDLK_q: {
 				SDL_EnableKeyRepeat(0, 10000);
 				CShot* Bullet = new CShot;
-				Bullet->OnLoad("images/SuperMetroidSamus.gif", 9, 9, 0);
+				Bullet->OnLoad("images/shot.png", 8, 8, 0);
 				if(Samus.faceRight){
 					Bullet->faceRight = true;
 					Bullet->faceLeft = false;
@@ -92,7 +92,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					Bullet->MoveLeft = false;
 					Bullet->X = Samus.X+30;
 					Bullet->Y = Samus.Y-4;
-					Bullet->SpeedX = 8.4853;
+					Bullet->SpeedX = 8.4853; //net velocity is 12
 					Bullet->SpeedY = -8.4853;
 				}
 				if(Samus.faceLeft && Samus.PointUpDiagonal){
