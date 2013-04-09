@@ -174,11 +174,26 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				Simon.Crouch = false;
 				break;
 			}
+
+			case SDLK_a: {
+				Simon.Taunt = true;
+				break;
+			}
 	
 			case SDLK_SPACE: {
 				SDL_EnableKeyRepeat(0, 10000);
 	   			Simon.Jump();
-		        break;
+		        	break;
+			}
+
+			case SDLK_UP: {
+				Simon.Crouch = false;
+				break;
+			}
+
+			case SDLK_DOWN: {
+				Simon.Crouch = true;
+				break;
 			}
 
 			case SDLK_ESCAPE: {
@@ -241,6 +256,11 @@ void CApp::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				Simon.MoveRight = false;
 				break;
 			}
+
+			case SDLK_a: {
+				Simon.Taunt = false;
+			}
+
 			default: {
 			}
 		}
