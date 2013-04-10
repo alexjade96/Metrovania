@@ -45,7 +45,7 @@ void CExplode::OnAnimate() {
 	CurrentFrameRow = 0;
 	CurrentFrameCol = 0;
 	cycle++; //increment the cycle variable
-	if (cycle >=320) //12 frames have been iterated
+	if (cycle >=200) //12 frames have been iterated
 	{
 		Dead = true;
 		OnCleanup(); //should erase the explosion
