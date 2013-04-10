@@ -14,6 +14,7 @@ CTurtle::CTurtle() {
 	faceRight = false;
 	MoveLeft = true;
 	faceLeft = true;
+	collisionTimer = 0;
 
 	SpeedX = 10;
 }
@@ -62,6 +63,9 @@ void CTurtle::OnLoop(){
 			MoveRight = true;
 		}
 	}
+
+	if(collisionTimer < 100) collisionTimer++;
+	else Flags = ENTITY_FLAG_NONE;
 	
 }
 
@@ -87,6 +91,9 @@ void CTurtle::OnAnimate() {
 }
 //=============================================================================
 bool CTurtle::OnCollision(CEntity* Entity) {
+
+	Flags = ENTITY_FLAG_MAPONLY;
+	collisionTimer = 0;
 
 	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
 		Entity->health++;

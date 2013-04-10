@@ -49,7 +49,7 @@ bool CApp::OnInit() {
 		Simon.Y = 500;
 	}
 
-	Enemy1.X = 150;
+	Enemy1.X = 200;
 	Enemy1.Y = 560;
 	Enemy2.X = 600;
 	Enemy2.Y = 560;
