@@ -1,4 +1,5 @@
 //==============================================================================
+#include <iostream>
 #include "CEntity.h"
 //==============================================================================
 std::vector<CEntity*> 	CEntity::EntityList;
@@ -198,11 +199,55 @@ void CEntity::OnMove(float MoveX, float MoveY) {
 			}else{
 				OnCleanup();
 			}
+		}else if (Type == ENTITY_TYPE_SKELETON){
+			if(PosValid((int)(X + NewX), (int)(Y))) {
+				X += NewX;
+			}else{
+				if(faceRight && collisionTimer > 100){
+					faceLeft = true;
+					faceRight = false;
+					MoveLeft = true;
+					MoveRight = false;
+					collisionTimer = 0;
+				}
+				else if(faceLeft && collisionTimer > 100){
+					faceLeft = false;
+					faceRight = true;
+					MoveLeft = false;
+					MoveRight = true;
+					collisionTimer = 0;
+				}
+			}
+
+			if(PosValid((int)(X), (int)(Y + NewY))) {
+				Y += NewY;
+			}else{
+    				if(MoveY > 0) {
+    				    CanJump = true;
+ 			        }
+				
+				SpeedY = 0;
+			}		
 		} else {
 			if(PosValid((int)(X + NewX), (int)(Y))) {
 				X += NewX;
 			}else{
-				SpeedX = 0;
+				if(faceRight && collisionTimer > 100){
+					faceLeft = true;
+					faceRight = false;
+					MoveLeft = true;
+					MoveRight = false;
+					collisionTimer = 0;
+					SpeedX = -MaxSpeedX;
+				}
+				else if(faceLeft && collisionTimer > 100){
+					faceLeft = false;
+					faceRight = true;
+					MoveLeft = false;
+					MoveRight = true;
+					collisionTimer = 0;
+					SpeedX = MaxSpeedX;
+				}
 			}
 
 			if(PosValid((int)(X), (int)(Y + NewY))) {

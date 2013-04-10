@@ -1,7 +1,7 @@
 //=============================================================================
 #include "CSkeleton.h"
 #include "CSamus.h"
-
+#include <iostream>
 //=============================================================================
 
 CSkeleton::CSkeleton() {
@@ -42,11 +42,8 @@ void CSkeleton::OnLoop(){
 		MoveRight = false;
 	}
 
-	if(SpeedX == 0 && faceRight) faceLeft = true;
-	if(SpeedX == 0 && faceLeft) faceRight = true;
 
-	if(collisionTimer < 100) collisionTimer++;
-	else Flags = ENTITY_FLAG_NONE;
+	if(collisionTimer <= 100) collisionTimer++;
 	
 }
 
@@ -72,11 +69,6 @@ void CSkeleton::OnAnimate() {
 }
 //=============================================================================
 bool CSkeleton::OnCollision(CEntity* Entity) {
-
-	if(Entity->Type != ENTITY_TYPE_BULLET){
-		Flags = ENTITY_FLAG_MAPONLY;
-		collisionTimer = 0;
-	}
 
 	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
 		Entity->health++;

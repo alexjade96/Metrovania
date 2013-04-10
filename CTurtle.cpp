@@ -32,14 +32,6 @@ bool CTurtle::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //=============================================================================
 void CTurtle::OnLoop(){
 	CEntity::OnLoop();
-	if(CurrentFrameCol == 0){
-		faceRight = true;
-		faceLeft = false;
-	}
-	else{
-		faceRight = false;
-		faceLeft = true;
-	}
 	if(faceRight) {
 		MoveRight = true;
 		MoveLeft = false;
@@ -49,24 +41,8 @@ void CTurtle::OnLoop(){
 		MoveRight = false;
 	}
 
-	if(SpeedX == 0){
-		if(faceRight){
-			faceRight = false;
-			MoveRight = false;
-			faceLeft = true;
-			MoveLeft = true;
-			}
-		else{
-			faceLeft = false;
-			MoveLeft = false;
-			faceRight = true;
-			MoveRight = true;
-		}
-	}
 
-	if(collisionTimer < 100) collisionTimer++;
-	else Flags = ENTITY_FLAG_NONE;
-	
+	if(collisionTimer <= 100) collisionTimer++;
 }
 
 //=============================================================================
@@ -91,11 +67,6 @@ void CTurtle::OnAnimate() {
 }
 //=============================================================================
 bool CTurtle::OnCollision(CEntity* Entity) {
-
-	if(Entity->Type != ENTITY_TYPE_BULLET){
-		Flags = ENTITY_FLAG_MAPONLY;
-		collisionTimer = 0;
-	}
 
 	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
 		Entity->health++;

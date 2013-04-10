@@ -59,6 +59,7 @@ class CEntity {
 		int		Flags;
 		int	health;
 		int	healthTimer;
+		int	collisionTimer;
 
 	public:
 		float	SpeedX;

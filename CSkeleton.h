@@ -22,7 +22,6 @@ class CSkeleton : public CEntity {
 
         bool OnCollision(CEntity* Entity);
 
-	int collisionTimer;
 
 };
 //=============================================================================

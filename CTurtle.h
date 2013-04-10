@@ -22,8 +22,6 @@ class CTurtle : public CEntity {
 
         bool OnCollision(CEntity* Entity);
 
-	int collisionTimer;
-
 };
 //=============================================================================
 
