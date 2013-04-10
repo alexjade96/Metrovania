@@ -24,6 +24,8 @@ class CInsect : public CEntity {
 
         bool OnCollision(CEntity* Entity);
 
+	int collisionTimer;
+
 };
 //=============================================================================
 

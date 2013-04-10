@@ -92,8 +92,10 @@ void CTurtle::OnAnimate() {
 //=============================================================================
 bool CTurtle::OnCollision(CEntity* Entity) {
 
-	Flags = ENTITY_FLAG_MAPONLY;
-	collisionTimer = 0;
+	if(Entity->Type != ENTITY_TYPE_BULLET){
+		Flags = ENTITY_FLAG_MAPONLY;
+		collisionTimer = 0;
+	}
 
 	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
 		Entity->health++;
