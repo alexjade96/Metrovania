@@ -4,6 +4,8 @@
 #include "CSamus.h"
 #include "CEntity.h"
 #include <vector>
+#include <iostream>
+using namespace std;
 //=============================================================================
 CShot::CShot(){
 	Flags = ENTITY_FLAG_NONE;
@@ -42,6 +44,8 @@ void CShot::OnAnimate() {
 	Anim_Control.MaxFrames = 0;
 	CurrentFrameRow = 0;
 	CurrentFrameCol = 0;
+	if (Dead) cout << "explode" << endl;
+	
 }
 
 //------------------------------------------------------------------------------

@@ -342,7 +342,7 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 		Entity->Collides(NewX + Col_X, NewY + Col_Y, Width - Col_Width - 1, Height - Col_Height - 1) == true) {
 
 		if(this->Type == ENTITY_TYPE_PLAYER && Entity->Type == ENTITY_TYPE_BULLET) return true;
-		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_BULLET) return true;//Samus won't collide with bullets
+		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_BULLET) return true;
 		if(this->Type == ENTITY_TYPE_BULLET && Entity->Type == ENTITY_TYPE_BULLET) return true;
 
 		if(this->Type == ENTITY_TYPE_PLAYER && Entity->Type == ENTITY_TYPE_EFFECT) return true;
@@ -353,9 +353,7 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 		if(Entity->Type == ENTITY_TYPE_BULLET && this->Type == ENTITY_TYPE_EFFECT) return true;//bullets won't collide with effects
 		if(this->Type == ENTITY_TYPE_EFFECT && Entity->Type == ENTITY_TYPE_EFFECT) return true;
 
-		if(this->Type == ENTITY_TYPE_INSECT && Entity->Type == ENTITY_TYPE_EFFECT) return true;
-		if(Entity->Type == ENTITY_TYPE_INSECT && this->Type == ENTITY_TYPE_EFFECT) return true;//insects won't collide with effects
-		if(this->Type == ENTITY_TYPE_EFFECT && Entity->Type == ENTITY_TYPE_EFFECT) return true;
+
 		CEntityCol EntityCol;
 
 		EntityCol.EntityA = this;

@@ -51,8 +51,8 @@ void CApp::OnLoop() {
 		if((*i)->Type == ENTITY_TYPE_BULLET && (*i)->Dead == true){
 			CExplode* expl = new CExplode;///////////////////added this
 			expl->OnLoad("images/ShotDeath.png",34,34,0);/////////added this
-			expl->X = (*i)->X-12;///added this gives the explosion proper coordinates
-			expl->Y = (*i)->Y-12;////////added
+			expl->X = (*i)->X-10;///added this gives the explosion proper coordinates
+			expl->Y = (*i)->Y-10;////////added
 			delete(*i);
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();

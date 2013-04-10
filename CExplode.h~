@@ -20,7 +20,6 @@ class CExplode : public CEntity
 		void OnAnimate();
 
 		bool OnCollision(CEntity* Entity);
-		int cycle;
 
 };
 

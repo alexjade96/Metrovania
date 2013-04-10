@@ -7,7 +7,10 @@
 //=============================================================================
 CExplode::CExplode(){
 	Flags = ENTITY_FLAG_NONE;
-	Type = ENTITY_TYPE_GENERIC;
+	Type = 	ENTITY_TYPE_EFFECT;///////////changed this
+	cycle = 0;
+	MaxSpeedX = 0;
+	MaxSpeedY = 0;
 }
 
 //-----------------------------------------------------------------------------
@@ -20,6 +23,7 @@ bool CExplode::OnLoad(char* File, int Width, int Height, int MaxFrames){
 }
 //-----------------------------------------------------------------------------
 void CExplode::OnLoop() {
+
 	CEntity::OnLoop();
 }
 
@@ -40,6 +44,12 @@ void CExplode::OnAnimate() {
 	Anim_Control.MaxFrames = 6;
 	CurrentFrameRow = 0;
 	CurrentFrameCol = 0;
+	cycle++; //increment the cycle variable
+	if (cycle >=320) //12 frames have been iterated
+	{
+		Dead = true;
+		OnCleanup(); //should erase the explosion
+	}
 }
 
 //------------------------------------------------------------------------------
