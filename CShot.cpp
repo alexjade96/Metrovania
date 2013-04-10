@@ -40,8 +40,8 @@ void CShot::OnCleanup() {
 void CShot::OnAnimate() {
 	CEntity::OnAnimate();
 	Anim_Control.MaxFrames = 0;
-	CurrentFrameRow = 55;
-	CurrentFrameCol = 3;
+	CurrentFrameRow = 0;
+	CurrentFrameCol = 0;
 }
 
 //------------------------------------------------------------------------------

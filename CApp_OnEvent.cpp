@@ -66,7 +66,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			case SDLK_q: {
 				SDL_EnableKeyRepeat(0, 10000);
 				CShot* Bullet = new CShot;
-				Bullet->OnLoad("images/shot.png", 8, 8, 0);
+				Bullet->OnLoad("./images/shot.png", 8, 8, 0);
 				if(Samus.faceRight){
 					Bullet->faceRight = true;
 					Bullet->faceLeft = false;
