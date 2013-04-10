@@ -17,7 +17,8 @@ enum {
 	ENTITY_TYPE_PLAYER,
 	ENTITY_TYPE_INSECT,
 	ENTITY_TYPE_BULLET,
-	ENTITY_TYPE_EFFECT
+	ENTITY_TYPE_EFFECT,
+	ENTITY_TYPE_SKELETON
 };
 
 //==============================================================================

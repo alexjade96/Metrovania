@@ -22,6 +22,7 @@
 #include "CInsect.h"
 #include "CShot.h"
 #include "CExplode.h"
+#include "CSkeleton.h"
 
 //==============================================================================
 class CApp : public CEvent {
@@ -34,6 +35,7 @@ class CApp : public CEvent {
 		CSimon		Simon;
 		CTurtle		Enemy1;
 		CInsect		Enemy2;
+		CSkeleton	Enemy3;
 
     public:
         CApp();
