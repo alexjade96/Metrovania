@@ -17,6 +17,8 @@ CInsect::CInsect() {
 	jumpTimer = 0;
 	collisionTimer = 0;
 	SpeedX = 10;
+	health = 0;
+	Dead = false;
 }
 
 //=============================================================================
@@ -91,5 +93,9 @@ bool CInsect::OnCollision(CEntity* Entity) {
 	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
 		Entity->health++;
 		Entity->healthTimer = 0;
+	}
+	if(Entity->Type == ENTITY_TYPE_BULLET){
+		health++;
+		if (health >= 10) Dead = true;
 	}
 }
