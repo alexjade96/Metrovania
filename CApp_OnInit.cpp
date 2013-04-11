@@ -20,26 +20,26 @@ bool CApp::OnInit() {
     SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
 
 	if(metroid){
-		if(Samus.OnLoad("images/samusanim.png", 30, 40, 10) == false) {
+		if(Samus.OnLoad("images/samusanim.png", 30, 40, 11) == false) {
 			return false;
 		}
 	}
 
 	if(castlevania){
-		if(Simon.OnLoad("images/simonanim.png", 30, 50, 12) == false){
+		if(Simon.OnLoad("images/simonanim.png", 30, 50, 13) == false){
 			return false;
 		}
 	}
 
-	if(Enemy1.OnLoad("images/Enemy1.png", 40, 17, 5) == false) {
+	if(Enemy1.OnLoad("images/Enemy1.png", 40, 17, 6) == false) {
 	return false;
 	}
 	
-	if(Enemy2.OnLoad("images/Enemy2.png",58,49,2) == false) {
+	if(Enemy2.OnLoad("images/Enemy2.png",58,49,3) == false) {
 	return false;	
 	}
 
-	if(Enemy3.OnLoad("images/skeleton.png", 30, 50, 2) == false){
+	if(Enemy3.OnLoad("images/skeleton.png", 30, 50, 3) == false){
 		return false;
 	}
 

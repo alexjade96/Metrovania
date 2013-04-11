@@ -2,6 +2,7 @@
 #include "CApp.h"
 #include "CEntity.h"
 #include "CExplode.h"
+#include "CInsect.h"
 #include <vector>
 //==============================================================================
 void CApp::OnLoop() {
@@ -53,6 +54,7 @@ void CApp::OnLoop() {
 			expl->OnLoad("images/ShotDeath.png",34,34,0);/////////added this
 			expl->X = (*i)->X-12;///added this gives the explosion proper coordinates
 			expl->Y = (*i)->Y-12;////////added
+			(*i)->OnCleanup();
 			delete(*i);
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
@@ -60,6 +62,7 @@ void CApp::OnLoop() {
 		}
 
 		if(((*i)->Type == ENTITY_TYPE_INSECT) && ((*i)->Dead == true)){
+			(*i)->OnCleanup();
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 		}

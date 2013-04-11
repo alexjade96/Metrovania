@@ -62,7 +62,7 @@ void CSamus::OnCleanup() {
 //------------------------------------------------------------------------------
 void CSamus::OnAnimate() {
 	if(SpeedX != 0) {
-		Anim_Control.MaxFrames = 10;
+		Anim_Control.MaxFrames = 11;
 	}else{
 		Anim_Control.MaxFrames = 0;
 	}
@@ -72,10 +72,10 @@ void CSamus::OnAnimate() {
 		CurrentFrameRow = 0;
 		if (!CanJump && !morphBall) {
 			CurrentFrameCol = 9;
-			Anim_Control.MaxFrames = 8;
+			Anim_Control.MaxFrames = 9;
 		} else if (morphBall) {
 			CurrentFrameCol = 3;
-			Anim_Control.MaxFrames = 8;
+			Anim_Control.MaxFrames = 9;
 		} else if (PointUpDiagonal) {
 			CurrentFrameCol = 5;
 		} else if (PointDownDiagonal) {
@@ -89,10 +89,10 @@ void CSamus::OnAnimate() {
 		CurrentFrameRow = 0;
 		if (!CanJump && !morphBall) {
 			CurrentFrameCol = 8;
-			Anim_Control.MaxFrames = 8;
+			Anim_Control.MaxFrames = 9;
 		} else if (morphBall) {
 			CurrentFrameCol = 2;
-			Anim_Control.MaxFrames = 8;
+			Anim_Control.MaxFrames = 9;
 		}
 		else if (PointUpDiagonal) {
 			CurrentFrameCol = 4;
@@ -133,7 +133,7 @@ void CSamus::OnAnimate() {
 		if (faceRight) CurrentFrameCol = 2;
 		if (faceLeft) CurrentFrameCol = 3;
 		CurrentFrameRow = 0;
-		Anim_Control.MaxFrames = 8;	
+		Anim_Control.MaxFrames = 9;	
 	}	
 
 	else {

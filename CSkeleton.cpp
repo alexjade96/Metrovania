@@ -9,10 +9,10 @@ CSkeleton::CSkeleton() {
 	Type = 	ENTITY_TYPE_SKELETON;
 	Flags = ENTITY_FLAG_GRAVITY;
 
-	MoveRight = false;
-	faceRight = false;
-	MoveLeft = true;
-	faceLeft = true;
+	MoveRight = true;
+	faceRight = true;
+	MoveLeft = false;
+	faceLeft = false;
 
 	collisionTimer = 0;
 	MaxSpeedX = 4;
@@ -43,7 +43,7 @@ void CSkeleton::OnLoop(){
 	}
 
 
-	if(collisionTimer <= 100) collisionTimer++;
+	if(collisionTimer <= 200) collisionTimer++;
 	
 }
 
@@ -59,12 +59,14 @@ void CSkeleton::OnCleanup() {
 
 //=============================================================================
 void CSkeleton::OnAnimate() {
+	Anim_Control.MaxFrames = 3;
 	CurrentFrameRow = 0;
 	if (faceRight) {
 		CurrentFrameCol = 0;
 	} else {
 		CurrentFrameCol = 1;
-	}	
+	}
+	CEntity::OnAnimate();
 		
 }
 //=============================================================================

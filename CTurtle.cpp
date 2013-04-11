@@ -57,13 +57,14 @@ void CTurtle::OnCleanup() {
 
 //=============================================================================
 void CTurtle::OnAnimate() {
-	Anim_Control.MaxFrames = 5;
+	Anim_Control.MaxFrames = 6;
 	CurrentFrameRow = 0;
 	if(MoveLeft) {
 		CurrentFrameCol = 1;
 	} else {
 		CurrentFrameCol = 0;
 	}
+	CEntity::OnAnimate();
 }
 //=============================================================================
 bool CTurtle::OnCollision(CEntity* Entity) {

@@ -41,7 +41,7 @@ void CExplode::OnCleanup() {
 //------------------------------------------------------------------------------
 void CExplode::OnAnimate() {
 	CEntity::OnAnimate();
-	Anim_Control.MaxFrames = 6;
+	Anim_Control.MaxFrames = 7;
 	CurrentFrameRow = 0;
 	CurrentFrameCol = 0;
 	cycle++; //increment the cycle variable

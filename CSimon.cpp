@@ -61,13 +61,13 @@ void CSimon::OnCleanup() {
 //------------------------------------------------------------------------------
 void CSimon::OnAnimate() {
 	if(SpeedX != 0) {
-		Anim_Control.MaxFrames = 12;
+		Anim_Control.MaxFrames = 13;
 	}else{
 		Anim_Control.MaxFrames = 0;
 	}
 
 	if(Taunt){
-		Anim_Control.MaxFrames = 8;
+		Anim_Control.MaxFrames = 9;
 		CurrentFrameCol = 2;
 		CurrentFrameRow = 0;
 	}

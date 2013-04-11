@@ -203,19 +203,21 @@ void CEntity::OnMove(float MoveX, float MoveY) {
 			if(PosValid((int)(X + NewX), (int)(Y))) {
 				X += NewX;
 			}else{
-				if(faceRight && collisionTimer > 100){
+				if(faceRight && collisionTimer > 200){
 					faceLeft = true;
 					faceRight = false;
 					MoveLeft = true;
 					MoveRight = false;
 					collisionTimer = 0;
+					SpeedX = -MaxSpeedX;
 				}
-				else if(faceLeft && collisionTimer > 100){
+				else if(faceLeft && collisionTimer > 200){
 					faceLeft = false;
 					faceRight = true;
 					MoveLeft = false;
 					MoveRight = true;
 					collisionTimer = 0;
+					SpeedX = MaxSpeedX;
 				}
 			}
 
@@ -390,17 +392,8 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_BULLET) return true;//Samus won't collide with bullets
 		if(this->Type == ENTITY_TYPE_BULLET && Entity->Type == ENTITY_TYPE_BULLET) return true;
 
-		if(this->Type == ENTITY_TYPE_PLAYER && Entity->Type == ENTITY_TYPE_EFFECT) return true;
-		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_EFFECT) return true;//Samus won't collide with effects
-		if(this->Type == ENTITY_TYPE_EFFECT && Entity->Type == ENTITY_TYPE_EFFECT) return true;
-
-		if(this->Type == ENTITY_TYPE_BULLET && Entity->Type == ENTITY_TYPE_EFFECT) return true;
-		if(Entity->Type == ENTITY_TYPE_BULLET && this->Type == ENTITY_TYPE_EFFECT) return true;//bullets won't collide with effects
-		if(this->Type == ENTITY_TYPE_EFFECT && Entity->Type == ENTITY_TYPE_EFFECT) return true;
-
-		if(this->Type == ENTITY_TYPE_INSECT && Entity->Type == ENTITY_TYPE_EFFECT) return true;
-		if(Entity->Type == ENTITY_TYPE_INSECT && this->Type == ENTITY_TYPE_EFFECT) return true;//insects won't collide with effects
-		if(this->Type == ENTITY_TYPE_EFFECT && Entity->Type == ENTITY_TYPE_EFFECT) return true;
+		if(Entity->Type == ENTITY_TYPE_EFFECT) return true;
+		if(this->Type == ENTITY_TYPE_EFFECT) return true;//Samus won't collide with effects
 		CEntityCol EntityCol;
 
 		EntityCol.EntityA = this;
