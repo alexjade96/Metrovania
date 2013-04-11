@@ -37,7 +37,9 @@ void CSkeleton::OnLoop(){
 	CEntity::OnLoop();
 
 	//check to see if player in range
-	
+	if (true) {
+		swordOut = true;
+	}	
 	
 	if (swordOut) {	
 		if (faceRight) {
