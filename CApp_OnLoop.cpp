@@ -54,8 +54,8 @@ void CApp::OnLoop() {
 			expl->OnLoad("images/ShotDeath.png",34,34,0);
 			expl->X = (*i)->X-12;///added this gives the explosion proper coordinates
 			expl->Y = (*i)->Y-12;////////added
-			expl->fm = 6;
-			expl->cyclelimit = 200;
+			expl->fm = 7;
+			expl->cyclelimit = 160;
 			(*i)->OnCleanup();
 			delete(*i);
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
@@ -69,7 +69,7 @@ void CApp::OnLoop() {
 			bug->OnLoad("images/InsectDeath.png",60,50,0);
 			bug->X = (*i)->X;
 			bug->Y = (*i)->Y;
-			bug->fm = 3;
+			bug->fm = 4;
 			bug->cyclelimit = 160;
 			(*i)->OnCleanup();
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
@@ -81,7 +81,7 @@ void CApp::OnLoop() {
 			bones->OnLoad("images/SkeletonDeath.png",30,52,0);
 			bones->X = (*i)->X;
 			bones->Y = (*i)->Y;
-			bones->fm = 6;
+			bones->fm = 7;
 			bones->cyclelimit = 200;
 			(*i)->OnCleanup();
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);

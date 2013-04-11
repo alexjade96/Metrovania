@@ -11,7 +11,7 @@ CExplode::CExplode(){
 	cycle = 0;
 	MaxSpeedX = 0;
 	MaxSpeedY = 0;
-	fm = 1;
+	fm = 7; //general framerate
 	cyclelimit = 100;
 }
 
@@ -43,7 +43,7 @@ void CExplode::OnCleanup() {
 //------------------------------------------------------------------------------
 void CExplode::OnAnimate() {
 	CEntity::OnAnimate();
-	Anim_Control.MaxFrames = 7;
+	Anim_Control.MaxFrames = fm;
 	CurrentFrameRow = 0;
 	CurrentFrameCol = 0;
 	cycle++; //increment the cycle variable
