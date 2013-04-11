@@ -152,12 +152,14 @@ void CEntity::OnMove(float MoveX, float MoveY) {
 			if(PosValid((int)(X + NewX), (int)(Y))) {
 				X += NewX;
 			}else{
-				if (faceLeft) {
+				if (faceLeft && collisionTimer > 100) {
 					faceLeft = false;
 					faceRight = true;
-				} else {
+					collisionTimer = 0;
+				} else if (faceRight && collisionTimer > 100) {
 					faceRight = false;
 					faceLeft = true;
+					collisionTimer = 0;
 				}		
 				SpeedX = 0;
 			}
@@ -168,8 +170,8 @@ void CEntity::OnMove(float MoveX, float MoveY) {
     				if(MoveY > 0) {
     				    CanJump = true;
  			        }
-				
-				SpeedY = 0;
+				if(collisionTimer > 100) collisionTimer = 0;
+					SpeedY = 0;
 			}
 		} else if (Type == ENTITY_TYPE_PLAYER) {
 			if(PosValid((int)(X + NewX), (int)(Y))) {

@@ -54,8 +54,7 @@ void CInsect::OnLoop(){
 		Jump();
 	}	
 
-	if(collisionTimer < 100) collisionTimer++;
-	else Flags = ENTITY_FLAG_NONE;
+	if(collisionTimer <= 100) collisionTimer++;
 	
 }
 
@@ -86,12 +85,9 @@ void CInsect::OnAnimate() {
 //=============================================================================
 bool CInsect::OnCollision(CEntity* Entity) {
 
-	if(Entity->Type != ENTITY_TYPE_BULLET){
-		Flags = ENTITY_FLAG_MAPONLY;
-		collisionTimer = 0;
-	}
+	if(Entity->Type == ENTITY_TYPE_PLAYER) SpeedY = MaxSpeedY;
 
-	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
+	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100) {
 		Entity->health++;
 		Entity->healthTimer = 0;
 	}
