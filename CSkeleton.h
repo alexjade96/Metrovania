@@ -21,6 +21,8 @@ class CSkeleton : public CEntity {
         void OnAnimate();
 
         bool OnCollision(CEntity* Entity);
+        
+    bool swordOut;
 
 
 };

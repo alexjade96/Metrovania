@@ -39,7 +39,7 @@ bool CApp::OnInit() {
 	return false;	
 	}
 
-	if(Enemy3.OnLoad("images/skeleton.png", 30, 50, 3) == false){
+	if(Enemy3.OnLoad("images/skeleton.png", 33, 52, 3) == false){
 		return false;
 	}
 

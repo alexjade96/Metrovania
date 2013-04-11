@@ -13,6 +13,7 @@ CSkeleton::CSkeleton() {
 	faceRight = true;
 	MoveLeft = false;
 	faceLeft = false;
+	swordOut = false;
 
 	collisionTimer = 0;
 	MaxSpeedX = 4;
@@ -35,7 +36,18 @@ bool CSkeleton::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 void CSkeleton::OnLoop(){
 	CEntity::OnLoop();
 
-	if(faceRight) {
+	//check to see if player in range
+	
+	
+	if (swordOut) {	
+		if (faceRight) {
+			MoveRight = false;	
+		}	
+		else if (faceLeft) {
+			MoveLeft = false;
+		}	
+	}
+	else if(faceRight) {
 		MoveRight = true;
 		MoveLeft = false;
 	}
@@ -61,12 +73,22 @@ void CSkeleton::OnCleanup() {
 
 //=============================================================================
 void CSkeleton::OnAnimate() {
-	Anim_Control.MaxFrames = 3;
+	
 	CurrentFrameRow = 0;
-	if (faceRight) {
-		CurrentFrameCol = 0;
+	if (swordOut) {
+		Anim_Control.MaxFrames = 4;
+		if (faceRight) {
+			CurrentFrameCol = 2;
+		} else if (faceLeft) {
+			CurrentFrameCol = 3;
+		}		
 	} else {
-		CurrentFrameCol = 1;
+		Anim_Control.MaxFrames = 3;
+		if (faceRight) {
+			CurrentFrameCol = 0;
+		} else {
+			CurrentFrameCol = 1;
+		}
 	}
 	CEntity::OnAnimate();
 		

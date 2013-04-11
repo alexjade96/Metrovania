@@ -256,6 +256,11 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				break;
 			}
 
+			case SDLK_f: {
+				Simon.Y--;
+				break;
+			}	
+
 			case SDLK_ESCAPE: {
 				OnExit();
 			break;
