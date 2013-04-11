@@ -17,6 +17,8 @@ CSkeleton::CSkeleton() {
 	collisionTimer = 0;
 	MaxSpeedX = 4;
 	SpeedX = 4;
+	health = 0;
+	Dead = false;
 }
 
 //=============================================================================
@@ -73,5 +75,9 @@ bool CSkeleton::OnCollision(CEntity* Entity) {
 	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
 		Entity->health++;
 		Entity->healthTimer = 0;
+	}
+	if(Entity->Type == ENTITY_TYPE_BULLET){
+		health++;
+		if (health >= 10) Dead = true;
 	}
 }

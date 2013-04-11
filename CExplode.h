@@ -21,6 +21,8 @@ class CExplode : public CEntity
 
 		bool OnCollision(CEntity* Entity);
 		int cycle;
+		int fm; //max frames
+		int cyclelimit; //how many iterations
 
 };
 

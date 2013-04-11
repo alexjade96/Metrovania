@@ -11,6 +11,8 @@ CExplode::CExplode(){
 	cycle = 0;
 	MaxSpeedX = 0;
 	MaxSpeedY = 0;
+	fm = 1;
+	cyclelimit = 100;
 }
 
 //-----------------------------------------------------------------------------
@@ -41,11 +43,11 @@ void CExplode::OnCleanup() {
 //------------------------------------------------------------------------------
 void CExplode::OnAnimate() {
 	CEntity::OnAnimate();
-	Anim_Control.MaxFrames = 6;
+	Anim_Control.MaxFrames = fm;
 	CurrentFrameRow = 0;
 	CurrentFrameCol = 0;
 	cycle++; //increment the cycle variable
-	if (cycle >=200) //12 frames have been iterated
+	if (cycle >= cyclelimit) //n frames have been iterated over this time
 	{
 		Dead = true;
 		OnCleanup(); //should erase the explosion
