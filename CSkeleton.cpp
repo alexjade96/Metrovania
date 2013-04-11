@@ -78,6 +78,6 @@ bool CSkeleton::OnCollision(CEntity* Entity) {
 	}
 	if(Entity->Type == ENTITY_TYPE_BULLET){
 		health++;
-		if (health >= 10) Dead = true;
+		if (health >= 50) Dead = true;
 	}
 }
