@@ -26,6 +26,7 @@ bool CSimon::OnLoad(char* File, int Width, int Height, int MaxFrames) {
         return false;
     }
 	if((Surf_Health = CSurface::OnLoad("./images/hearts.png")) == false ) return false;
+	if((Surf_Whip = CSurface::OnLoad("./images/whipBrandish.png")) == false) return false;
 
     return true;
 }
@@ -59,12 +60,17 @@ void CSimon::OnLoop() {
 void CSimon::OnRender(SDL_Surface* Surf_Display) {
 	CEntity::OnRender(Surf_Display);
 	CSurface::OnDraw(Surf_Display, Surf_Health, 0, 0, 0, health*60, 160, 60);
+	if(AttackTimer < 30 && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 260, 240, 0, 0, 60, 60);
+	else if(AttackTimer < 60 && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 265, 235, 0, 60, 60, 60);
+	else if(AttackTimer < 30 && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 350, 240, 60, 0, 60, 60);
+	else if(AttackTimer < 60 && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 345, 235, 60, 60, 60, 60);
 }
 
 //------------------------------------------------------------------------------
 void CSimon::OnCleanup() {
 	CEntity::OnCleanup();
 	SDL_FreeSurface(Surf_Health);
+	SDL_FreeSurface(Surf_Whip);
 }
 
 //------------------------------------------------------------------------------

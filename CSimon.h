@@ -30,6 +30,8 @@ class CSimon : public CEntity {
 	int	AttackTimer;
 
 	SDL_Surface*	Surf_Health;
+
+	SDL_Surface*	Surf_Whip;
 };
 
 //=============================================================================
