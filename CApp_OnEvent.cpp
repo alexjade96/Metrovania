@@ -213,7 +213,18 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				}
 				break;
 			}
-	
+			
+			case SDLK_r: {
+				Samus.X = 100;
+				Samus.Y = 500;
+				Enemy1.X = 200;
+				Enemy1.Y = 540;
+				Enemy2.X = 600;
+				Enemy2.Y = 560;
+				Enemy3.X = 400;
+				Enemy3.Y = 500;
+				break;
+			}
 
 			case SDLK_ESCAPE: {
 				OnExit();
@@ -262,12 +273,21 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			case SDLK_q: {
 				SDL_EnableKeyRepeat(0, 10000);
 				Simon.Attack = true;
+				break;
 			}
 
-			case SDLK_f: {
-				Simon.Y--;
+			
+			case SDLK_r: {
+				Simon.X = 100;
+				Simon.Y = 500;
+				Enemy1.X = 200;
+				Enemy1.Y = 540;
+				Enemy2.X = 600;
+				Enemy2.Y = 560;
+				Enemy3.X = 400;
+				Enemy3.Y = 500;
 				break;
-			}	
+			}
 
 			case SDLK_ESCAPE: {
 				OnExit();

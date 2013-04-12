@@ -4,6 +4,7 @@
 #include "CExplode.h"
 #include "CInsect.h"
 #include <vector>
+#include <iostream>
 //==============================================================================
 void CApp::OnLoop() {
     //--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ void CApp::OnLoop() {
 
 	if(metroid) {
 		Enemy3.playerPos = Samus.X;
+		std::cout << "Player X: " << Samus.X << " Player Y: " << Samus.Y << std::endl;
 		if(Samus.Dead==true) {
 			OnGameOver();
 		}
@@ -44,6 +46,7 @@ void CApp::OnLoop() {
 		
 	if(castlevania) {
 		Enemy3.playerPos = Simon.X;
+		std::cout << "Player X: " << Simon.X << " Player Y: " << Simon.Y << std::endl;
 		if(Simon.Dead==true) {
 			OnGameOver();
 		}	
