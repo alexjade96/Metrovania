@@ -18,6 +18,7 @@ CInsect::CInsect() {
 	collisionTimer = 0;
 	SpeedX = 10;
 	health = 0;
+	MaxSpeedY = 15;
 	Dead = false;
 }
 

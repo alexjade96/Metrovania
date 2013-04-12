@@ -23,6 +23,7 @@ class CSkeleton : public CEntity {
         bool OnCollision(CEntity* Entity);
         
     bool swordOut;
+    int AttackTimer;
     
     float playerPos;
 

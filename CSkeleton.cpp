@@ -15,6 +15,7 @@ CSkeleton::CSkeleton() {
 	swordOut = false;
 
 	collisionTimer = 0;
+	AttackTimer = 0;
 	MaxSpeedX = 4;
 	SpeedX = 4;
 	health = 0;
@@ -49,6 +50,17 @@ void CSkeleton::OnLoop(){
 			faceLeft = false;
 		}		
 	}	
+	
+	if (swordOut && AttackTimer <= 90) { 
+		AttackTimer++;
+		std::cout << "timer: " << AttackTimer << std::endl;
+	}
+	else if (swordOut && AttackTimer > 90) {
+		std::cout << "timerZERO: " << AttackTimer << std::endl;	
+		AttackTimer = 0;
+		swordOut = false;
+	}		
+	
 	
 	if (swordOut) {	
 		if (faceRight) {
@@ -87,13 +99,17 @@ void CSkeleton::OnAnimate() {
 	
 	CurrentFrameRow = 0;
 	if (swordOut) {
-		Anim_Control.MaxFrames = 4;
+		Anim_Control.MaxFrames = 0;
+		if(AttackTimer < 30) CurrentFrameRow = 0;
+		else if (AttackTimer < 60) CurrentFrameRow = 1;
+		else CurrentFrameRow = 2;	
 		if (faceRight) {
 			CurrentFrameCol = 2;
 		} else if (faceLeft) {
 			CurrentFrameCol = 3;
 		}		
 	} else {
+		CurrentFrameRow = 0;
 		Anim_Control.MaxFrames = 3;
 		if (faceRight) {
 			CurrentFrameCol = 0;
