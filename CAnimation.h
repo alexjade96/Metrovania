@@ -8,7 +8,7 @@
 
 //==============================================================================
 class CAnimation {
-	private:
+	public:
 		int	    CurrentFrame;
 
 		int     FrameInc;

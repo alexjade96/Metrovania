@@ -8,8 +8,10 @@ CSimon::CSimon() {
 	Type = 	ENTITY_TYPE_PLAYER;
 	Crouch = false;
 	Taunt = false;
+	Attack = false;
 	MoveLeft  = false;
 	MoveRight = false;
+	AttackTimer = 0;
 	
 	MaxSpeedX = 5;
 
@@ -31,13 +33,20 @@ bool CSimon::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //-----------------------------------------------------------------------------
 void CSimon::OnLoop() {
 	CEntity::OnLoop();
-	if(CurrentFrameCol == 0){
+	if(CurrentFrameCol == 0 || CurrentFrameCol == 3){
 		faceRight = true;
 		faceLeft = false;
 	}
 	else{
 		faceRight = false;
 		faceLeft = true;
+	}
+
+	if(AttackTimer <= 90 && Attack) AttackTimer++;
+
+	if(AttackTimer >= 90 && Attack){
+		Attack = false;
+		AttackTimer = 0;
 	}
 
 	if(healthTimer < 100)healthTimer++;
@@ -66,7 +75,20 @@ void CSimon::OnAnimate() {
 		Anim_Control.MaxFrames = 0;
 	}
 
-	if(Taunt){
+	if(Attack) {
+		Anim_Control.MaxFrames = 0;
+		if(AttackTimer < 30) CurrentFrameRow = 0;
+		else if (AttackTimer < 60) CurrentFrameRow = 1;
+		else CurrentFrameRow = 2;		
+		if(faceRight) {
+			CurrentFrameCol = 3;
+		}
+		else {
+			CurrentFrameCol = 4;
+		}
+	}
+
+	else if(Taunt){
 		Anim_Control.MaxFrames = 9;
 		CurrentFrameCol = 2;
 		CurrentFrameRow = 0;

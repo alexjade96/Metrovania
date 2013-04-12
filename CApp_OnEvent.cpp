@@ -259,6 +259,11 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				break;
 			}
 
+			case SDLK_q: {
+				SDL_EnableKeyRepeat(0, 10000);
+				Simon.Attack = true;
+			}
+
 			case SDLK_f: {
 				Simon.Y--;
 				break;

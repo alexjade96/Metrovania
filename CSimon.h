@@ -25,6 +25,10 @@ class CSimon : public CEntity {
 
 	bool	Taunt;
 
+	bool	Attack;
+
+	int	AttackTimer;
+
 	SDL_Surface*	Surf_Health;
 };
 
