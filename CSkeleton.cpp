@@ -41,6 +41,13 @@ void CSkeleton::OnLoop(){
 		swordOut = true;
 	} else {
 		swordOut = false;
+		if (X-playerPos > 50) {
+			faceLeft = true;
+			faceRight = false;
+		} else if (X-playerPos < -50) {
+			faceRight = true;
+			faceLeft = false;
+		}		
 	}	
 	
 	if (swordOut) {	
