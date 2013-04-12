@@ -1,6 +1,5 @@
 //=============================================================================
 #include "CSkeleton.h"
-#include "CSamus.h"
 #include <iostream>
 //=============================================================================
 
@@ -20,6 +19,8 @@ CSkeleton::CSkeleton() {
 	SpeedX = 4;
 	health = 0;
 	Dead = false;
+	
+	
 }
 
 //=============================================================================
@@ -36,9 +37,10 @@ bool CSkeleton::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 void CSkeleton::OnLoop(){
 	CEntity::OnLoop();
 
-	//check to see if player in range
-	if (true) {
+	if (X-playerPos <=50 && X-playerPos >= -50) {
 		swordOut = true;
+	} else {
+		swordOut = false;
 	}	
 	
 	if (swordOut) {	

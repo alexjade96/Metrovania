@@ -36,12 +36,14 @@ void CApp::OnLoop() {
 
 
 	if(metroid) {
+		Enemy3.playerPos = Samus.X;
 		if(Samus.Dead==true) {
 			OnGameOver();
 		}
 	}	
 		
 	if(castlevania) {
+		Enemy3.playerPos = Simon.X;
 		if(Simon.Dead==true) {
 			OnGameOver();
 		}	
