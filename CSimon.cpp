@@ -50,6 +50,7 @@ void CSimon::OnLoop() {
 		AttackTimer = 0;
 	}
 
+
 	if(healthTimer < 100)healthTimer++;
 
 	if(health >= 10) Dead = true;

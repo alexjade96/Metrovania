@@ -23,6 +23,7 @@
 #include "CShot.h"
 #include "CExplode.h"
 #include "CSkeleton.h"
+#include "CWhip.h"
 
 //==============================================================================
 class CApp : public CEvent {

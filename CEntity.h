@@ -18,7 +18,8 @@ enum {
 	ENTITY_TYPE_INSECT,
 	ENTITY_TYPE_BULLET,
 	ENTITY_TYPE_EFFECT,
-	ENTITY_TYPE_SKELETON
+	ENTITY_TYPE_SKELETON,
+	ENTITY_TYPE_WHIP
 };
 
 //==============================================================================
@@ -72,7 +73,7 @@ class CEntity {
 		float	MaxSpeedX;
 		float	MaxSpeedY;
 
-	protected:
+	public:
 		int		CurrentFrameCol;
 		int		CurrentFrameRow;
 

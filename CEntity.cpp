@@ -17,9 +17,6 @@ CEntity::CEntity() {
 	Width 	= 0;
 	Height 	= 0;
 
-	faceLeft = false;
-	faceRight = true;
-
 	Dead = false;
 
 	SpeedX = 0;
@@ -394,7 +391,11 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 		if(this->Type == ENTITY_TYPE_BULLET && Entity->Type == ENTITY_TYPE_BULLET) return true;
 
 		if(Entity->Type == ENTITY_TYPE_EFFECT) return true;
-		if(this->Type == ENTITY_TYPE_EFFECT) return true;//Samus won't collide with effects
+		if(this->Type == ENTITY_TYPE_EFFECT) return true;
+
+		if(Entity->Type == ENTITY_TYPE_WHIP && this->Type == ENTITY_TYPE_PLAYER) return true;
+		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_WHIP) return true;
+
 		CEntityCol EntityCol;
 
 		EntityCol.EntityA = this;

@@ -3,6 +3,7 @@
 #include "CEntity.h"
 #include "CExplode.h"
 #include "CInsect.h"
+#include "CWhip.h"
 #include <vector>
 #include <iostream>
 //==============================================================================
@@ -47,7 +48,23 @@ void CApp::OnLoop() {
 		Enemy3.playerPos = Simon.X;
 		if(Simon.Dead==true) {
 			OnGameOver();
-		}	
+		}
+		if(Simon.Attack && Simon.AttackTimer > 60 && Simon.AttackTimer <= 90) {
+			CWhip* HorizontalWhip = new CWhip;
+			HorizontalWhip->OnLoad("./images/HorizontalWhip.png", 50, 5, 2);
+			if(Simon.faceRight) {
+				HorizontalWhip->X = Simon.X + 30;
+				HorizontalWhip->Y = Simon.Y + 15;
+				HorizontalWhip->CurrentFrameCol = 0;
+			}
+			if(Simon.faceLeft) {
+				HorizontalWhip->X = Simon.X - 50;
+				HorizontalWhip->Y = Simon.Y + 15;
+				HorizontalWhip->CurrentFrameCol = 1;
+			}
+			CEntity::EntityList.push_back(HorizontalWhip);
+		}
+			
 	}
 
 	std::vector<CEntity*>::iterator i;
@@ -59,7 +76,6 @@ void CApp::OnLoop() {
 			expl->Y = (*i)->Y-12;////////added
 			expl->fm = 7;
 			expl->cyclelimit = 160;
-			(*i)->OnCleanup();
 			delete(*i);
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
@@ -90,6 +106,11 @@ void CApp::OnLoop() {
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 			CEntity::EntityList.push_back(bones); //push back the bug
+		}
+		if(((*i)->Type == ENTITY_TYPE_WHIP) && (Simon.AttackTimer <= 60)){
+			delete(*i);
+			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
+			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 		}
 	}
 }

@@ -237,15 +237,30 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 	}
 	if(castlevania){
 		switch(sym) {
+
+			case SDLK_q: {
+				if(Simon.Attack == false){
+					SDL_EnableKeyRepeat(0, 10000);
+					Simon.Attack = true;
+					Simon.MoveRight = false;
+					Simon.MoveLeft = false;
+				}
+				break;
+			}
+
 			case SDLK_LEFT: {
-				Simon.MoveLeft = true;
-				Simon.Crouch = false;
+				if(Simon.Attack == false){
+					Simon.MoveLeft = true;
+					Simon.Crouch = false;
+				}
 				break;
 			}
 	
 			case SDLK_RIGHT: {
-				Simon.MoveRight = true;
-				Simon.Crouch = false;
+				if(Simon.Attack == false){
+					Simon.MoveRight = true;
+					Simon.Crouch = false;
+				}
 				break;
 			}
 
@@ -267,12 +282,6 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 
 			case SDLK_DOWN: {
 				Simon.Crouch = true;
-				break;
-			}
-
-			case SDLK_q: {
-				SDL_EnableKeyRepeat(0, 10000);
-				Simon.Attack = true;
 				break;
 			}
 
