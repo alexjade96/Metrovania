@@ -158,6 +158,12 @@ void CApp::OnLoop() {
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 		}	
 		
+		if ((((*i)->Type == ENTITY_TYPE_SWORD1) || ((*i)->Type == ENTITY_TYPE_SWORD2)) && Enemy3.Dead) {
+			delete(*i);
+			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
+			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();	
+		}	
+		
 		
 	}
 }
