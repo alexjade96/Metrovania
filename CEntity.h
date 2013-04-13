@@ -19,7 +19,9 @@ enum {
 	ENTITY_TYPE_BULLET,
 	ENTITY_TYPE_EFFECT,
 	ENTITY_TYPE_SKELETON,
-	ENTITY_TYPE_WHIP
+	ENTITY_TYPE_WHIP,
+	ENTITY_TYPE_SWORD1,
+	ENTITY_TYPE_SWORD2
 };
 
 //==============================================================================

@@ -38,25 +38,25 @@ bool CSkeleton::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 void CSkeleton::OnLoop(){
 	CEntity::OnLoop();
 
+
+	if (X-playerPos > 30) {
+		faceLeft = true;
+		faceRight = false;
+	} else if (X-playerPos < -30) {
+		faceRight = true;
+		faceLeft = false;
+	}
+
 	if (X-playerPos <=50 && X-playerPos >= -50) {
 		swordOut = true;
 	} else {
-		swordOut = false;
-		if (X-playerPos > 50) {
-			faceLeft = true;
-			faceRight = false;
-		} else if (X-playerPos < -50) {
-			faceRight = true;
-			faceLeft = false;
-		}		
+		swordOut = false;		
 	}	
 	
 	if (swordOut && AttackTimer <= 90) { 
 		AttackTimer++;
-		std::cout << "timer: " << AttackTimer << std::endl;
 	}
 	else if (swordOut && AttackTimer > 90) {
-		std::cout << "timerZERO: " << AttackTimer << std::endl;	
 		AttackTimer = 0;
 		swordOut = false;
 	}		

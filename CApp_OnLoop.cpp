@@ -66,6 +66,39 @@ void CApp::OnLoop() {
 		}
 			
 	}
+	
+	if (Enemy3.swordOut && Enemy3.AttackTimer > 30 && Enemy3.AttackTimer <=60) {
+		CSword* upSword = new CSword;
+		upSword->Type = ENTITY_TYPE_SWORD1;
+		upSword->OnLoad("./images/sword1.png", 17, 16, 2);
+		if (Enemy3.faceRight) {
+			upSword->X = Enemy3.X + 7;
+			upSword->Y = Enemy3.Y - 16;
+			upSword->CurrentFrameCol = 1;
+		}	
+		else if (Enemy3.faceLeft) {
+			upSword->X = Enemy3.X + 7;
+			upSword->Y = Enemy3.Y - 16;
+			upSword->CurrentFrameCol = 0;
+		}	
+		CEntity::EntityList.push_back(upSword);
+	} 
+	else if (Enemy3.swordOut && Enemy3.AttackTimer > 60 && Enemy3.AttackTimer <= 90) {
+		CSword* outSword = new CSword;
+		outSword->Type = ENTITY_TYPE_SWORD2;
+		outSword -> OnLoad("./images/sword2.png", 25, 8, 2);
+		if (Enemy3.faceRight) {
+			outSword->X = Enemy3.X + 30;
+			outSword->Y = Enemy3.Y + 15;
+			outSword->CurrentFrameCol = 0;
+		}
+		else if (Enemy3.faceLeft) {
+			outSword->X = Enemy3.X - 20;
+			outSword->Y = Enemy3.Y + 15;
+			outSword->CurrentFrameCol = 1;
+		}		
+		CEntity::EntityList.push_back(outSword);
+	}	
 
 	std::vector<CEntity*>::iterator i;
 	for(i = CEntity::EntityList.begin(); i != CEntity::EntityList.end(); i++){
@@ -112,6 +145,20 @@ void CApp::OnLoop() {
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 		}
+		
+		if(((*i)->Type == ENTITY_TYPE_SWORD1) && (Enemy3.AttackTimer > 60 || Enemy3.AttackTimer < 30)) {
+			delete(*i);
+			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
+			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
+		} 
+		
+		if (((*i)->Type == ENTITY_TYPE_SWORD2) && (Enemy3.AttackTimer < 60 || Enemy3.AttackTimer >90)) {
+			delete(*i);
+			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
+			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
+		}	
+		
+		
 	}
 }
 

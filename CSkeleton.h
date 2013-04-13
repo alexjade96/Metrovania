@@ -3,6 +3,7 @@
 #define _CSKELETON_H_
 
 #include "CEntity.h"
+#include "CSword.h"
 
 //=============================================================================
 class CSkeleton : public CEntity {

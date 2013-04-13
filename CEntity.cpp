@@ -395,6 +395,9 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 
 		if(Entity->Type == ENTITY_TYPE_WHIP && this->Type == ENTITY_TYPE_PLAYER) return true;
 		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_WHIP) return true;
+		
+		if((Entity->Type == ENTITY_TYPE_SWORD1 || Entity->Type == ENTITY_TYPE_SWORD2) && this->Type == ENTITY_TYPE_SKELETON) return true;
+		if(Entity->Type == ENTITY_TYPE_SKELETON && (this->Type == ENTITY_TYPE_SWORD1 || this->Type == ENTITY_TYPE_SWORD2)) return true;
 
 		CEntityCol EntityCol;
 

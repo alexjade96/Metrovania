@@ -24,6 +24,7 @@
 #include "CExplode.h"
 #include "CSkeleton.h"
 #include "CWhip.h"
+#include "CSword.h"
 
 //==============================================================================
 class CApp : public CEvent {
