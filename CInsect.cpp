@@ -15,8 +15,11 @@ CInsect::CInsect() {
 	MoveLeft = true;
 	faceLeft = true;
 	jumpTimer = 0;
-
+	collisionTimer = 0;
 	SpeedX = 10;
+	health = 0;
+	MaxSpeedY = 15;
+	Dead = false;
 }
 
 //=============================================================================
@@ -51,6 +54,8 @@ void CInsect::OnLoop(){
 		jumpTimer = 0;
 		Jump();
 	}	
+
+	if(collisionTimer <= 100) collisionTimer++;
 	
 }
 
@@ -69,18 +74,28 @@ void CInsect::OnAnimate() {
 	CurrentFrameCol = 0;
 	if (CanJump && jumpTimer < 100) {
 		CurrentFrameRow = 0;
-		Anim_Control.MaxFrames = 2;
+		Anim_Control.MaxFrames = 3;
 		jumpTimer++;
 	} else {
 		CurrentFrameRow = 2;
 		Anim_Control.MaxFrames = 0;
-	}	
+	}
+	CEntity::OnAnimate();
 		
 }
 //=============================================================================
 bool CInsect::OnCollision(CEntity* Entity) {
-	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
+
+	if(Entity->Type == ENTITY_TYPE_PLAYER) SpeedY = MaxSpeedY;
+
+	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100) {
 		Entity->health++;
 		Entity->healthTimer = 0;
 	}
+	if(Entity->Type == ENTITY_TYPE_BULLET){
+		health++;
+		if (health >= 50) Dead = true;
+	}
+	if(Entity->Type == ENTITY_TYPE_WHIP) Dead = true;
+
 }

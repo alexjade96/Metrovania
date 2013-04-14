@@ -1,13 +1,15 @@
 //=============================================================================
-#ifndef _CSIMON_H_
-    #define _CSIMON_H_
+#ifndef _CSKELETON_H_
+#define _CSKELETON_H_
 
 #include "CEntity.h"
+#include "CSword.h"
 
 //=============================================================================
-class CSimon : public CEntity {
-    public:
-        CSimon();
+class CSkeleton : public CEntity {
+	public:
+
+	CSkeleton();
 
 	bool OnLoad(char* File, int Width, int Height, int MaxFrames);
 
@@ -20,20 +22,14 @@ class CSimon : public CEntity {
         void OnAnimate();
 
         bool OnCollision(CEntity* Entity);
+        
+    bool swordOut;
+    int AttackTimer;
+    
+    float playerPos;
 
-	bool	Crouch;
 
-	bool	Taunt;
-
-	bool	Attack;
-
-	int	AttackTimer;
-
-	SDL_Surface*	Surf_Health;
-
-	SDL_Surface*	Surf_Whip;
 };
-
 //=============================================================================
 
 #endif

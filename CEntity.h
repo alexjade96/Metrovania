@@ -16,7 +16,12 @@ enum {
 
 	ENTITY_TYPE_PLAYER,
 	ENTITY_TYPE_INSECT,
-	ENTITY_TYPE_BULLET
+	ENTITY_TYPE_BULLET,
+	ENTITY_TYPE_EFFECT,
+	ENTITY_TYPE_SKELETON,
+	ENTITY_TYPE_WHIP,
+	ENTITY_TYPE_SWORD1,
+	ENTITY_TYPE_SWORD2
 };
 
 //==============================================================================
@@ -57,6 +62,7 @@ class CEntity {
 		int		Flags;
 		int	health;
 		int	healthTimer;
+		int	collisionTimer;
 
 	public:
 		float	SpeedX;
@@ -69,7 +75,7 @@ class CEntity {
 		float	MaxSpeedX;
 		float	MaxSpeedY;
 
-	protected:
+	public:
 		int		CurrentFrameCol;
 		int		CurrentFrameRow;
 

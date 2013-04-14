@@ -155,6 +155,8 @@ int CApp::OnTitle() {
 								titleRunning=false;
 							}
 							break;
+						case SDLK_r:
+							break;		
 						default:
 						     return -1;
 							break;	

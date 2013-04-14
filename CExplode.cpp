@@ -1,19 +1,22 @@
 //=============================================================================
-#include "CShot.h"
+#include "CExplode.h"
 #include "CApp.h"
 #include "CSamus.h"
 #include "CEntity.h"
 #include <vector>
 //=============================================================================
-CShot::CShot(){
+CExplode::CExplode(){
 	Flags = ENTITY_FLAG_NONE;
-	Type = ENTITY_TYPE_BULLET;
-	MaxSpeedX = 12;
-	MaxSpeedY = 12;
+	Type = 	ENTITY_TYPE_EFFECT;///////////changed this
+	cycle = 0;
+	MaxSpeedX = 0;
+	MaxSpeedY = 0;
+	fm = 7; //general framerate
+	cyclelimit = 100;
 }
 
 //-----------------------------------------------------------------------------
-bool CShot::OnLoad(char* File, int Width, int Height, int MaxFrames){
+bool CExplode::OnLoad(char* File, int Width, int Height, int MaxFrames){
 	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {
    	     return false;
 	}
@@ -21,31 +24,38 @@ bool CShot::OnLoad(char* File, int Width, int Height, int MaxFrames){
 	return true;
 }
 //-----------------------------------------------------------------------------
-void CShot::OnLoop() {
+void CExplode::OnLoop() {
+
 	CEntity::OnLoop();
 }
 
 
 //-----------------------------------------------------------------------------
-void CShot::OnRender(SDL_Surface* Surf_Display) {
+void CExplode::OnRender(SDL_Surface* Surf_Display) {
 	CEntity::OnRender(Surf_Display);
 }
 
 //------------------------------------------------------------------------------
-void CShot::OnCleanup() {
+void CExplode::OnCleanup() {
 	CEntity::OnCleanup();
 }
 
 //------------------------------------------------------------------------------
-void CShot::OnAnimate() {
+void CExplode::OnAnimate() {
 	CEntity::OnAnimate();
-	Anim_Control.MaxFrames = 0;
+	Anim_Control.MaxFrames = fm;
 	CurrentFrameRow = 0;
 	CurrentFrameCol = 0;
+	cycle++; //increment the cycle variable
+	if (cycle >= cyclelimit) //n frames have been iterated over this time
+	{
+		Dead = true;
+		OnCleanup(); //should erase the explosion
+	}
 }
 
 //------------------------------------------------------------------------------
-bool CShot::OnCollision(CEntity* Entity) {
+bool CExplode::OnCollision(CEntity* Entity) {
 	return true;
 }
 

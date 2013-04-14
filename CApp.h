@@ -21,6 +21,10 @@
 #include "CTurtle.h"
 #include "CInsect.h"
 #include "CShot.h"
+#include "CExplode.h"
+#include "CSkeleton.h"
+#include "CWhip.h"
+#include "CSword.h"
 
 //==============================================================================
 class CApp : public CEvent {
@@ -33,6 +37,7 @@ class CApp : public CEvent {
 		CSimon		Simon;
 		CTurtle		Enemy1;
 		CInsect		Enemy2;
+		CSkeleton	Enemy3;
 
     public:
         CApp();

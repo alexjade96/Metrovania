@@ -1,4 +1,5 @@
 //==============================================================================
+#include <iostream>
 #include "CEntity.h"
 //==============================================================================
 std::vector<CEntity*> 	CEntity::EntityList;
@@ -15,9 +16,6 @@ CEntity::CEntity() {
 
 	Width 	= 0;
 	Height 	= 0;
-
-	faceLeft = false;
-	faceRight = true;
 
 	Dead = false;
 
@@ -151,12 +149,14 @@ void CEntity::OnMove(float MoveX, float MoveY) {
 			if(PosValid((int)(X + NewX), (int)(Y))) {
 				X += NewX;
 			}else{
-				if (faceLeft) {
+				if (faceLeft && collisionTimer > 100) {
 					faceLeft = false;
 					faceRight = true;
-				} else {
+					collisionTimer = 0;
+				} else if (faceRight && collisionTimer > 100) {
 					faceRight = false;
 					faceLeft = true;
+					collisionTimer = 0;
 				}		
 				SpeedX = 0;
 			}
@@ -167,7 +167,6 @@ void CEntity::OnMove(float MoveX, float MoveY) {
     				if(MoveY > 0) {
     				    CanJump = true;
  			        }
-				
 				SpeedY = 0;
 			}
 		} else if (Type == ENTITY_TYPE_PLAYER) {
@@ -198,11 +197,57 @@ void CEntity::OnMove(float MoveX, float MoveY) {
 			}else{
 				OnCleanup();
 			}
+		}else if (Type == ENTITY_TYPE_SKELETON){
+			if(PosValid((int)(X + NewX), (int)(Y))) {
+				X += NewX;
+			}else{
+				if(faceRight && collisionTimer > 200){
+					faceLeft = true;
+					faceRight = false;
+					MoveLeft = true;
+					MoveRight = false;
+					collisionTimer = 0;
+					SpeedX = -MaxSpeedX;
+				}
+				else if(faceLeft && collisionTimer > 200){
+					faceLeft = false;
+					faceRight = true;
+					MoveLeft = false;
+					MoveRight = true;
+					collisionTimer = 0;
+					SpeedX = MaxSpeedX;
+				}
+			}
+
+			if(PosValid((int)(X), (int)(Y + NewY))) {
+				Y += NewY;
+			}else{
+    				if(MoveY > 0) {
+    				    CanJump = true;
+ 			        }
+				
+				SpeedY = 0;
+			}		
 		} else {
 			if(PosValid((int)(X + NewX), (int)(Y))) {
 				X += NewX;
 			}else{
-				SpeedX = 0;
+				if(faceRight && collisionTimer > 100){
+					faceLeft = true;
+					faceRight = false;
+					MoveLeft = true;
+					MoveRight = false;
+					collisionTimer = 0;
+					SpeedX = -MaxSpeedX;
+				}
+				else if(faceLeft && collisionTimer > 100){
+					faceLeft = false;
+					faceRight = true;
+					MoveLeft = false;
+					MoveRight = true;
+					collisionTimer = 0;
+					SpeedX = MaxSpeedX;
+				}
 			}
 
 			if(PosValid((int)(X), (int)(Y + NewY))) {
@@ -342,8 +387,17 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 		Entity->Collides(NewX + Col_X, NewY + Col_Y, Width - Col_Width - 1, Height - Col_Height - 1) == true) {
 
 		if(this->Type == ENTITY_TYPE_PLAYER && Entity->Type == ENTITY_TYPE_BULLET) return true;
-		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_BULLET) return true;
+		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_BULLET) return true;//Samus won't collide with bullets
 		if(this->Type == ENTITY_TYPE_BULLET && Entity->Type == ENTITY_TYPE_BULLET) return true;
+
+		if(Entity->Type == ENTITY_TYPE_EFFECT) return true;
+		if(this->Type == ENTITY_TYPE_EFFECT) return true;
+
+		if(Entity->Type == ENTITY_TYPE_WHIP && this->Type == ENTITY_TYPE_PLAYER) return true;
+		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_WHIP) return true;
+		
+		if((Entity->Type == ENTITY_TYPE_SWORD1 || Entity->Type == ENTITY_TYPE_SWORD2) && this->Type == ENTITY_TYPE_SKELETON) return true;
+		if(Entity->Type == ENTITY_TYPE_SKELETON && (this->Type == ENTITY_TYPE_SWORD1 || this->Type == ENTITY_TYPE_SWORD2)) return true;
 
 		CEntityCol EntityCol;
 

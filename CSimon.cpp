@@ -8,8 +8,10 @@ CSimon::CSimon() {
 	Type = 	ENTITY_TYPE_PLAYER;
 	Crouch = false;
 	Taunt = false;
+	Attack = false;
 	MoveLeft  = false;
 	MoveRight = false;
+	AttackTimer = 0;
 	
 	MaxSpeedX = 5;
 
@@ -24,6 +26,7 @@ bool CSimon::OnLoad(char* File, int Width, int Height, int MaxFrames) {
         return false;
     }
 	if((Surf_Health = CSurface::OnLoad("./images/hearts.png")) == false ) return false;
+	if((Surf_Whip = CSurface::OnLoad("./images/whipBrandish.png")) == false) return false;
 
     return true;
 }
@@ -31,7 +34,7 @@ bool CSimon::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //-----------------------------------------------------------------------------
 void CSimon::OnLoop() {
 	CEntity::OnLoop();
-	if(CurrentFrameCol == 0){
+	if(CurrentFrameCol == 0 || CurrentFrameCol == 3){
 		faceRight = true;
 		faceLeft = false;
 	}
@@ -39,6 +42,14 @@ void CSimon::OnLoop() {
 		faceRight = false;
 		faceLeft = true;
 	}
+
+	if(AttackTimer <= 90 && Attack) AttackTimer++;
+
+	if(AttackTimer >= 90 && Attack){
+		Attack = false;
+		AttackTimer = 0;
+	}
+
 
 	if(healthTimer < 100)healthTimer++;
 
@@ -50,24 +61,42 @@ void CSimon::OnLoop() {
 void CSimon::OnRender(SDL_Surface* Surf_Display) {
 	CEntity::OnRender(Surf_Display);
 	CSurface::OnDraw(Surf_Display, Surf_Health, 0, 0, 0, health*60, 160, 60);
+	if(AttackTimer < 30 && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 260, 240, 0, 0, 60, 60);
+	else if(AttackTimer < 60 && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 265, 235, 0, 60, 60, 60);
+	else if(AttackTimer < 30 && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 350, 240, 60, 0, 60, 60);
+	else if(AttackTimer < 60 && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 345, 235, 60, 60, 60, 60);
 }
 
 //------------------------------------------------------------------------------
 void CSimon::OnCleanup() {
 	CEntity::OnCleanup();
 	SDL_FreeSurface(Surf_Health);
+	SDL_FreeSurface(Surf_Whip);
 }
 
 //------------------------------------------------------------------------------
 void CSimon::OnAnimate() {
 	if(SpeedX != 0) {
-		Anim_Control.MaxFrames = 12;
+		Anim_Control.MaxFrames = 13;
 	}else{
 		Anim_Control.MaxFrames = 0;
 	}
 
-	if(Taunt){
-		Anim_Control.MaxFrames = 8;
+	if(Attack) {
+		Anim_Control.MaxFrames = 0;
+		if(AttackTimer < 30) CurrentFrameRow = 0;
+		else if (AttackTimer < 60) CurrentFrameRow = 1;
+		else CurrentFrameRow = 2;		
+		if(faceRight) {
+			CurrentFrameCol = 3;
+		}
+		else {
+			CurrentFrameCol = 4;
+		}
+	}
+
+	else if(Taunt){
+		Anim_Control.MaxFrames = 9;
 		CurrentFrameCol = 2;
 		CurrentFrameRow = 0;
 	}
