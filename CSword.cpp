@@ -40,5 +40,10 @@ void CSword::OnAnimate() {
 
 //------------------------------------------------------------------------------
 bool CSword::OnCollision(CEntity* Entity) {
+	if (Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >=100) {
+		Entity->health++;
+		Entity->healthTimer = 0;
+	}	
+	
 	return true;
 }
