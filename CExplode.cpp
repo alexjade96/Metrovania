@@ -52,10 +52,10 @@ void CExplode::OnAnimate() {
 		CurrentFrameCol = 0;
 		cycle++; //increment the cycle variable
 	}else{ //if isbomb is true
-		if (health <200) health++; //increment the health
+		if (health <260) health++; //increment the health
 		
 	}
-	if ((health >= 200)&&(isbomb))
+	if ((health >= 260)&&(isbomb))
 	{
 		Anim_Control.MaxFrames = altframemax; //changes to the explosion frames
 		CurrentFrameRow = 0;
@@ -73,12 +73,7 @@ void CExplode::OnAnimate() {
 //------------------------------------------------------------------------------
 bool CExplode::OnCollision(CEntity* Entity) {
 
-	if((Entity->Type == ENTITY_TYPE_PLAYER) && (isbomb))
-	{
-		//Entity->CanJump = true; //make Samus capable of jumping
-		//Entity->Jump(); //call her jump function
-		Entity->SpeedY = Entity->MaxSpeedY * -1; //force Samus to jump
-	}
+	//I want to make her jump but I cannot as of now. I am confused.
 	if(!(Entity->Type==ENTITY_TYPE_PLAYER) && (isbomb)) //if an enemy
 	{
 		Entity->health += 5; //big damage from the bomb
