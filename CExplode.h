@@ -20,9 +20,12 @@ class CExplode : public CEntity
 		void OnAnimate();
 
 		bool OnCollision(CEntity* Entity);
+
+		bool isbomb;
 		int cycle;
 		int fm; //max frames
 		int cyclelimit; //how many iterations
+		int altframemax; //alternate max frames
 
 };
 
