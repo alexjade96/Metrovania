@@ -25,6 +25,7 @@
 #include "CSkeleton.h"
 #include "CWhip.h"
 #include "CSword.h"
+#include "CDog.h"
 
 //==============================================================================
 class CApp : public CEvent {
@@ -33,11 +34,12 @@ class CApp : public CEvent {
 
         SDL_Surface*    Surf_Display;
 
-                CSamus		Samus;
+        CSamus		Samus;
 		CSimon		Simon;
 		CTurtle		Enemy1;
 		CInsect		Enemy2;
 		CSkeleton	Enemy3;
+		CDog 		Enemy4;
 
     public:
         CApp();
