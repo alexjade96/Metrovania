@@ -75,7 +75,9 @@ bool CExplode::OnCollision(CEntity* Entity) {
 
 	if((Entity->Type == ENTITY_TYPE_PLAYER) && (isbomb))
 	{
-		Entity->CanJump = true; //make Samus jump
+		//Entity->CanJump = true; //make Samus capable of jumping
+		//Entity->Jump(); //call her jump function
+		Entity->SpeedY = Entity->MaxSpeedY * -1; //force Samus to jump
 	}
 	if(!(Entity->Type==ENTITY_TYPE_PLAYER) && (isbomb)) //if an enemy
 	{

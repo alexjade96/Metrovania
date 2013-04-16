@@ -67,7 +67,6 @@ void CSamus::OnAnimate() {
 		Anim_Control.MaxFrames = 0;
 	}
 	
-	
 	if(MoveLeft) {
 		CurrentFrameRow = 0;
 		if (!CanJump && !morphBall) {

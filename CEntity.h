@@ -112,7 +112,7 @@ class CEntity {
 
 	public:
 		bool    Collides(int oX, int oY, int oW, int oH);
-		bool    CanJump; //made it public for the bomb jump functionality
+		//bool    CanJump; //made it public for the bomb jump functionality
 
 	protected:
 		bool 	PosValid(int NewX, int NewY);
@@ -122,7 +122,7 @@ class CEntity {
 		bool 	PosValidEntity(CEntity* Entity, int NewX, int NewY);
 
         protected:
-               // bool    CanJump;
+                bool    CanJump;
  
         public:
                 bool     Jump();
