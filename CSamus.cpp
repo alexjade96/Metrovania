@@ -13,6 +13,7 @@ CSamus::CSamus() {
 	morphBall = false;
 	MoveLeft  = false;
 	MoveRight = false;
+	MaxSpeedY = 12;
 
 	health = 0;
 	healthTimer = 0;

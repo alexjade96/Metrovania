@@ -12,7 +12,7 @@ CSimon::CSimon() {
 	MoveLeft  = false;
 	MoveRight = false;
 	AttackTimer = 0;
-	
+	MaxSpeedY = 12;
 	MaxSpeedX = 5;
 
 	health = 0;
