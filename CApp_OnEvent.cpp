@@ -127,7 +127,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 						Bullet->SpeedX = -10.605;
 						Bullet->SpeedY = 10.605;
 					}
-					if(Samus.PointUp){ //trap the up shots
+					if(Samus.PointUp && !(Samus.PointUpDiagonal||Samus.MoveLeft||Samus.MoveRight)){ //trap the up shots
 						if(Samus.faceRight){
 							Bullet->faceRight = true;
 							Bullet->faceLeft = false;
