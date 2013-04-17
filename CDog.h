@@ -1,16 +1,15 @@
-//=============================================================================
 #ifndef _CDOG_H_
 #define _CDOG_H_
 
 #include "CEntity.h"
 
-//=============================================================================
+//=======================================
 class CDog : public CEntity {
 	public:
+		
+		CDog();
 
-	CDog();
-
-	bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+		bool OnLoad(char* File, int Width, int Height, int MaxFrames);
 
         void OnLoop();
 
@@ -21,13 +20,8 @@ class CDog : public CEntity {
         void OnAnimate();
 
         bool OnCollision(CEntity* Entity);
-    
-    float playerPos;
-    
-    int jumpTimer;
 
 
 };
-//=============================================================================
 
 #endif

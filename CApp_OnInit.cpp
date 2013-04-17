@@ -44,7 +44,7 @@ bool CApp::OnInit() {
 	}
 	
 	if(Enemy4.OnLoad("images/dog.png",43,26, 5) == false) {
-		
+		return false;
 	}	
 
 	if(metroid){
@@ -63,8 +63,8 @@ bool CApp::OnInit() {
 	Enemy2.Y = 560;
 	Enemy3.X = 500;
 	Enemy3.Y = 550;
-	Enemy4.X = 300;
-	Enemy4.Y = 550;
+	Enemy4.X = 350;
+	Enemy4.Y = 560;
 
 	if(metroid) CEntity::EntityList.push_back(&Samus);
 	if(castlevania) CEntity::EntityList.push_back(&Simon);
