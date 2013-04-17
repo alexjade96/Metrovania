@@ -13,7 +13,7 @@ bool CApp::OnInit() {
     
     if (OnTitle() != 0) Running = false;
 
-    if(CArea::AreaControl.OnLoad("./maps/test.area") == false) {
+    if(CArea::AreaControl.OnLoad("./maps/1.area") == false) {
     	return false;
     }
 

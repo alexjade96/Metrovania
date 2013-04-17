@@ -299,7 +299,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			}
 
 			case SDLK_UP: {
-				Simon.Crouch = false;
+				Simon.PointUp = true;
 				break;
 			}
 
@@ -384,6 +384,17 @@ void CApp::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
 
 			case SDLK_a: {
 				Simon.Taunt = false;
+				break;
+			}
+
+			case SDLK_UP: {
+				Simon.PointUp = false;
+				break;
+			}
+
+			case SDLK_DOWN: {
+				Simon.Crouch = false;
+				break;
 			}
 
 			default: {

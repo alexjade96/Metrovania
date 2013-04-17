@@ -158,7 +158,7 @@ int CApp::OnTitle() {
 						case SDLK_r:
 							break;		
 						default:
-						     return -1;
+						     	return -1;
 							break;	
 					}	
 					break;

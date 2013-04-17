@@ -11,6 +11,7 @@ CSimon::CSimon() {
 	Attack = false;
 	MoveLeft  = false;
 	MoveRight = false;
+	PointUp = false;
 	AttackTimer = 0;
 	MaxSpeedY = 12;
 	MaxSpeedX = 5;
@@ -19,7 +20,6 @@ CSimon::CSimon() {
 	healthTimer = 0;
 
 }
-
 //=============================================================================
 bool CSimon::OnLoad(char* File, int Width, int Height, int MaxFrames) {
     if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {
@@ -34,7 +34,7 @@ bool CSimon::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //-----------------------------------------------------------------------------
 void CSimon::OnLoop() {
 	CEntity::OnLoop();
-	if(CurrentFrameCol == 0 || CurrentFrameCol == 3){
+	if(CurrentFrameCol == 0 || CurrentFrameCol == 3 || CurrentFrameCol == 5){
 		faceRight = true;
 		faceLeft = false;
 	}
@@ -61,10 +61,12 @@ void CSimon::OnLoop() {
 void CSimon::OnRender(SDL_Surface* Surf_Display) {
 	CEntity::OnRender(Surf_Display);
 	CSurface::OnDraw(Surf_Display, Surf_Health, 0, 0, 0, health*60, 160, 60);
-	if(AttackTimer < 30 && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 260, 240, 0, 0, 60, 60);
-	else if(AttackTimer < 60 && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 265, 235, 0, 60, 60, 60);
-	else if(AttackTimer < 30 && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 350, 240, 60, 0, 60, 60);
-	else if(AttackTimer < 60 && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 345, 235, 60, 60, 60, 60);
+	if(AttackTimer < 60 && PointUp && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 260, 240, 0, 120, 60, 60);
+	else if(AttackTimer < 60 && PointUp && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 350, 240, 60, 120, 60, 60);
+	if(AttackTimer < 30 && !PointUp && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 260, 240, 0, 0, 60, 60);
+	else if(AttackTimer < 60 && !PointUp && faceRight && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 265, 235, 0, 60, 60, 60);
+	else if(AttackTimer < 30 && !PointUp && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 350, 240, 60, 0, 60, 60);
+	else if(AttackTimer < 60 && !PointUp && faceLeft && Attack) CSurface::OnDraw(Surf_Display, Surf_Whip, 345, 235, 60, 60, 60, 60);
 }
 
 //------------------------------------------------------------------------------
@@ -85,13 +87,16 @@ void CSimon::OnAnimate() {
 	if(Attack) {
 		Anim_Control.MaxFrames = 0;
 		if(AttackTimer < 30) CurrentFrameRow = 0;
-		else if (AttackTimer < 60) CurrentFrameRow = 1;
+		else if (AttackTimer < 60 && !PointUp) CurrentFrameRow = 1;
+		else if (AttackTimer < 60 && PointUp) CurrentFrameRow = 0;
 		else CurrentFrameRow = 2;		
 		if(faceRight) {
-			CurrentFrameCol = 3;
+			if(PointUp) CurrentFrameCol = 5;
+			if(!PointUp) CurrentFrameCol = 3;
 		}
-		else {
-			CurrentFrameCol = 4;
+		if(faceLeft) {
+			if(PointUp) CurrentFrameCol = 6;
+			if(!PointUp) CurrentFrameCol = 4;
 		}
 	}
 
