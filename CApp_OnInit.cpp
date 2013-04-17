@@ -42,6 +42,10 @@ bool CApp::OnInit() {
 	if(Enemy3.OnLoad("images/skeleton.png", 33, 52, 3) == false){
 		return false;
 	}
+	
+	if(Enemy4.OnLoad("images/dog.png",43,26, 5) == false) {
+		
+	}	
 
 	if(metroid){
 		Samus.X = 100;
@@ -57,14 +61,17 @@ bool CApp::OnInit() {
 	Enemy1.Y = 540;
 	Enemy2.X = 600;
 	Enemy2.Y = 560;
-	Enemy3.X = 400;
-	Enemy3.Y = 500;
+	Enemy3.X = 500;
+	Enemy3.Y = 550;
+	Enemy4.X = 300;
+	Enemy4.Y = 550;
 
 	if(metroid) CEntity::EntityList.push_back(&Samus);
 	if(castlevania) CEntity::EntityList.push_back(&Simon);
 	CEntity::EntityList.push_back(&Enemy1);
 	CEntity::EntityList.push_back(&Enemy2);
 	CEntity::EntityList.push_back(&Enemy3);
+	CEntity::EntityList.push_back(&Enemy4);
 
 	CCamera::CameraControl.TargetMode = TARGET_MODE_CENTER;
    	if(metroid) CCamera::CameraControl.SetTarget(&Samus.X, &Samus.Y);

@@ -13,6 +13,8 @@ CExplode::CExplode(){
 	MaxSpeedY = 0;
 	fm = 7; //general framerate
 	cyclelimit = 100;
+	health = 0; //health will act as a bomb timer
+	isbomb = 0; //not a bomb
 }
 
 //-----------------------------------------------------------------------------
@@ -43,10 +45,24 @@ void CExplode::OnCleanup() {
 //------------------------------------------------------------------------------
 void CExplode::OnAnimate() {
 	CEntity::OnAnimate();
-	Anim_Control.MaxFrames = fm;
-	CurrentFrameRow = 0;
-	CurrentFrameCol = 0;
-	cycle++; //increment the cycle variable
+	if (!isbomb) //if this effect is not a bomb
+	{
+		Anim_Control.MaxFrames = fm;
+		CurrentFrameRow = 0;
+		CurrentFrameCol = 0;
+		cycle++; //increment the cycle variable
+	}else{ //if isbomb is true
+		if (health <200) health++; //increment the health
+		
+	}
+	if ((health >= 200)&&(isbomb))
+	{
+		Anim_Control.MaxFrames = altframemax; //changes to the explosion frames
+		CurrentFrameRow = 0;
+		CurrentFrameCol = 1; //for the explosion animation
+		Type = 	ENTITY_TYPE_BOMB; //make this bomb collidable with other objects
+		cycle++; //increment cycle
+	}
 	if (cycle >= cyclelimit) //n frames have been iterated over this time
 	{
 		Dead = true;
@@ -56,6 +72,17 @@ void CExplode::OnAnimate() {
 
 //------------------------------------------------------------------------------
 bool CExplode::OnCollision(CEntity* Entity) {
+
+	if((Entity->Type == ENTITY_TYPE_PLAYER) && (isbomb))
+	{
+		//Entity->CanJump = true; //make Samus capable of jumping
+		//Entity->Jump(); //call her jump function
+		Entity->SpeedY = Entity->MaxSpeedY * -1; //force Samus to jump
+	}
+	if(!(Entity->Type==ENTITY_TYPE_PLAYER) && (isbomb)) //if an enemy
+	{
+		Entity->health += 5; //big damage from the bomb
+	}
 	return true;
 }
 

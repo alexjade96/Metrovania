@@ -21,7 +21,9 @@ enum {
 	ENTITY_TYPE_SKELETON,
 	ENTITY_TYPE_WHIP,
 	ENTITY_TYPE_SWORD1,
-	ENTITY_TYPE_SWORD2
+	ENTITY_TYPE_SWORD2,
+	ENTITY_TYPE_BOMB,
+	ENTITY_TYPE_DOG
 };
 
 //==============================================================================
@@ -110,6 +112,7 @@ class CEntity {
 
 	public:
 		bool    Collides(int oX, int oY, int oW, int oH);
+		//bool    CanJump; //made it public for the bomb jump functionality
 
 	protected:
 		bool 	PosValid(int NewX, int NewY);

@@ -1,12 +1,12 @@
 //=============================================================================
-#include "CInsect.h"
+#include "CDog.h"
 #include "CSamus.h"
 
 //=============================================================================
 
-CInsect::CInsect() {
+CDog::CDog() {
 
-	Type = 	ENTITY_TYPE_INSECT;
+	Type = 	ENTITY_TYPE_DOG;
 
 	Flags = ENTITY_FLAG_GRAVITY;
 
@@ -14,17 +14,16 @@ CInsect::CInsect() {
 	faceRight = false;
 	MoveLeft = true;
 	faceLeft = true;
-	jumpTimer = 0;
 	collisionTimer = 0;
 	SpeedX = 10;
 	health = 0;
-	MaxSpeedY = 15;
+	MaxSpeedY = 5;
 	Dead = false;
 }
 
 //=============================================================================
 
-bool CInsect::OnLoad(char* File, int Width, int Height, int MaxFrames) {
+bool CDog::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false){
 	return false;
 	}
@@ -33,20 +32,15 @@ bool CInsect::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 }
 
 //=============================================================================
-void CInsect::OnLoop(){
+void CDog::OnLoop(){
 	CEntity::OnLoop();
 
-	if(faceRight && SpeedY != 0) {
+	if(faceRight) {
 		MoveRight = true;
 		MoveLeft = false;
 	}
-	else if (faceLeft && SpeedY != 0){
+	else if (faceLeft){
 		MoveLeft = true;
-		MoveRight = false;
-	}
-	
-	if (SpeedY == 0) {
-		MoveLeft = false;
 		MoveRight = false;
 	}	
 	
@@ -60,31 +54,31 @@ void CInsect::OnLoop(){
 }
 
 //=============================================================================
-void CInsect::OnRender(SDL_Surface* Surf_Display) {
+void CDog::OnRender(SDL_Surface* Surf_Display) {
 	CEntity::OnRender(Surf_Display);
 }
 
 //=============================================================================
-void CInsect::OnCleanup() {
+void CDog::OnCleanup() {
 	CEntity::OnCleanup();
 }
 
 //=============================================================================
-void CInsect::OnAnimate() {
+void CDog::OnAnimate() {
 	CurrentFrameCol = 0;
 	if (CanJump && jumpTimer < 100) {
 		CurrentFrameRow = 0;
-		Anim_Control.MaxFrames = 3;
+		Anim_Control.MaxFrames = 4;
 		jumpTimer++;
 	} else {
-		CurrentFrameRow = 2;
+		CurrentFrameRow = 4;
 		Anim_Control.MaxFrames = 0;
 	}
 	CEntity::OnAnimate();
 		
 }
 //=============================================================================
-bool CInsect::OnCollision(CEntity* Entity) {
+bool CDog::OnCollision(CEntity* Entity) {
 
 	if(Entity->Type == ENTITY_TYPE_PLAYER) SpeedY = MaxSpeedY;
 
@@ -94,8 +88,8 @@ bool CInsect::OnCollision(CEntity* Entity) {
 	}
 	if(Entity->Type == ENTITY_TYPE_BULLET){
 		health++;
+		if (health >= 50) Dead = true;
 	}
 	if(Entity->Type == ENTITY_TYPE_WHIP) Dead = true;
-	if (health >= 50) Dead = true; //general death scenario
 
 }

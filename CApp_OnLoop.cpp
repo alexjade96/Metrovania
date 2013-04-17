@@ -103,7 +103,7 @@ void CApp::OnLoop() {
 	std::vector<CEntity*>::iterator i;
 	for(i = CEntity::EntityList.begin(); i != CEntity::EntityList.end(); i++){
 		if(((*i)->Type == ENTITY_TYPE_BULLET) && ((*i)->Dead == true)){
-			CExplode* expl = new CExplode;///////////////////added this
+			CExplode* expl = new CExplode;
 			expl->OnLoad("images/ShotDeath.png",34,34,0);
 			expl->X = (*i)->X-12;///added this gives the explosion proper coordinates
 			expl->Y = (*i)->Y-12;////////added
@@ -138,7 +138,7 @@ void CApp::OnLoop() {
 			(*i)->OnCleanup();
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
-			CEntity::EntityList.push_back(bones); //push back the bug
+			CEntity::EntityList.push_back(bones); //push back the skeleton death
 		}
 		if(((*i)->Type == ENTITY_TYPE_WHIP) && (Simon.AttackTimer <= 60)){
 			delete(*i);
@@ -163,7 +163,12 @@ void CApp::OnLoop() {
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();	
 		}	
-		
+		if(((*i)->Type == ENTITY_TYPE_BOMB) && ((*i)->Dead == true)){ //delete the bomb pointers
+			delete(*i);
+			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
+			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
+		}
+
 		
 	}
 }
