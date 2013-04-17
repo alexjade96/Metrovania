@@ -72,12 +72,6 @@ void CExplode::OnAnimate() {
 
 //------------------------------------------------------------------------------
 bool CExplode::OnCollision(CEntity* Entity) {
-
-	//I want to make her jump but I cannot as of now. I am confused.
-	if(!(Entity->Type==ENTITY_TYPE_PLAYER) && (isbomb)) //if an enemy
-	{
-		Entity->health += 5; //big damage from the bomb
-	}
 	return true;
 }
 

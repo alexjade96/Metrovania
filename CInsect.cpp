@@ -95,6 +95,9 @@ bool CInsect::OnCollision(CEntity* Entity) {
 	if(Entity->Type == ENTITY_TYPE_BULLET){
 		health++;
 	}
+	if(Entity->Type == ENTITY_TYPE_BOMB){
+		health+=20;
+	}
 	if(Entity->Type == ENTITY_TYPE_WHIP) Dead = true;
 	if (health >= 50) Dead = true; //general death scenario
 
