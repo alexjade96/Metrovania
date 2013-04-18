@@ -15,6 +15,7 @@
 #include "CEntity.h"
 #include "CEvent.h"
 #include "CSurface.h"
+#include "CSoundBank.h"
 
 #include "CSamus.h"
 #include "CSimon.h"
@@ -35,11 +36,12 @@ class CApp : public CEvent {
         SDL_Surface*    Surf_Display;
 
         CSamus		Samus;
-		CSimon		Simon;
-		CTurtle		Enemy1;
-		CInsect		Enemy2;
-		CSkeleton	Enemy3;
-		CDog 		Enemy4;
+	CSimon		Simon;
+	CTurtle		Enemy1;
+	CInsect		Enemy2;
+	CSkeleton	Enemy3;
+	CDog 		Enemy4;
+	int		shootSound;
 
     public:
         CApp();
