@@ -7,6 +7,10 @@ bool CApp::OnInit() {
         return false;
     }
 
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) < 0) {
+        return false;
+    }
+
     if((Surf_Display = SDL_SetVideoMode(WWIDTH, WHEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
         return false;
     }
@@ -23,10 +27,16 @@ bool CApp::OnInit() {
 		if(Samus.OnLoad("images/samusanim.png", 30, 40, 11) == false) {
 			return false;
 		}
+		if((attackSound = CSoundBank::SoundControl.OnLoad("./sounds/shot.wav")) == -1) {
+			return false;
+		}
 	}
 
 	if(castlevania){
 		if(Simon.OnLoad("images/simonanim.png", 30, 50, 13) == false){
+			return false;
+		}
+		if((attackSound = CSoundBank::SoundControl.OnLoad("./sounds/whip.wav")) == -1) {
 			return false;
 		}
 	}
