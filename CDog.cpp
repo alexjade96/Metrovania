@@ -34,13 +34,27 @@ bool CDog::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //===================================================================
 void CDog::OnLoop() {
 	CEntity::OnLoop();
+	
+	if (X-playerPos > 50) {
+		faceLeft = true;
+		faceRight = false;
+	} else if (X-playerPos < -50) {
+		faceRight = true;
+		faceLeft = false;
+	}
+	
+	
 	if(faceRight) {
 		MoveRight = true;
 		MoveLeft = false;
 	} else {
 		MoveLeft = true;
-		MoveLeft = false;
+		MoveRight = false;
 	}
+	
+	if(X-playerPos <=50 && X-playerPos >= -50 && CanJump) {
+		Jump();
+	}	
 
 	if(collisionTimer <= 100) collisionTimer++;
 }

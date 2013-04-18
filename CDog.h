@@ -20,6 +20,8 @@ class CDog : public CEntity {
         void OnAnimate();
 
         bool OnCollision(CEntity* Entity);
+        
+        float playerPos;
 
 
 };
