@@ -55,7 +55,8 @@ bool CApp::OnInit() {
 	
 	if(Enemy4.OnLoad("images/dog.png",43,26, 5) == false) {
 		return false;
-	}	
+	}
+
 
 	if(metroid){
 		Samus.X = 100;

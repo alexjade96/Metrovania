@@ -23,6 +23,8 @@ class CDog : public CEntity {
         
         float playerPos;
 
+	int dogGrowlSound;
+	int soundTimer;
 
 };
 
