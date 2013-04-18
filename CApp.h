@@ -41,7 +41,7 @@ class CApp : public CEvent {
 	CInsect		Enemy2;
 	CSkeleton	Enemy3;
 	CDog 		Enemy4;
-	int		shootSound;
+	int		attackSound;
 
     public:
         CApp();

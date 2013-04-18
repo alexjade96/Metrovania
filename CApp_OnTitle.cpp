@@ -113,6 +113,8 @@ int CApp::OnTitle() {
 								castlevania=false;
 								titleRunning=false;
 							} else { 
+								if (( introSound = CSoundBank::SoundControl.OnLoad("./sounds/simonIntro.wav")) == -1) return -1;
+								CSoundBank::SoundControl.Play(-1, introSound, 0);
 								if (( intro = CSurface::OnLoad("./images/titleScreen/simonintro.png")) == false) return -1;
 								CSurface::OnDraw(Surf_Display, title, 0,0);
 								CSurface::OnDraw(Surf_Display, arrow, 240, 270);

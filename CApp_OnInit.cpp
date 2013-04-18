@@ -27,13 +27,16 @@ bool CApp::OnInit() {
 		if(Samus.OnLoad("images/samusanim.png", 30, 40, 11) == false) {
 			return false;
 		}
-		if((shootSound = CSoundBank::SoundControl.OnLoad("./sounds/shot.wav")) == -1) {
+		if((attackSound = CSoundBank::SoundControl.OnLoad("./sounds/shot.wav")) == -1) {
 			return false;
 		}
 	}
 
 	if(castlevania){
 		if(Simon.OnLoad("images/simonanim.png", 30, 50, 13) == false){
+			return false;
+		}
+		if((attackSound = CSoundBank::SoundControl.OnLoad("./sounds/whip.wav")) == -1) {
 			return false;
 		}
 	}
