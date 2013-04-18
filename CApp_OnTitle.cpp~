@@ -61,7 +61,7 @@ int CApp::OnTitle() {
 							break;
 						case SDLK_RETURN:
 							if (choice1) {
-								if (( introSound = CSoundBank::SoundControl.OnLoad("./sounds/samusIntro.wav")) == -1) return -1;
+								if (( introSound = CSoundBank::SoundControl.OnLoad("./sounds/samusIntro2.wav")) == -1) return -1;
 								CSoundBank::SoundControl.Play(-1, introSound, 0);
 								if (( intro = CSurface::OnLoad("./images/titleScreen/samusintro.png")) == false) return -1;
 								CSurface::OnDraw(Surf_Display, title, 0,0);
