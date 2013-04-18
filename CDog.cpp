@@ -1,6 +1,7 @@
 #include "CDog.h"
 #include "CSamus.h"
-
+#include "CSimon.h"
+#include <iostream>
 CDog::CDog() {
 
 	Type = ENTITY_TYPE_DOG;
@@ -34,7 +35,7 @@ bool CDog::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //===================================================================
 void CDog::OnLoop() {
 	CEntity::OnLoop();
-	
+
 	if (X-playerPos > 50) {
 		faceLeft = true;
 		faceRight = false;
@@ -43,7 +44,6 @@ void CDog::OnLoop() {
 		faceLeft = false;
 	}
 	
-	
 	if(faceRight) {
 		MoveRight = true;
 		MoveLeft = false;
@@ -51,7 +51,7 @@ void CDog::OnLoop() {
 		MoveLeft = true;
 		MoveRight = false;
 	}
-	
+
 	if(X-playerPos <=50 && X-playerPos >= -50 && CanJump) {
 		Jump();
 	}	
@@ -96,10 +96,4 @@ bool CDog::OnCollision(CEntity* Entity) {
 	if(Entity->Type == ENTITY_TYPE_WHIP) Dead = true;
 	if (health >= 50) Dead = true;
 }
-
-
-
-
-
-
 

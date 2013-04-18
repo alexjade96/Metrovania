@@ -320,6 +320,8 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				Enemy2.Y = 560;
 				Enemy3.X = 400;
 				Enemy3.Y = 500;
+				Enemy4.X = 350;
+				Enemy4.Y = 560;
 				break;
 			}
 
