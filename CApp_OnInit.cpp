@@ -16,6 +16,8 @@ bool CApp::OnInit() {
     }
     
     if (OnTitle() != 0) Running = false;
+    
+    SDL_Delay(2000);
 
     if(CArea::AreaControl.OnLoad("./maps/1.area") == false) {
     	return false;
