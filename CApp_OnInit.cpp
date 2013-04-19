@@ -35,7 +35,7 @@ bool CApp::OnInit() {
 		if((backgroundMusic = CSoundBank::SoundControl.OnLoad("./sounds/samusBackground.wav")) == -1) {
 			return false;
 		}	
-		CSoundBank::SoundControl.Play(-1,backgroundMusic, 0);
+		CSoundBank::SoundControl.Play(-1,backgroundMusic, -1);
 	}
 
 	if(castlevania){
@@ -45,6 +45,10 @@ bool CApp::OnInit() {
 		if((attackSound = CSoundBank::SoundControl.OnLoad("./sounds/whip.wav")) == -1) {
 			return false;
 		}
+		if((backgroundMusic = CSoundBank::SoundControl.OnLoad("./sounds/simonBackground.wav")) == -1) {
+			return false;
+		}	
+		CSoundBank::SoundControl.Play(-1,backgroundMusic, -1);
 	}
 
 	if(Enemy1.OnLoad("images/Enemy1.png", 40, 17, 6) == false) {
