@@ -22,6 +22,8 @@ bool CApp::OnInit() {
     }
 
     SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
+    
+    int backgroundMusic;
 
 	if(metroid){
 		if(Samus.OnLoad("images/samusanim.png", 30, 40, 11) == false) {
@@ -30,6 +32,10 @@ bool CApp::OnInit() {
 		if((attackSound = CSoundBank::SoundControl.OnLoad("./sounds/shot.wav")) == -1) {
 			return false;
 		}
+		if((backgroundMusic = CSoundBank::SoundControl.OnLoad("./sounds/samusBackground.wav")) == -1) {
+			return false;
+		}	
+		CSoundBank::SoundControl.Play(-1,backgroundMusic, 0);
 	}
 
 	if(castlevania){
