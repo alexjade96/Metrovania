@@ -33,7 +33,6 @@ bool CDog::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 	if((dogGrowlSound = CSoundBank::SoundControl.OnLoad("./sounds/dogGrowl.wav")) == -1) {
 		return false;
 	}
-
 	return true;
 }
 
