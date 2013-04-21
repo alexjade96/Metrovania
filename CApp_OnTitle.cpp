@@ -2,6 +2,8 @@
 #include "CSurface.h"
 
 int CApp::OnTitle() {
+
+	int introSound;
 		
 	SDL_Surface* title;
 	if ((title = CSurface::OnLoad("./images/titleScreen/TitleScreen.png")) == false) return -1;
@@ -59,6 +61,8 @@ int CApp::OnTitle() {
 							break;
 						case SDLK_RETURN:
 							if (choice1) {
+								if (( introSound = CSoundBank::SoundControl.OnLoad("./sounds/samusIntro.wav")) == -1) return -1;
+								CSoundBank::SoundControl.Play(-1, introSound, 0);
 								if (( intro = CSurface::OnLoad("./images/titleScreen/samusintro.png")) == false) return -1;
 								CSurface::OnDraw(Surf_Display, title, 0,0);
 								CSurface::OnDraw(Surf_Display, arrow, 240, 230);
@@ -109,6 +113,8 @@ int CApp::OnTitle() {
 								castlevania=false;
 								titleRunning=false;
 							} else { 
+								if (( introSound = CSoundBank::SoundControl.OnLoad("./sounds/simonIntro.wav")) == -1) return -1;
+								CSoundBank::SoundControl.Play(-1, introSound, 0);
 								if (( intro = CSurface::OnLoad("./images/titleScreen/simonintro.png")) == false) return -1;
 								CSurface::OnDraw(Surf_Display, title, 0,0);
 								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
@@ -158,7 +164,7 @@ int CApp::OnTitle() {
 						case SDLK_r:
 							break;		
 						default:
-						     return -1;
+						     	return -1;
 							break;	
 					}	
 					break;

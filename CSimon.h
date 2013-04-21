@@ -32,6 +32,8 @@ class CSimon : public CEntity {
 	SDL_Surface*	Surf_Health;
 
 	SDL_Surface*	Surf_Whip;
+
+	bool	PointUp;
 };
 
 //=============================================================================

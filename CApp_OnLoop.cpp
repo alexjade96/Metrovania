@@ -1,4 +1,4 @@
-//==============================================================================
+;//==============================================================================
 #include "CApp.h"
 #include "CEntity.h"
 #include "CExplode.h"
@@ -39,6 +39,7 @@ void CApp::OnLoop() {
 
 	if(metroid) {
 		Enemy3.playerPos = Samus.X;
+		Enemy4.playerPos = Samus.X;
 		if(Samus.Dead==true) {
 			OnGameOver();
 		}
@@ -46,10 +47,26 @@ void CApp::OnLoop() {
 		
 	if(castlevania) {
 		Enemy3.playerPos = Simon.X;
+		Enemy4.playerPos = Simon.X;
 		if(Simon.Dead==true) {
 			OnGameOver();
 		}
-		if(Simon.Attack && Simon.AttackTimer > 60 && Simon.AttackTimer <= 90) {
+		if(Simon.Attack && Simon.AttackTimer > 30 && Simon.AttackTimer <= 90 && Simon.PointUp) {
+			CWhip* VerticalWhip = new CWhip;
+			VerticalWhip->OnLoad("./images/VerticalWhip.png", 6, 52, 2);
+			if(Simon.faceRight) {
+				VerticalWhip->X = Simon.X + 19;
+				VerticalWhip->Y = Simon.Y - 52;
+				VerticalWhip->CurrentFrameCol = 0;
+			}
+			if(Simon.faceLeft) {
+				VerticalWhip->X = Simon.X + 6;
+				VerticalWhip->Y = Simon.Y - 52;
+				VerticalWhip->CurrentFrameCol = 1;
+			}
+			CEntity::EntityList.push_back(VerticalWhip);
+		}
+		else if(Simon.Attack && Simon.AttackTimer > 60 && Simon.AttackTimer <= 90 && !Simon.PointUp) {
 			CWhip* HorizontalWhip = new CWhip;
 			HorizontalWhip->OnLoad("./images/HorizontalWhip.png", 50, 5, 2);
 			if(Simon.faceRight) {
@@ -140,7 +157,20 @@ void CApp::OnLoop() {
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 			CEntity::EntityList.push_back(bones); //push back the skeleton death
 		}
-		if(((*i)->Type == ENTITY_TYPE_WHIP) && (Simon.AttackTimer <= 60)){
+		
+		if (((*i)->Type == ENTITY_TYPE_DOG) && ((*i)->Dead == true)) {
+			CExplode* mutt = new CExplode;
+			mutt->OnLoad("images/DogDeath.png",35,25,0);
+			mutt->X = (*i)->X;
+			mutt->Y = (*i)->Y;
+			mutt->fm = 7;
+			mutt->cyclelimit = 200;
+			(*i)->OnCleanup();
+			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
+			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
+			CEntity::EntityList.push_back(mutt);
+		}
+		if(((*i)->Type == ENTITY_TYPE_WHIP) && ((Simon.AttackTimer <= 60 && !Simon.PointUp) || (Simon.AttackTimer <= 30 && Simon.PointUp))){
 			delete(*i);
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();

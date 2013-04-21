@@ -1,6 +1,10 @@
 #include "CApp.h"
 
 int CApp::OnGameOver() {
+	
+	int gameOverSound;
+	
+	CSoundBank::SoundControl.OnCleanup();
 
 	SDL_Surface* gameover;
 	if ((gameover = CSurface::OnLoad("./images/gameOver/gameOver.png")) == false) return -1;
@@ -13,6 +17,8 @@ int CApp::OnGameOver() {
 	CSurface::OnDraw(Surf_Display, gameover, 0,0);
 	
 	if (metroid) {
+		if (( gameOverSound = CSoundBank::SoundControl.OnLoad("./sounds/samusDeathSound.wav")) == -1) return -1;
+		CSoundBank::SoundControl.Play(-1, gameOverSound, -1);
 		CSurface::OnDraw(Surf_Display, samusDeath, 285, 232, 0, 0, 70, 90);
 		SDL_Flip(Surf_Display);
 		SDL_Delay(1000);
@@ -41,6 +47,8 @@ int CApp::OnGameOver() {
 		SDL_Flip(Surf_Display);
 		SDL_Delay(1000);
 	} else if (castlevania) {
+		if (( gameOverSound = CSoundBank::SoundControl.OnLoad("./sounds/simonDeathSound.wav")) == -1) return -1;
+		CSoundBank::SoundControl.Play(-1, gameOverSound, -1);
 		CSurface::OnDraw(Surf_Display, simonDeath, 285, 220, 0, 0, 65,50);
 		SDL_Flip(Surf_Display);
 		SDL_Delay(1000);
@@ -58,11 +66,28 @@ int CApp::OnGameOver() {
 		SDL_Delay(1500);
 	}		
 	
-	SDL_Delay(1000);
+	bool gameOverRunning = true;
 	
-	SDL_FreeSurface(simonDeath);
-	SDL_FreeSurface(samusDeath);
-	SDL_FreeSurface(gameover);
+	SDL_Event event;
+	while(gameOverRunning) {
+		while (SDL_PollEvent(&event)) {
+			switch (event.type) {
+				case SDL_KEYDOWN:
+					switch(event.key.keysym.sym) {
+						case SDLK_ESCAPE:
+							SDL_FreeSurface(simonDeath);
+							SDL_FreeSurface(samusDeath);
+							SDL_FreeSurface(gameover);
+							gameOverRunning = false;
+							Running=false;
+							break;
+						default:
+							break;
+					}
+					break;	
+			}	
+		}		
+	}	
+	
 
-	Running=false;
 }	

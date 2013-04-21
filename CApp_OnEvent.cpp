@@ -67,6 +67,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				if (!Samus.morphBall) //as long as she is not in a ball, she can shoot
 				{
 					SDL_EnableKeyRepeat(0, 10000);
+					CSoundBank::SoundControl.Play(-1, attackSound, 0);
 					CShot* Bullet = new CShot;
 					Bullet->OnLoad("./images/shot.png", 8, 8, 0);
 					if(Samus.faceRight){
@@ -244,6 +245,8 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				Enemy2.Y = 560;
 				Enemy3.X = 400;
 				Enemy3.Y = 500;
+				Enemy4.X = 350;
+				Enemy4.Y = 560;
 				break;
 			}
 
@@ -262,6 +265,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			case SDLK_q: {
 				if(Simon.Attack == false){
 					SDL_EnableKeyRepeat(0, 10000);
+					CSoundBank::SoundControl.Play(-1, attackSound, 0);
 					Simon.Attack = true;
 					Simon.MoveRight = false;
 					Simon.MoveLeft = false;
@@ -297,7 +301,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			}
 
 			case SDLK_UP: {
-				Simon.Crouch = false;
+				Simon.PointUp = true;
 				break;
 			}
 
@@ -316,6 +320,8 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				Enemy2.Y = 560;
 				Enemy3.X = 400;
 				Enemy3.Y = 500;
+				Enemy4.X = 350;
+				Enemy4.Y = 560;
 				break;
 			}
 
@@ -382,6 +388,17 @@ void CApp::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
 
 			case SDLK_a: {
 				Simon.Taunt = false;
+				break;
+			}
+
+			case SDLK_UP: {
+				Simon.PointUp = false;
+				break;
+			}
+
+			case SDLK_DOWN: {
+				Simon.Crouch = false;
+				break;
 			}
 
 			default: {
