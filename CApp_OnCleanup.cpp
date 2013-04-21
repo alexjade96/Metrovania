@@ -15,6 +15,8 @@ void CApp::OnCleanup() {
     }
 
     CEntity::EntityList.clear();
+    CSoundBank::SoundControl.OnCleanup();
+    Mix_CloseAudio();
 
     SDL_FreeSurface(Surf_Display);
     SDL_Quit();
