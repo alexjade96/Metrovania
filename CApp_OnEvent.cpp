@@ -67,6 +67,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				if (!Samus.morphBall) //as long as she is not in a ball, she can shoot
 				{
 					SDL_EnableKeyRepeat(0, 10000);
+					Samus.shotTimer = 0;
 					CSoundBank::SoundControl.Play(-1, attackSound, 0);
 					CShot* Bullet = new CShot;
 					Bullet->OnLoad("./images/shot.png", 8, 8, 0);
