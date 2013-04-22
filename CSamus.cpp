@@ -33,7 +33,7 @@ bool CSamus::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 //-----------------------------------------------------------------------------
 void CSamus::OnLoop() {
 	CEntity::OnLoop();
-	if(CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6 || CurrentFrameCol == 8){
+	if(CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6 || CurrentFrameCol == 8 || CurrentFrameCol == 10){
 		faceRight = true;
 		faceLeft = false;
 	}
@@ -45,6 +45,8 @@ void CSamus::OnLoop() {
 	if(healthTimer < 100)healthTimer++;
 
 	if(health >= 10) Dead = true;
+
+	if(shotTimer < 50) shotTimer++;
 
 }
 
@@ -71,8 +73,15 @@ void CSamus::OnAnimate() {
 	if(MoveLeft) {
 		CurrentFrameRow = 0;
 		if (!CanJump && !morphBall) {
-			CurrentFrameCol = 9;
-			Anim_Control.MaxFrames = 9;
+			if(shotTimer < 50){
+				CurrentFrameRow = 10;
+				CurrentFrameCol = 1;
+				Anim_Control.MaxFrames = 0;
+			}
+			else {
+				CurrentFrameCol = 9;
+				Anim_Control.MaxFrames = 9;
+			}
 		} else if (morphBall) {
 			CurrentFrameCol = 3;
 			Anim_Control.MaxFrames = 9;
@@ -81,15 +90,23 @@ void CSamus::OnAnimate() {
 		} else if (PointDownDiagonal) {
 			CurrentFrameCol = 7;
 		} else {
-			CurrentFrameCol = 1;
+			if(shotTimer < 50) CurrentFrameCol = 11;
+			else CurrentFrameCol = 1;
 		}
 	}
 	
 	else if(MoveRight) {
 		CurrentFrameRow = 0;
 		if (!CanJump && !morphBall) {
-			CurrentFrameCol = 8;
-			Anim_Control.MaxFrames = 9;
+			if(shotTimer < 50){
+				CurrentFrameRow = 10;
+				CurrentFrameCol = 0;
+				Anim_Control.MaxFrames = 0;
+			}
+			else{
+				CurrentFrameCol = 8;
+				Anim_Control.MaxFrames = 9;
+			}
 		} else if (morphBall) {
 			CurrentFrameCol = 2;
 			Anim_Control.MaxFrames = 9;
@@ -101,7 +118,8 @@ void CSamus::OnAnimate() {
 			CurrentFrameCol = 6;
 		}
 		else {
-		CurrentFrameCol = 0;
+			if(shotTimer < 50) CurrentFrameCol = 10;
+			else CurrentFrameCol = 0;
 		}
 	}
 

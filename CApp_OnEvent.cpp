@@ -67,6 +67,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				if (!Samus.morphBall) //as long as she is not in a ball, she can shoot
 				{
 					SDL_EnableKeyRepeat(0, 10000);
+					Samus.shotTimer = 0;
 					CSoundBank::SoundControl.Play(-1, attackSound, 0);
 					CShot* Bullet = new CShot;
 					Bullet->OnLoad("./images/shot.png", 8, 8, 0);
@@ -211,6 +212,24 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 						}
 					}
 					CEntity::EntityList.push_back(Bullet);
+				}
+				if (Samus.morphBall){ //if Samus is in her morphball
+					SDL_EnableKeyRepeat(0, 10000);
+					CExplode* bomb = new CExplode; //a new pointer to a bomb
+					bomb->OnLoad("./images/Bomb.png", 28, 28, 5);
+					if (Samus.faceLeft){
+						bomb->X = Samus.X+3; //make the bomb match the position of Samus
+						bomb->Y = Samus.Y+18;
+					}
+					if (Samus.faceRight){
+						bomb->X = Samus.X+3; //make the bomb match the position of Samus
+						bomb->Y = Samus.Y+18;
+					}
+					bomb->isbomb = 1; //make the effect an actual bomb
+					bomb->fm = 5; //main bomb animation
+					bomb->altframemax = 9; //explosion animation
+					bomb->cyclelimit = 220;
+					CEntity::EntityList.push_back(bomb); //push back the bomb into the list
 				}
 				break;
 				case SDLK_d: { //bomb button

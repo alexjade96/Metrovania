@@ -29,6 +29,8 @@ class CSamus : public CEntity {
 	bool	morphBall;
 	bool	PointUp;
 
+	int 	shotTimer;
+
 	SDL_Surface*	Surf_Health;
 };
 
