@@ -269,6 +269,25 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 				break;
 			}
 
+			case SDLK_z: {
+				Samus.X = 50;
+				Samus.Y = 50;
+				break;
+			}
+
+			case SDLK_x: {
+				Enemy1.X = 200;
+				Enemy1.Y = 540;
+				Enemy2.X = 600;
+				Enemy2.Y = 560;
+				Enemy3.X = 400;
+				Enemy3.Y = 500;
+				Enemy4.X = 350;
+				Enemy4.Y = 560;
+				break;
+			}
+				
+
 			case SDLK_ESCAPE: {
 				OnExit();
 			break;
@@ -333,6 +352,25 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			case SDLK_r: {
 				Simon.X = 100;
 				Simon.Y = 500;
+				Enemy1.X = 200;
+				Enemy1.Y = 540;
+				Enemy2.X = 600;
+				Enemy2.Y = 560;
+				Enemy3.X = 400;
+				Enemy3.Y = 500;
+				Enemy4.X = 350;
+				Enemy4.Y = 560;
+				break;
+			}
+
+
+			case SDLK_z: {
+				Simon.X = 50;
+				Simon.Y = 50;
+				break;
+			}
+
+			case SDLK_x: {
 				Enemy1.X = 200;
 				Enemy1.Y = 540;
 				Enemy2.X = 600;
