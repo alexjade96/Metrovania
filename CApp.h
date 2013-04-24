@@ -53,6 +53,8 @@ class CApp : public CEvent {
         int OnTitle();//title screen declaration
         
         int OnGameOver();//game over screen declaration
+        
+        int OnVictory();
 
     public:
         bool OnInit();//initializes all objects
