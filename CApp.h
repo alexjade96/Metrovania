@@ -34,6 +34,7 @@ class CApp : public CEvent {
         bool            Running;//is the game running?
 
         SDL_Surface*    Surf_Display;//the main display
+	SDL_Surface*	Surf_Counter;
 
         CSamus		Samus;//declaration of power suit wearing samus
 	CSimon		Simon;//declaration of whip wielding simon

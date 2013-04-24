@@ -69,6 +69,8 @@ bool CApp::OnInit() {
 		return false;
 	}
 
+	if((Surf_Counter = CSurface::OnLoad("./images/numberChart.png")) == false ) return false;
+
 
 	if(metroid){
 		Samus.X = 100;

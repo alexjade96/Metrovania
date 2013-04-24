@@ -22,6 +22,9 @@ void CApp::OnRender() {
         CEntity::EntityList[i]->OnRender(Surf_Display);
     }
 
+	CSurface::OnDraw(Surf_Display, Surf_Counter, 510, -20, (enemyCounter/10)*100, 0, 100, 100);
+	CSurface::OnDraw(Surf_Display, Surf_Counter, 560, -20, (enemyCounter%10)*100, 0, 100, 100);
+
 	SDL_Flip(Surf_Display);
 }
 
