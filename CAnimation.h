@@ -9,31 +9,31 @@
 //==============================================================================
 class CAnimation {
 	public:
-		int	    CurrentFrame;
+		int	CurrentFrame;//keeps track of the current frame number
 
-		int     FrameInc;
+		int     FrameInc;//keeps track of the incoming frame
 
     private:
         int     FrameRate; //Milliseconds
 
-		long    OldTime;
+		long    OldTime;//time since animation started
 
 	public:
-        int	    MaxFrames;
+        int	    MaxFrames;//max number of frames in animation
 
-		bool	Oscillate;
-
-	public:
-		CAnimation();
-
-		void OnAnimate();
+		bool	Oscillate;//how we want to loop through frames
 
 	public:
-        void SetFrameRate(int Rate);
+		CAnimation();//constructer
 
-		void SetCurrentFrame(int Frame);
+		void OnAnimate();//animates entity
 
-		int GetCurrentFrame();
+	public:
+        void SetFrameRate(int Rate);//sets the frame rate equal to computer
+
+		void SetCurrentFrame(int Frame);//sets the frame of the animation 
+
+		int GetCurrentFrame();//returns the current frame
 };
 
 //==============================================================================

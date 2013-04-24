@@ -31,48 +31,48 @@
 //==============================================================================
 class CApp : public CEvent {
     private:
-        bool            Running;
+        bool            Running;//is the game running?
 
-        SDL_Surface*    Surf_Display;
+        SDL_Surface*    Surf_Display;//the main display
 
-        CSamus		Samus;
-	CSimon		Simon;
-	CTurtle		Enemy1;
-	CInsect		Enemy2;
-	CSkeleton	Enemy3;
-	CDog 		Enemy4;
-	int		attackSound;
-
-    public:
-        CApp();
-
-        int OnExecute();
-        
-        int OnTitle();
-        
-        int OnGameOver();
+        CSamus		Samus;//declaration of power suit wearing samus
+	CSimon		Simon;//declaration of whip wielding simon
+	CTurtle		Enemy1;//declaration of rocket powered turtle
+	CInsect		Enemy2;//declaration of oversized hopping insect
+	CSkeleton	Enemy3;//declaration of sword swinging skeleton
+	CDog 		Enemy4;//declaration of leaping rabid dog
+	int		attackSound;//declaration of either a gun firing or a whip snapping
 
     public:
-        bool OnInit();
+        CApp();//constructer
 
-        void OnEvent(SDL_Event* Event);
+        int OnExecute();//executes all other functions
+        
+        int OnTitle();//title screen declaration
+        
+        int OnGameOver();//game over screen declaration
 
-        	void OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode);
+    public:
+        bool OnInit();//initializes all objects
 
-        	void OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode);
+        void OnEvent(SDL_Event* Event);//takes input
 
-            void OnExit();
+        	void OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode);//when a key is pressed down
 
-        void OnLoop();
+        	void OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode);//when a key is depressed
 
-        void OnRender();
+            void OnExit();//when the game exits
 
-        void OnCleanup();
+        void OnLoop();//function that updates all data
+
+        void OnRender();//draws all images to screen
+
+        void OnCleanup();//cleans up all objects
         
         
         
-	bool metroid;
-	bool castlevania;
+	bool metroid;//are we playing with samus?
+	bool castlevania;//are we playing with simon?
 };
 
 //==============================================================================
