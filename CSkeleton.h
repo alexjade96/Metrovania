@@ -27,6 +27,9 @@ class CSkeleton : public CEntity {
     int AttackTimer;
     
     float playerPos;
+    float yPlayerPos;
+    
+    bool moving;
     
     CSword upSword;
     CSword outSword;

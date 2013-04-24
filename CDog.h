@@ -22,6 +22,9 @@ class CDog : public CEntity {
         bool OnCollision(CEntity* Entity);
         
         float playerPos;
+        float yPlayerPos;
+        
+        bool moving;
 
 	int dogGrowlSound;
 	int soundTimer;
