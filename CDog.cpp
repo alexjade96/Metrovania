@@ -17,10 +17,11 @@ CDog::CDog() {
 	collisionTimer = 0;
 	
 	MaxSpeedX = 12;
-	MaxSpeedY = 5;
+	MaxSpeedY = 6;
 	SpeedX = 12;
 	health = 0;
 	Dead = false;
+	moving = true;
 
 
 }
@@ -47,16 +48,22 @@ void CDog::OnLoop() {
 		faceRight = true;
 		faceLeft = false;
 	}
-	
-	if(faceRight) {
-		MoveRight = true;
+	if (Y-yPlayerPos > 100 || Y-yPlayerPos < -100) {
+		moving = false;
+		MoveRight = false;
 		MoveLeft = false;
 	} else {
-		MoveLeft = true;
-		MoveRight = false;
+		moving = true;
+		if(faceRight) {
+			MoveRight = true;
+			MoveLeft = false;
+		} else {
+			MoveLeft = true;
+			MoveRight = false;
+		}
 	}
 
-	if(X-playerPos <=50 && X-playerPos >= -50 && CanJump) {
+	if(X-playerPos <=50 && X-playerPos >= -50 && CanJump && moving) {
 		Jump();
 		if(soundTimer > 500){
 			CSoundBank::SoundControl.Play(-1, dogGrowlSound, 0);
@@ -81,13 +88,19 @@ void CDog::OnCleanup() {
 
 //===================================================================
 void CDog::OnAnimate() {
-	Anim_Control.MaxFrames = 5;
-	CurrentFrameRow = 0;
 	if(MoveLeft) {
 		CurrentFrameCol = 1;
 	} else {
 		CurrentFrameCol = 0;
 	}
+	
+	if (!moving) {
+		Anim_Control.MaxFrames = 0;
+		CurrentFrameRow = 0;
+	} else {
+		Anim_Control.MaxFrames = 5;
+		CurrentFrameRow = 0;
+	}		
 	CEntity::OnAnimate();
 }
 

@@ -20,6 +20,7 @@ CSkeleton::CSkeleton() {
 	SpeedX = 4;
 	health = 0;
 	Dead = false;
+	moving = true;
 	
 	upSword.Dead = true;
 	outSword.Dead = true;
@@ -54,11 +55,18 @@ void CSkeleton::OnLoop(){
 		faceLeft = false;
 	}
 
-	if (X-playerPos <=50 && X-playerPos >= -50) {
-		swordOut = true;
-	} else {
-		swordOut = false;		
-	}	
+	if (Y-yPlayerPos > 70 || Y-yPlayerPos < -70) {
+		moving = false;
+		MoveRight = false;
+		MoveLeft = false;
+	} else {	
+		moving = true;
+		if (X-playerPos <=50 && X-playerPos >= -50) {
+			swordOut = true;
+		} else {
+			swordOut = false;		
+		}	
+	}
 	
 	if (swordOut && AttackTimer <= 90) { 
 		AttackTimer++;
@@ -68,8 +76,11 @@ void CSkeleton::OnLoop(){
 		swordOut = false;
 	}		
 	
-	
-	if (swordOut) {	
+	if (!moving) {
+		MoveRight = false;
+		MoveRight = false;
+	}
+	else if (swordOut) {	
 		if (faceRight) {
 			MoveRight = false;	
 		}	
@@ -148,25 +159,31 @@ void CSkeleton::OnCleanup() {
 void CSkeleton::OnAnimate() {
 	
 	CurrentFrameRow = 0;
-	if (swordOut) {
+	if (!moving) {
 		Anim_Control.MaxFrames = 0;
-		if(AttackTimer < 30) CurrentFrameRow = 0;
-		else if (AttackTimer < 60) CurrentFrameRow = 1;
-		else CurrentFrameRow = 2;	
-		if (faceRight) {
-			CurrentFrameCol = 2;
-		} else if (faceLeft) {
-			CurrentFrameCol = 3;
-		}		
+		CurrentFrameRow = 1;	
 	} else {
 		CurrentFrameRow = 0;
-		Anim_Control.MaxFrames = 3;
-		if (faceRight) {
-			CurrentFrameCol = 0;
+		if (swordOut) {
+			Anim_Control.MaxFrames = 0;
+			if(AttackTimer < 30) CurrentFrameRow = 0;
+			else if (AttackTimer < 60) CurrentFrameRow = 1;
+			else CurrentFrameRow = 2;	
+			if (faceRight) {
+				CurrentFrameCol = 2;
+			} else if (faceLeft) {
+				CurrentFrameCol = 3;
+			}		
 		} else {
-			CurrentFrameCol = 1;
+			CurrentFrameRow = 0;
+			Anim_Control.MaxFrames = 3;
+			if (faceRight) {
+				CurrentFrameCol = 0;
+			} else {
+				CurrentFrameCol = 1;
+			}
 		}
-	}
+	}	
 	CEntity::OnAnimate();
 	
 	upSword.OnAnimate();
