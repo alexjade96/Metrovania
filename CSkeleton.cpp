@@ -123,15 +123,6 @@ void CSkeleton::OnLoop(){
 		outSword.Dead = true;
 	}
 
-	if(upSword.Dead) {
-		upSword.X = -99999;
-		upSword.Y = -99999;
-	}
-
-	if(outSword.Dead) {
-		outSword.X = -99999;
-		outSword.Y = -99999;
-	}
 	
 	outSword.OnLoop();
 	upSword.OnLoop();
@@ -142,8 +133,8 @@ void CSkeleton::OnLoop(){
 //=============================================================================
 void CSkeleton::OnRender(SDL_Surface* Surf_Display) {
 	CEntity::OnRender(Surf_Display);
-	upSword.OnRender(Surf_Display);
-	outSword.OnRender(Surf_Display);
+	if (!upSword.Dead) upSword.OnRender(Surf_Display);
+	if (!outSword.Dead) outSword.OnRender(Surf_Display);
 }
 
 //=============================================================================
