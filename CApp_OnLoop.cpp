@@ -89,7 +89,11 @@ void CApp::OnLoop() {
 	}
 
 	std::vector<CEntity*>::iterator i;
+	enemyCounter = 0;
 	for(i = CEntity::EntityList.begin(); i != CEntity::EntityList.end(); i++){
+		if(((*i)->Type == ENTITY_TYPE_DOG) || ((*i)->Type == ENTITY_TYPE_INSECT) || ((*i)->Type == ENTITY_TYPE_SKELETON)){
+			enemyCounter++;
+		}
 		if(((*i)->Type == ENTITY_TYPE_BULLET) && ((*i)->Dead == true)){
 			CExplode* expl = new CExplode;
 			expl->OnLoad("images/ShotDeath.png",34,34,0);
@@ -153,8 +157,6 @@ void CApp::OnLoop() {
 			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 		}
-
-		
 	}
 }
 

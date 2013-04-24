@@ -42,6 +42,7 @@ class CApp : public CEvent {
 	CSkeleton	Enemy3;//declaration of sword swinging skeleton
 	CDog 		Enemy4;//declaration of leaping rabid dog
 	int		attackSound;//declaration of either a gun firing or a whip snapping
+	int		enemyCounter;//counts the number of enemys
 
     public:
         CApp();//constructer

@@ -13,6 +13,14 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 
 	if(metroid){//if we are playing samus
 		switch(sym) {//case statement for key pressed
+
+
+			case SDLK_e: {//if e is pressed
+				SDL_EnableKeyRepeat(0, 10000);//holding the button does nohting
+				Samus.health--;//increment health
+				break;
+			}
+
 			case SDLK_LEFT: {//left arrow
 				Samus.MoveLeft = true;//move to the left
 				Samus.Crouch = false;//uncrouch
@@ -301,6 +309,12 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 	}
 	if(castlevania){//if simon is being played
 		switch(sym) {
+
+			case SDLK_e: {//if e is pressed
+				SDL_EnableKeyRepeat(0, 10000);//holding the button does nohting
+				Simon.health--;//increment health
+				break;
+			}
 
 			case SDLK_q: {//if q is pressed
 				if(Simon.Attack == false){//if simon is already not attacking
