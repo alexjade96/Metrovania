@@ -10,6 +10,8 @@ int CApp::OnTitle() {
 	SDL_Surface* arrow;
 	if ((arrow = CSurface::OnLoad("./images/titleScreen/arrow.png")) == false) return -1;
 	SDL_Surface* intro;
+	SDL_Surface* instructions;
+	if ((instructions = CSurface::OnLoad("./images/titleScreen/instructions.png")) == false) return -1;
 
 
 	CSurface::OnDraw(Surf_Display, title, 0,0);
@@ -108,7 +110,7 @@ int CApp::OnTitle() {
 								CSurface::OnDraw(Surf_Display, arrow, 240, 230);
 								CSurface::OnDraw(Surf_Display, intro, 360, 220, 0, 240, 30, 30);
 								SDL_Flip(Surf_Display);
-								SDL_Delay(200);
+								SDL_Delay(500);
 								metroid=true;
 								castlevania=false;
 								titleRunning=false;
@@ -155,7 +157,7 @@ int CApp::OnTitle() {
 								CSurface::OnDraw(Surf_Display, arrow, 240, 270);
 								CSurface::OnDraw(Surf_Display, intro, 360, 230, 0, 560, 80, 80);
 								SDL_Flip(Surf_Display);
-								SDL_Delay(1000);
+								SDL_Delay(1500);
 								castlevania=true;
 								metroid=false;
 								titleRunning=false;
@@ -174,6 +176,11 @@ int CApp::OnTitle() {
 	
 	SDL_FreeSurface(title);
 	SDL_FreeSurface(arrow);
+	
+	CSurface::OnDraw(Surf_Display, instructions, 0,0);
+	SDL_Flip(Surf_Display);
+	SDL_Delay(2000);
+	SDL_FreeSurface(instructions);
 	
 	return 0;	
 	
