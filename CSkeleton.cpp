@@ -55,11 +55,16 @@ void CSkeleton::OnLoop(){
 		faceLeft = false;
 	}
 
-	if (Y-yPlayerPos > 70 || Y-yPlayerPos < -70) {
+	if (Y-yPlayerPos > 80 || Y-yPlayerPos < -80) {
 		moving = false;
 		MoveRight = false;
 		MoveLeft = false;
-	} else {	
+	} else if (X-playerPos > 320 || X-playerPos < -320) {
+		moving = false;
+		MoveRight = false;
+		MoveLeft = false;
+	}	
+	else {	
 		moving = true;
 		if (X-playerPos <=50 && X-playerPos >= -50) {
 			swordOut = true;

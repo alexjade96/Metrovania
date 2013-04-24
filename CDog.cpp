@@ -52,7 +52,12 @@ void CDog::OnLoop() {
 		moving = false;
 		MoveRight = false;
 		MoveLeft = false;
-	} else {
+	} else if (X-playerPos > 320 || X-playerPos < -320) {
+		moving = false;
+		MoveRight = false;
+		MoveLeft = false;
+	}
+	else {
 		moving = true;
 		if(faceRight) {
 			MoveRight = true;
