@@ -27,6 +27,9 @@ class CSkeleton : public CEntity {
     int AttackTimer;
     
     float playerPos;
+    
+    CSword upSword;
+    CSword outSword;
 
 
 };

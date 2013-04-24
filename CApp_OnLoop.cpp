@@ -84,7 +84,7 @@ void CApp::OnLoop() {
 			
 	}
 	
-	if (Enemy3.swordOut && Enemy3.AttackTimer > 30 && Enemy3.AttackTimer <=60) {
+	/*if (Enemy3.swordOut && Enemy3.AttackTimer > 30 && Enemy3.AttackTimer <=60) {
 		CSword* upSword = new CSword;
 		upSword->Type = ENTITY_TYPE_SWORD1;
 		upSword->OnLoad("./images/sword1.png", 17, 16, 2);
@@ -115,7 +115,7 @@ void CApp::OnLoop() {
 			outSword->CurrentFrameCol = 1;
 		}		
 		CEntity::EntityList.push_back(outSword);
-	}	
+	}	 */
 
 	std::vector<CEntity*>::iterator i;
 	for(i = CEntity::EntityList.begin(); i != CEntity::EntityList.end(); i++){

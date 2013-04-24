@@ -21,7 +21,11 @@ CSkeleton::CSkeleton() {
 	health = 0;
 	Dead = false;
 	
+	upSword.Dead = true;
+	outSword.Dead = true;
 	
+	upSword.Type = ENTITY_TYPE_SWORD1;
+	outSword.Type = ENTITY_TYPE_SWORD2;
 }
 
 //=============================================================================
@@ -30,6 +34,9 @@ bool CSkeleton::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false){
 	return false;
 	}
+	
+	upSword.OnLoad("./images/sword1.png", 17, 16, 2);
+	outSword.OnLoad("./images/sword2.png", 25, 8, 2);
 
 	return true;
 }
@@ -82,16 +89,68 @@ void CSkeleton::OnLoop(){
 
 	if(collisionTimer <= 200) collisionTimer++;
 	
+	if (swordOut && AttackTimer > 30 && AttackTimer <=60) {
+		upSword.Dead = false;
+		outSword.Dead = true;
+		if (faceRight) {
+			upSword.X = X + 7;
+			upSword.Y = Y - 16;
+			upSword.CurrentFrameCol = 1;
+		}	
+		else if (faceLeft) {
+			upSword.X = X + 7;
+			upSword.Y = Y - 16;
+			upSword.CurrentFrameCol = 0;
+		}	
+	} 
+	else if (swordOut && AttackTimer > 60 && AttackTimer <= 90) {
+		upSword.Dead = true;
+		outSword.Dead = false;
+		if (faceRight) {
+			outSword.X = X + 30;
+			outSword.Y = Y + 15;
+			outSword.CurrentFrameCol = 0;
+		}
+		else if (faceLeft) {
+			outSword.X = X - 20;
+			outSword.Y = Y + 15;
+			outSword.CurrentFrameCol = 1;
+		}		
+	}
+
+	if(!swordOut || AttackTimer < 30){
+		upSword.Dead = true;
+		outSword.Dead = true;
+	}
+
+	if(upSword.Dead) {
+		upSword.X = -99999;
+		upSword.Y = -99999;
+	}
+
+	if(outSword.Dead) {
+		outSword.X = -99999;
+		outSword.Y = -99999;
+	}
+	
+	outSword.OnLoop();
+	upSword.OnLoop();
+	outSword.PosValid(outSword.X,outSword.Y);
+	upSword.PosValid(upSword.X,upSword.Y);
 }
 
 //=============================================================================
 void CSkeleton::OnRender(SDL_Surface* Surf_Display) {
 	CEntity::OnRender(Surf_Display);
+	upSword.OnRender(Surf_Display);
+	outSword.OnRender(Surf_Display);
 }
 
 //=============================================================================
 void CSkeleton::OnCleanup() {
 	CEntity::OnCleanup();
+	upSword.OnCleanup();
+	outSword.OnCleanup();
 }
 
 //=============================================================================
@@ -118,6 +177,9 @@ void CSkeleton::OnAnimate() {
 		}
 	}
 	CEntity::OnAnimate();
+	
+	upSword.OnAnimate();
+	outSword.OnAnimate();
 		
 }
 //=============================================================================
@@ -135,4 +197,6 @@ bool CSkeleton::OnCollision(CEntity* Entity) {
 	}
 	if(Entity->Type == ENTITY_TYPE_WHIP) Dead = true;
 	if (health >= 50) Dead = true;
+	
+	
 }

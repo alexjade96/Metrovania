@@ -114,7 +114,7 @@ class CEntity {
 		bool    Collides(int oX, int oY, int oW, int oH);
 		//bool    CanJump; //made it public for the bomb jump functionality
 
-	protected:
+	public:
 		bool 	PosValid(int NewX, int NewY);
 
 		bool 	PosValidTile(CTile* Tile);

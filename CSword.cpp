@@ -1,3 +1,4 @@
+#include <iostream>
 #include "CSword.h"
 
 CSword::CSword() {
@@ -35,7 +36,6 @@ void CSword::OnAnimate() {
 	Anim_Control.MaxFrames = 0;
 	CurrentFrameRow = 0;
 	CEntity::OnAnimate();
-	OnCleanup();
 }
 
 //------------------------------------------------------------------------------
