@@ -44,6 +44,7 @@ class CApp : public CEvent {
 	CDog 		Enemy4;//declaration of leaping rabid dog
 	int		attackSound;//declaration of either a gun firing or a whip snapping
 	int		enemyCounter;//counts the number of enemys
+	int		waitingCounter; //counter for adding delay between killing last enemy and victory screen
 
     public:
         CApp();//constructer

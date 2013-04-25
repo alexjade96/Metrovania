@@ -158,6 +158,10 @@ void CApp::OnLoop() {
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 		}
 	}
+	if (enemyCounter == 0) {
+		waitingCounter++;
+		if (waitingCounter > 500) OnVictory();
+	}	
 }
 
 //==============================================================================

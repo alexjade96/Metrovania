@@ -7,6 +7,8 @@ CApp::CApp() {
     Surf_Display = NULL;
 
     Running = true;
+    
+    waitingCounter = 0;
 }
 
 //main program loop, puts all the pieces together
