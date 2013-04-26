@@ -7,7 +7,7 @@ int CApp::OnVictory() {
 	CSoundBank::SoundControl.OnCleanup();
 	
 	SDL_Surface* victoryScreen;
-	if (( victoryScreen = CSurface::OnLoad("./images/gameOver/gameOver.png")) == false) return -1;
+	if (( victoryScreen = CSurface::OnLoad("./images/gameOver/victoryScreen.png")) == false) return -1;
 	
 	if (( victorySound = CSoundBank::SoundControl.OnLoad("./sounds/victory.wav")) == -1) return -1;//load the victory music
 	CSoundBank::SoundControl.Play(-1, victorySound, -1);//play the music

@@ -154,7 +154,7 @@ void CApp::OnLoop() {
 		
 		if(((*i)->Type == ENTITY_TYPE_BOMB) && ((*i)->Dead == true)){ //delete the bomb pointers
 			delete(*i);//delete it
-			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--);pop it out of list
+			if(i != CEntity::EntityList.end()) CEntity::EntityList.erase(i--); //pop it out of list
 			if(i == CEntity::EntityList.end()) CEntity::EntityList.pop_back();
 		}
 	}
