@@ -21,14 +21,14 @@ int CApp::OnVictory() {
 	while(gameOverRunning) {
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
-				case SDL_KEYDOWN:
+				case SDL_KEYDOWN://when a key is pressed
 					switch(event.key.keysym.sym) {
-						case SDLK_ESCAPE:
-							SDL_FreeSurface(victoryScreen);
-							gameOverRunning = false;
-							Running=false;
+						case SDLK_ESCAPE://escape key
+							SDL_FreeSurface(victoryScreen);//free the surface
+							gameOverRunning = false;//stop running the screen
+							Running=false;//stop running the game
 							break;
-						default:
+						default://anything else do nothing
 							break;
 					}
 					break;	
