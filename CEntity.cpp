@@ -429,6 +429,10 @@ bool CEntity::PosValidEntity(CEntity* Entity, int NewX, int NewY) {
 		
 		if((Entity->Type == ENTITY_TYPE_SWORD1 || Entity->Type == ENTITY_TYPE_SWORD2) && this->Type == ENTITY_TYPE_SKELETON) return true;
 		if(Entity->Type == ENTITY_TYPE_SKELETON && (this->Type == ENTITY_TYPE_SWORD1 || this->Type == ENTITY_TYPE_SWORD2)) return true;
+		if(Entity->Type == ENTITY_TYPE_SKELETON && this->Type == ENTITY_TYPE_DOG) return true;
+		if(Entity->Type == ENTITY_TYPE_DOG && this->Type == ENTITY_TYPE_SKELETON) return true;
+		if(Entity->Type == ENTITY_TYPE_DOG && this->Type == ENTITY_TYPE_DOG) return true;
+		if(Entity->Type == ENTITY_TYPE_SKELETON && this->Type == ENTITY_TYPE_SKELETON) return true;
 		
 		if(this->Type == ENTITY_TYPE_PLAYER && Entity->Type == ENTITY_TYPE_BOMB) return true;
 		if(Entity->Type == ENTITY_TYPE_PLAYER && this->Type == ENTITY_TYPE_BOMB) return true;//Samus won't collide with bombs
