@@ -266,34 +266,20 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			}
 			
 			case SDLK_r: {//reset the position of everything
-				Samus.X = 100;
-				Samus.Y = 500;
-				Enemy1.X = 200;
-				Enemy1.Y = 540;
-				Enemy2.X = 600;
-				Enemy2.Y = 560;
-				Enemy3.X = 400;
-				Enemy3.Y = 500;
-				Enemy4.X = 350;
-				Enemy4.Y = 560;
+				Samus.X = 50;
+				Samus.Y = 50;
+				OnPosReset();
 				break;
 			}
 
 			case SDLK_z: {//reset the position of samus
-				Samus.X = 50;
-				Samus.Y = 50;
+				Samus.X = 100;
+				Samus.Y = 500;
 				break;
 			}
 
 			case SDLK_x: {//reset the position of the enemys
-				Enemy1.X = 200;
-				Enemy1.Y = 540;
-				Enemy2.X = 600;
-				Enemy2.Y = 560;
-				Enemy3.X = 400;
-				Enemy3.Y = 500;
-				Enemy4.X = 350;
-				Enemy4.Y = 560;
+
 				break;
 			}
 				
@@ -368,14 +354,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			case SDLK_r: {//reset the position of everything
 				Simon.X = 100;
 				Simon.Y = 500;
-				Enemy1.X = 200;
-				Enemy1.Y = 540;
-				Enemy2.X = 600;
-				Enemy2.Y = 560;
-				Enemy3.X = 400;
-				Enemy3.Y = 500;
-				Enemy4.X = 350;
-				Enemy4.Y = 560;
+				OnPosReset();
 				break;
 			}
 
@@ -387,14 +366,7 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 			}
 
 			case SDLK_x: {//reset enemy positions
-				Enemy1.X = 200;
-				Enemy1.Y = 540;
-				Enemy2.X = 600;
-				Enemy2.Y = 560;
-				Enemy3.X = 400;
-				Enemy3.Y = 500;
-				Enemy4.X = 350;
-				Enemy4.Y = 560;
+
 				break;
 			}
 

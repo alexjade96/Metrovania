@@ -19,7 +19,11 @@ int CApp::OnExecute() {
     }
 
     SDL_Event Event;
-
+    
+    Samus.X = 50;
+	Samus.Y = 50;
+	
+	count = 0;
     while(Running) {//while the game is running
         while(SDL_PollEvent(&Event)) {
             OnEvent(&Event);//get inputs and pass into OnEvent
