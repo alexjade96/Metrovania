@@ -7,27 +7,27 @@
 class CDog : public CEntity {
 	public:
 		
-		CDog();
+		CDog();//constructer
 
-		bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+		bool OnLoad(char* File, int Width, int Height, int MaxFrames);//on load of object init some things
 
-        void OnLoop();
+        void OnLoop();//every loop update the data
 
-        void OnRender(SDL_Surface* Surf_Display);
+        void OnRender(SDL_Surface* Surf_Display);//display things to screen
 
-        void OnCleanup();
+        void OnCleanup();//clean up the object 
 
-        void OnAnimate();
+        void OnAnimate();//animate the dog
 
-        bool OnCollision(CEntity* Entity);
+        bool OnCollision(CEntity* Entity);//check to see if the dog has collided with something
         
-        float playerPos;
-        float yPlayerPos;
+        float playerPos;//player position
+        float yPlayerPos;//player position
         
-        bool moving;
+        bool moving;//is the dog moving?
 
-	int dogGrowlSound;
-	int soundTimer;
+	int dogGrowlSound;//declare dog growl
+	int soundTimer;//make sure it dosent growl to often
 
 };
 

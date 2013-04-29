@@ -38,10 +38,66 @@ class CApp : public CEvent {
 
         CSamus		Samus;//declaration of power suit wearing samus
 	CSimon		Simon;//declaration of whip wielding simon
-	CTurtle		Enemy1;//declaration of rocket powered turtle
-	CInsect		Enemy2;//declaration of oversized hopping insect
-	CSkeleton	Enemy3;//declaration of sword swinging skeleton
-	CDog 		Enemy4;//declaration of leaping rabid dog
+	
+	//instantiate all turtles
+	CTurtle		Adrian;
+	CTurtle		Barney;
+	CTurtle		Cynthia;
+	CTurtle		Doug;
+	CTurtle		Ethan;
+	CTurtle		Fernando;
+	CTurtle		Greg;
+	CTurtle		Heidi;
+	CTurtle		Ingrid;
+	CTurtle		Justin;
+	CTurtle		Kayla;
+	CTurtle		Louis;
+	CTurtle		Marc;
+	CTurtle		Nolan;
+	CTurtle		Oscar;
+	CTurtle		Peter;
+	CTurtle		Quincy;
+	CTurtle		Robert;
+	
+	//instantiate all insects
+	CInsect		Atlas;
+	CInsect		Odin;
+	CInsect		Bacchus;
+	CInsect		Cthulhu;
+	CInsect		Lucifer;
+	CInsect		Venus;
+	CInsect		Daedalus;
+	CInsect		Quetzlcoatl;
+	CInsect		Shiva;
+	
+	//instantiate all skeletons
+	CSkeleton	Alpha;
+	CSkeleton	Bravo;
+	CSkeleton	Charlie;
+	CSkeleton	Delta;
+	CSkeleton	Echo;
+	CSkeleton	Foxtrot;
+	CSkeleton	Golf;
+	CSkeleton	Hotel;
+	CSkeleton	India;
+	
+	//instantiate all dogs
+	CDog		Ramza;
+	CDog		Firion;
+	CDog		Luneth;
+	CDog		Cecil;
+	CDog		Bartz;
+	CDog		Terra;
+	CDog		Cloud;
+	CDog		Squall;
+	CDog		Zidane;
+	CDog		Tidus;
+	CDog		Mog;
+	CDog		Vaan;
+	CDog		Lightning;
+	
+	
+	
 	int		attackSound;//declaration of either a gun firing or a whip snapping
 	int		enemyCounter;//counts the number of enemys
 	int		waitingCounter; //counter for adding delay between killing last enemy and victory screen
@@ -56,6 +112,10 @@ class CApp : public CEvent {
         int OnGameOver();//game over screen declaration
         
         int OnVictory();
+        
+        void OnPosReset();
+        
+        int count;
 
     public:
         bool OnInit();//initializes all objects

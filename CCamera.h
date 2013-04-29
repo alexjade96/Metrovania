@@ -6,8 +6,8 @@
 
 #include "Define.h"
 
+//to camera types (center on player or just dont move)
 //==============================================================================
-
 enum {
 	TARGET_MODE_NORMAL = 0,
 	TARGET_MODE_CENTER
@@ -16,32 +16,32 @@ enum {
 //==============================================================================
 class CCamera {
 	public:
-		static CCamera CameraControl;
+		static CCamera CameraControl;//static declaration
 
 	private:
-		int X;
-		int Y;
+		int X;//X of camera
+		int Y;//Y of camera
 
-		float* TargetX;
-		float* TargetY;
-
-	public:
-		int TargetMode;
+		float* TargetX;//if we are targeting a player his X
+		float* TargetY;//and Y
 
 	public:
-		CCamera();
+		int TargetMode;//how is the camera moving?
 
 	public:
-		void OnMove(int MoveX, int MoveY);
+		CCamera();//Constructer
 
 	public:
-		int GetX();
-		int GetY();
+		void OnMove(int MoveX, int MoveY);//move the X and Y of camera
 
 	public:
-		void SetPos(int X, int Y);
+		int GetX();//return X camera
+		int GetY();//return Y camera
 
-		void SetTarget(float* X, float* Y);
+	public:
+		void SetPos(int X, int Y);//set the X and Y of camera
+
+		void SetTarget(float* X, float* Y);//set the X and Y of target
 };
 
 //==============================================================================

@@ -8,6 +8,15 @@
 #include <iostream>
 //==============================================================================
 void CApp::OnLoop() {
+	count++;
+	if (count == 5) {
+		Samus.X = 50;
+		Samus.Y = 50;
+		Simon.X = 50;
+		Simon.Y = 50;
+		OnPosReset();	
+	}	
+	
     //--------------------------------------------------------------------------
     // Entities
     //--------------------------------------------------------------------------
@@ -39,20 +48,106 @@ void CApp::OnLoop() {
 
 
 	if(metroid) {//if we are playing samus update the appropriate enemys on her current position
-		Enemy3.playerPos = Samus.X;
-		Enemy3.yPlayerPos= Samus.Y;
-		Enemy4.playerPos = Samus.X;
-		Enemy4.yPlayerPos = Samus.Y;
+		//skeleton player tracking
+		Alpha.playerPos = Samus.X;
+		Alpha.yPlayerPos= Samus.Y;
+		Bravo.playerPos = Samus.X;
+		Bravo.yPlayerPos = Samus.Y;
+		Charlie.playerPos = Samus.X;
+		Charlie.yPlayerPos= Samus.Y;
+		Delta.playerPos = Samus.X;
+		Delta.yPlayerPos= Samus.Y;
+		Echo.playerPos = Samus.X;
+		Echo.yPlayerPos= Samus.Y;
+		Foxtrot.playerPos = Samus.X;
+		Foxtrot.yPlayerPos= Samus.Y;
+		Golf.playerPos = Samus.X;
+		Golf.yPlayerPos= Samus.Y;
+		Hotel.playerPos = Samus.X;
+		Hotel.yPlayerPos= Samus.Y;
+		India.playerPos = Samus.X;
+		India.yPlayerPos= Samus.Y;
+		//dog player tracking
+		Ramza.playerPos = Samus.X;
+		Ramza.yPlayerPos= Samus.Y;
+		Firion.playerPos = Samus.X;
+		Firion.yPlayerPos = Samus.Y;
+		Luneth.playerPos = Samus.X;
+		Luneth.yPlayerPos= Samus.Y;
+		Cecil.playerPos = Samus.X;
+		Cecil.yPlayerPos= Samus.Y;
+		Bartz.playerPos = Samus.X;
+		Bartz.yPlayerPos= Samus.Y;
+		Terra.playerPos = Samus.X;
+		Terra.yPlayerPos= Samus.Y;
+		Cloud.playerPos = Samus.X;
+		Cloud.yPlayerPos= Samus.Y;
+		Squall.playerPos = Samus.X;
+		Squall.yPlayerPos= Samus.Y;
+		Zidane.playerPos = Samus.X;
+		Zidane.yPlayerPos= Samus.Y;
+		Tidus.playerPos = Samus.X;
+		Tidus.yPlayerPos= Samus.Y;
+		Mog.playerPos = Samus.X;
+		Mog.yPlayerPos = Samus.Y;
+		Vaan.playerPos = Samus.X;
+		Vaan.yPlayerPos = Samus.Y;
+		Lightning.playerPos = Samus.X;
+		Lightning.yPlayerPos= Samus.Y;
+
 		if(Samus.Dead==true) {//if she is dead
 			OnGameOver();//run onGameOver
 		}
 	}	
 		
 	if(castlevania) {//if we are playing simon update the appropriate enemys on his current position
-		Enemy3.playerPos = Simon.X;
-		Enemy3.yPlayerPos = Simon.Y;
-		Enemy4.playerPos = Simon.X;
-		Enemy4.yPlayerPos = Simon.Y;
+		//skeleton player tracking
+		Alpha.playerPos = Simon.X;
+		Alpha.yPlayerPos= Simon.Y;
+		Bravo.playerPos = Simon.X;
+		Bravo.yPlayerPos = Simon.Y;
+		Charlie.playerPos = Simon.X;
+		Charlie.yPlayerPos= Simon.Y;
+		Delta.playerPos = Simon.X;
+		Delta.yPlayerPos= Simon.Y;
+		Echo.playerPos = Simon.X;
+		Echo.yPlayerPos= Simon.Y;
+		Foxtrot.playerPos = Simon.X;
+		Foxtrot.yPlayerPos= Simon.Y;
+		Golf.playerPos = Simon.X;
+		Golf.yPlayerPos= Simon.Y;
+		Hotel.playerPos = Simon.X;
+		Hotel.yPlayerPos= Simon.Y;
+		India.playerPos = Simon.X;
+		India.yPlayerPos= Simon.Y;
+		//dog player tracking
+		Ramza.playerPos = Simon.X;
+		Ramza.yPlayerPos= Simon.Y;
+		Firion.playerPos = Simon.X;
+		Firion.yPlayerPos = Simon.Y;
+		Luneth.playerPos = Simon.X;
+		Luneth.yPlayerPos= Simon.Y;
+		Cecil.playerPos = Simon.X;
+		Cecil.yPlayerPos= Simon.Y;
+		Bartz.playerPos = Simon.X;
+		Bartz.yPlayerPos= Simon.Y;
+		Terra.playerPos = Simon.X;
+		Terra.yPlayerPos= Simon.Y;
+		Cloud.playerPos = Simon.X;
+		Cloud.yPlayerPos= Simon.Y;
+		Squall.playerPos = Simon.X;
+		Squall.yPlayerPos= Simon.Y;
+		Zidane.playerPos = Simon.X;
+		Zidane.yPlayerPos= Simon.Y;
+		Tidus.playerPos = Simon.X;
+		Tidus.yPlayerPos= Simon.Y;
+		Mog.playerPos = Simon.X;
+		Mog.yPlayerPos = Simon.Y;
+		Vaan.playerPos = Simon.X;
+		Vaan.yPlayerPos = Simon.Y;
+		Lightning.playerPos = Simon.X;
+		Lightning.yPlayerPos= Simon.Y;
+		
 		if(Simon.Dead==true) {//if he is dead
 			OnGameOver();//run onGameOver
 		}
