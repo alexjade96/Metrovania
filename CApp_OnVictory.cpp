@@ -2,12 +2,12 @@
 
 int CApp::OnVictory() {
 	
-	int victorySound;
+	int victorySound;//declare sound
 	
-	CSoundBank::SoundControl.OnCleanup();
+	CSoundBank::SoundControl.OnCleanup();//clean up all previous sound
 	
-	SDL_Surface* victoryScreen;
-	if (( victoryScreen = CSurface::OnLoad("./images/gameOver/victoryScreen.png")) == false) return -1;
+	SDL_Surface* victoryScreen;//declare the surface
+	if (( victoryScreen = CSurface::OnLoad("./images/gameOver/victoryScreen.png")) == false) return -1;//load the victory
 	
 	if (( victorySound = CSoundBank::SoundControl.OnLoad("./sounds/victory.wav")) == -1) return -1;//load the victory music
 	CSoundBank::SoundControl.Play(-1, victorySound, -1);//play the music
