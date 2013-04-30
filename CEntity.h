@@ -11,7 +11,7 @@
 #include "CSurface.h"
 
 //==============================================================================
-enum {
+enum {//all our entity types
 	ENTITY_TYPE_GENERIC = 0,
 
 	ENTITY_TYPE_PLAYER,
@@ -27,7 +27,7 @@ enum {
 };
 
 //==============================================================================
-enum {
+enum {//all our entity flags
 	ENTITY_FLAG_NONE 	= 0,
 
 	ENTITY_FLAG_GRAVITY	= 0x00000001,
@@ -38,75 +38,75 @@ enum {
 //==============================================================================
 class CEntity {
 	public:
-		static std::vector<CEntity*>    EntityList;
+		static std::vector<CEntity*>    EntityList;//vector of entitys
 
 	protected:
-		CAnimation      Anim_Control;
+		CAnimation      Anim_Control;//instance of animation
 
-		SDL_Surface*    Surf_Entity;
-
-	public:
-		float	X;
-		float	Y;
-
-		int		Width;
-		int		Height;
-
-		bool	MoveLeft;
-		bool	MoveRight;
-		bool	faceLeft;
-		bool	faceRight;
+		SDL_Surface*    Surf_Entity;//declare the surface of the entity
 
 	public:
-		int		Type;
+		float	X;//X pos
+		float	Y;//Y pos
 
-		bool	Dead;
-		int		Flags;
-		int	health;
-		int	healthTimer;
-		int	collisionTimer;
+		int		Width;//entity width
+		int		Height;//entity height
 
-	public:
-		float	SpeedX;
-		float	SpeedY;
-
-		float	AccelX;
-		float	AccelY;
+		bool	MoveLeft;//are we moving to the left?
+		bool	MoveRight;//are we moving to the right?
+		bool	faceLeft;//are we facing left?
+		bool	faceRight;//are we facing right?
 
 	public:
-		float	MaxSpeedX;
-		float	MaxSpeedY;
+		int		Type;//entity type
+
+		bool	Dead;//are we dead?
+		int		Flags;//entity flags
+		int	health;//entitys health
+		int	healthTimer;//entitys health timer
+		int	collisionTimer;//entitys collision timer
 
 	public:
-		int		CurrentFrameCol;
-		int		CurrentFrameRow;
+		float	SpeedX;//current X speed
+		float	SpeedY;//current Y speed
+
+		float	AccelX;//current X acceleration
+		float	AccelY;//current Y acceleration
+
+	public:
+		float	MaxSpeedX;//max X speed
+		float	MaxSpeedY;//max Y speed
+
+	public:
+		int		CurrentFrameCol;//what frame col is being animated
+		int		CurrentFrameRow;//what frame row is being animated
 
 	protected:
-		int		Col_X;
-		int		Col_Y;
-		int		Col_Width;
-		int		Col_Height;
+		int		Col_X;//the collision X
+		int		Col_Y;//the collision Y
+		int		Col_Width;//the collision width
+		int		Col_Height;//the collision height
 
 	public:
-		CEntity();
+		CEntity();//entity constructer
 
-		virtual ~CEntity();
-
-	public:
-		virtual bool OnLoad(char* File, int Width, int Height, int MaxFrames);
-
-		virtual void OnLoop();
-
-		virtual void OnRender(SDL_Surface* Surf_Display);
-
-		virtual void OnCleanup();
-
-		virtual void OnAnimate();
-
-		virtual bool OnCollision(CEntity* Entity);
+		virtual ~CEntity();//entity deconstructer
 
 	public:
-		void    OnMove(float MoveX, float MoveY);
+		virtual bool OnLoad(char* File, int Width, int Height, int MaxFrames);//load the entity
+
+		virtual void OnLoop();//every loop update data
+
+		virtual void OnRender(SDL_Surface* Surf_Display);//render the entity
+
+		virtual void OnCleanup();//clean the entity up
+
+		virtual void OnAnimate();//animate the entity
+
+		virtual bool OnCollision(CEntity* Entity);//check to see if the entity has collided
+
+	public:
+		void    OnMove(float MoveX, float MoveY);//when the entity moves
 
 		void 	StopMove();
 
@@ -115,30 +115,30 @@ class CEntity {
 		//bool    CanJump; //made it public for the bomb jump functionality
 
 	public:
-		bool 	PosValid(int NewX, int NewY);
+		bool 	PosValid(int NewX, int NewY);//check to see if the position its moving to is valid
 
-		bool 	PosValidTile(CTile* Tile);
+		bool 	PosValidTile(CTile* Tile);//check to see if theres a tile in the way
 
-		bool 	PosValidEntity(CEntity* Entity, int NewX, int NewY);
+		bool 	PosValidEntity(CEntity* Entity, int NewX, int NewY);//check to see if theres an entity in the way
 
         protected:
-                bool    CanJump;
+                bool    CanJump;//check to see if the entity can currently jump
  
         public:
-                bool     Jump();
+                bool     Jump();//make the entity jump
 };
 
 //==============================================================================
 class CEntityCol {
 	public:
-		static std::vector<CEntityCol>	EntityColList;
+		static std::vector<CEntityCol>	EntityColList;//this vector will hold all entity collisions
 
 	public:
-		CEntity* EntityA;
-		CEntity* EntityB;
+		CEntity* EntityA;//entity A that collided
+		CEntity* EntityB;//entity B that collided
 
 	public:
-		CEntityCol();
+		CEntityCol();//push both the entitys in to the vector
 };
 
 //==============================================================================

@@ -205,20 +205,20 @@ bool CApp::OnInit() {
 	Kayla.X = 1472;
 	Kayla.Y = 576;
 	Louis.X = 96;
-	Louis.Y = 1544;
+	Louis.Y = 1312;
 	Marc.X = 896;
 	Marc.Y = 1408;
 	Nolan.X = 1408;
 	Nolan.Y = 1472;
 	Oscar.X = 448;
 	Oscar.Y = 1536;
-	Peter.X = 1600;
+	Peter.X = 1590;
 	Peter.Y = 1632;
-	Quincy.X = 832;
+	Quincy.X = 800;
 	Quincy.Y = 1664;
 	Robert.X = 992;
 	Robert.Y = 1760;
-	
+
 	//insects
 	Atlas.X = 1728;
 	Atlas.Y = 128;
@@ -234,11 +234,11 @@ bool CApp::OnInit() {
 	Venus.Y = 1536;
 	Daedalus.X = 1504;
 	Daedalus.Y = 1632;
-	Quetzlcoatl.X = 320;
+	Quetzlcoatl.X = 280;
 	Quetzlcoatl.Y = 1696;
 	Shiva.X = 640;
 	Shiva.Y = 1728;
-	
+
 	//skeletons
 	Alpha.X = 832;
 	Alpha.Y = 864;
@@ -258,10 +258,10 @@ bool CApp::OnInit() {
 	Hotel.Y = 1632;
 	India.X = 1568;
 	India.Y = 1632;
-	
+
 	//dogs
-	Ramza.X = 1440;
-	Ramza.Y =  1472;
+	Ramza.X = 1400;
+	Ramza.Y =  1440;
 	Firion.X = 384;
 	Firion.Y = 864;
 	Luneth.X = 544;
@@ -285,8 +285,7 @@ bool CApp::OnInit() {
 	Vaan.X = 1440;
 	Vaan.Y = 1184;
 	Lightning.X = 1344;
-	Lightning.Y = 1472;
-
+	Lightning.Y = 1440;
 
 
 	//set camera to follow the player

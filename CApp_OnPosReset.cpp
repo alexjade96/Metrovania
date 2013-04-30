@@ -2,11 +2,11 @@
 
 void CApp::OnPosReset() {
 	
-	if (castlevania) {
+	if (metroid) {
 		Samus.X = 50;
 		Samus.Y = 50;
 	}
-	if (metroid) {
+	if (castlevania) {
 		Simon.X = 50;
 		Simon.Y = 50;
 	}		
@@ -34,16 +34,16 @@ void CApp::OnPosReset() {
 	Kayla.X = 1472;
 	Kayla.Y = 576;
 	Louis.X = 96;
-	Louis.Y = 1544;
+	Louis.Y = 1312;
 	Marc.X = 896;
 	Marc.Y = 1408;
 	Nolan.X = 1408;
 	Nolan.Y = 1472;
 	Oscar.X = 448;
 	Oscar.Y = 1536;
-	Peter.X = 1600;
+	Peter.X = 1590;
 	Peter.Y = 1632;
-	Quincy.X = 832;
+	Quincy.X = 800;
 	Quincy.Y = 1664;
 	Robert.X = 992;
 	Robert.Y = 1760;
@@ -63,7 +63,7 @@ void CApp::OnPosReset() {
 	Venus.Y = 1536;
 	Daedalus.X = 1504;
 	Daedalus.Y = 1632;
-	Quetzlcoatl.X = 320;
+	Quetzlcoatl.X = 280;
 	Quetzlcoatl.Y = 1696;
 	Shiva.X = 640;
 	Shiva.Y = 1728;
@@ -84,13 +84,13 @@ void CApp::OnPosReset() {
 	Golf.X = 288;
 	Golf.Y = 1408;
 	Hotel.X = 1472;
-	Hotel.Y = 1632;
+	Hotel.Y = 1568;
 	India.X = 1568;
-	India.Y = 1632;
+	India.Y = 1568;
 
 	//dogs
-	Ramza.X = 1440;
-	Ramza.Y =  1472;
+	Ramza.X = 1400;
+	Ramza.Y =  1440;
 	Firion.X = 384;
 	Firion.Y = 864;
 	Luneth.X = 544;
@@ -114,5 +114,5 @@ void CApp::OnPosReset() {
 	Vaan.X = 1440;
 	Vaan.Y = 1184;
 	Lightning.X = 1344;
-	Lightning.Y = 1472;
+	Lightning.Y = 1440;
 }	

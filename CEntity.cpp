@@ -2,8 +2,9 @@
 #include <iostream>
 #include "CEntity.h"
 //==============================================================================
-std::vector<CEntity*> 	CEntity::EntityList;
+std::vector<CEntity*> 	CEntity::EntityList;//entity vector that will hold all of the active entitys
 
+//constructer
 //==============================================================================
 CEntity::CEntity() {
 
@@ -38,22 +39,23 @@ CEntity::CEntity() {
 	Col_Height = 0;
 }
 
+//deconstructer
 //------------------------------------------------------------------------------
 CEntity::~CEntity() {
 }
 
 //==============================================================================
 bool CEntity::OnLoad(char* File, int Width, int Height, int MaxFrames) {
-	if((Surf_Entity = CSurface::OnLoad(File)) == NULL) {
+	if((Surf_Entity = CSurface::OnLoad(File)) == NULL) {//load the surface of the entity
 		return false;
 	}
 
-	CSurface::Transparent(Surf_Entity, 255, 0, 255);
+	CSurface::Transparent(Surf_Entity, 255, 0, 255);//make it transparent
 
-	this->Width = Width;
-	this->Height = Height;
+	this->Width = Width;//its width is equal to the width passed in
+	this->Height = Height;//its height is equal to the height passed in
 
-	Anim_Control.MaxFrames = MaxFrames;
+	Anim_Control.MaxFrames = MaxFrames;//its maxframes is equal to the maxframes passed in
 
     return true;
 }
@@ -65,19 +67,19 @@ void CEntity::OnLoop() {
 		StopMove();
 	}
 
-	if(MoveLeft) {
+	if(MoveLeft) {//moving left
 		AccelX = -0.5;
 	}else
 
-	if(MoveRight) {
+	if(MoveRight) {//moving right
 		AccelX = 0.5;
 	}
 
-	if(Flags & ENTITY_FLAG_GRAVITY) {
+	if(Flags & ENTITY_FLAG_GRAVITY) {//moving down due to gravity
 		AccelY = 0.75f;
 	}
 
-	SpeedX += AccelX * CFPS::FPSControl.GetSpeedFactor();
+	SpeedX += AccelX * CFPS::FPSControl.GetSpeedFactor();//match the speed to the acceleration times the frames per second
 	SpeedY += AccelY * CFPS::FPSControl.GetSpeedFactor();
 
 	if(SpeedX > MaxSpeedX)  SpeedX =  MaxSpeedX;
