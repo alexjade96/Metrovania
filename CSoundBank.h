@@ -7,19 +7,19 @@
  
 class CSoundBank {
     public:
-        static CSoundBank           SoundControl;
+        static CSoundBank           SoundControl;//declare it static
  
-        std::vector<Mix_Chunk*>     SoundList;
- 
-    public:
-        CSoundBank();
- 
-        int OnLoad(char* File);
- 
-        void OnCleanup();
+        std::vector<Mix_Chunk*>     SoundList;//vector of sounds
  
     public:
-        void Play(int channel, int ID, int playCount);
+        CSoundBank();//constructer
+ 
+        int OnLoad(char* File);//load the sound
+ 
+        void OnCleanup();//clean the sounds up
+ 
+    public:
+        void Play(int channel, int ID, int playCount);//play the sound
 };
  
 #endif

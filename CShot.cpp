@@ -14,7 +14,7 @@ CShot::CShot(){
 
 //-----------------------------------------------------------------------------
 bool CShot::OnLoad(char* File, int Width, int Height, int MaxFrames){
-	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {
+	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {//entity version
    	     return false;
 	}
 	
@@ -22,23 +22,23 @@ bool CShot::OnLoad(char* File, int Width, int Height, int MaxFrames){
 }
 //-----------------------------------------------------------------------------
 void CShot::OnLoop() {
-	CEntity::OnLoop();
+	CEntity::OnLoop();//entity version
 }
 
 
 //-----------------------------------------------------------------------------
 void CShot::OnRender(SDL_Surface* Surf_Display) {
-	CEntity::OnRender(Surf_Display);
+	CEntity::OnRender(Surf_Display);//entity version
 }
 
 //------------------------------------------------------------------------------
 void CShot::OnCleanup() {
-	CEntity::OnCleanup();
+	CEntity::OnCleanup();//entity version
 }
 
 //------------------------------------------------------------------------------
 void CShot::OnAnimate() {
-	CEntity::OnAnimate();
+	CEntity::OnAnimate();//entity version
 	Anim_Control.MaxFrames = 0;
 	CurrentFrameRow = 0;
 	CurrentFrameCol = 0;
@@ -46,7 +46,7 @@ void CShot::OnAnimate() {
 
 //------------------------------------------------------------------------------
 bool CShot::OnCollision(CEntity* Entity) {
-	return true;
+	return true;//do nothing
 }
 
 //===============================================================

@@ -9,30 +9,30 @@
 class CSkeleton : public CEntity {
 	public:
 
-	CSkeleton();
+	CSkeleton();//constructer
 
-	bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+	bool OnLoad(char* File, int Width, int Height, int MaxFrames);//load image
 
-        void OnLoop();
+        void OnLoop();//update data
 
-        void OnRender(SDL_Surface* Surf_Display);
+        void OnRender(SDL_Surface* Surf_Display);//render images
 
-        void OnCleanup();
+        void OnCleanup();//clean up object
 
-        void OnAnimate();
+        void OnAnimate();//animate
 
-        bool OnCollision(CEntity* Entity);
+        bool OnCollision(CEntity* Entity);//do things when collision happens
         
-    bool swordOut;
-    int AttackTimer;
+    bool swordOut;//is his sword out?
+    int AttackTimer;//timer used for timing
     
-    float playerPos;
-    float yPlayerPos;
+    float playerPos;//players x position
+    float yPlayerPos;//players y position
     
-    bool moving;
+    bool moving;//is he moving?
     
-    CSword upSword;
-    CSword outSword;
+    CSword upSword;//composition (sword class for when he is brandishing it)
+    CSword outSword;//composition (sword class for when he is stabbing)
 
 
 };
