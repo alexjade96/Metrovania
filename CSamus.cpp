@@ -2,6 +2,7 @@
 #include "CSamus.h"
 #include "CApp.h"
 #include <iostream>
+//constructer
 //=============================================================================
 CSamus::CSamus() {
 	Flags = ENTITY_FLAG_GRAVITY;
@@ -22,54 +23,55 @@ CSamus::CSamus() {
 
 //=============================================================================
 bool CSamus::OnLoad(char* File, int Width, int Height, int MaxFrames) {
-    if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {
+    if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {//entity version of onload
         return false;
     }
-	if((Surf_Health = CSurface::OnLoad("./images/hearts.png")) == false ) return false;
+	if((Surf_Health = CSurface::OnLoad("./images/hearts.png")) == false ) return false;//load the hearts image
 
     return true;
 }
 
 //-----------------------------------------------------------------------------
 void CSamus::OnLoop() {
-	CEntity::OnLoop();
-	if(CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6 || CurrentFrameCol == 8 || CurrentFrameCol == 10){
+	CEntity::OnLoop();//entity version
+	if(CurrentFrameCol == 0 || CurrentFrameCol == 2 || CurrentFrameCol == 4 || CurrentFrameCol == 6 || CurrentFrameCol == 8 || CurrentFrameCol == 10){//check if her column is a column that is facing to the right
 		faceRight = true;
 		faceLeft = false;
 	}
-	else{
+	else{//otherwise she is facing to the left
 		faceRight = false;
 		faceLeft = true;
 	}
 
-	if(healthTimer < 100)healthTimer++;
+	if(healthTimer < 100)healthTimer++;//if her health timer is less then 100 increment
 
-	if(health >= 10) Dead = true;
+	if(health >= 10) Dead = true;//if she has more then 10 health turn her death flag on
 
-	if(shotTimer < 50) shotTimer++;
+	if(shotTimer < 50) shotTimer++;//if her shot timer is less then 50 increment
 
 }
 
 //-----------------------------------------------------------------------------
 void CSamus::OnRender(SDL_Surface* Surf_Display) {
-	CEntity::OnRender(Surf_Display);
-	CSurface::OnDraw(Surf_Display, Surf_Health, 0, 0, 0, health*60, 160, 60);
+	CEntity::OnRender(Surf_Display);//entity version
+	CSurface::OnDraw(Surf_Display, Surf_Health, 0, 0, 0, health*60, 160, 60);//draw her health bar on to the screen
 }
 
 //------------------------------------------------------------------------------
 void CSamus::OnCleanup() {
-	CEntity::OnCleanup();
-	SDL_FreeSurface(Surf_Health);
+	CEntity::OnCleanup();//entity version
+	SDL_FreeSurface(Surf_Health);//free the health surface
 }
 
 //------------------------------------------------------------------------------
 void CSamus::OnAnimate() {
-	if(SpeedX != 0) {
+	if(SpeedX != 0) {//if she is moving her frames is 11
 		Anim_Control.MaxFrames = 11;
 	}else{
-		Anim_Control.MaxFrames = 0;
+		Anim_Control.MaxFrames = 0;//otherwise she has one frame
 	}
 	
+	//the below is all sprite sheet related animation stuff. It simply chooses the right frame row and column for each state
 	if(MoveLeft) {
 		CurrentFrameRow = 0;
 		if (!CanJump && !morphBall) {
@@ -168,11 +170,11 @@ void CSamus::OnAnimate() {
 		Anim_Control.MaxFrames = 0;
 	}	
 
-	CEntity::OnAnimate();
+	CEntity::OnAnimate();//entity version
 }
 
 //------------------------------------------------------------------------------
-bool CSamus::OnCollision(CEntity* Entity) {
+bool CSamus::OnCollision(CEntity* Entity) {//if she collides with something do nothing
 	return true;
 }
 
