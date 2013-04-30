@@ -22,7 +22,7 @@ CTurtle::CTurtle() {
 //=============================================================================
 
 bool CTurtle::OnLoad(char* File, int Width, int Height, int MaxFrames) {
-	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false){
+	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false){//entity version
 	return false;
 	}
 
@@ -31,8 +31,8 @@ bool CTurtle::OnLoad(char* File, int Width, int Height, int MaxFrames) {
 
 //=============================================================================
 void CTurtle::OnLoop(){
-	CEntity::OnLoop();
-	if(faceRight) {
+	CEntity::OnLoop();//entity version
+	if(faceRight) {//find the direction its facing and make it move that way
 		MoveRight = true;
 		MoveLeft = false;
 	}
@@ -42,21 +42,22 @@ void CTurtle::OnLoop(){
 	}
 
 
-	if(collisionTimer <= 100) collisionTimer++;
+	if(collisionTimer <= 100) collisionTimer++;//increment its collision timer
 }
 
 //=============================================================================
 void CTurtle::OnRender(SDL_Surface* Surf_Display) {
-	CEntity::OnRender(Surf_Display);
+	CEntity::OnRender(Surf_Display);//entity version
 }
 
 //=============================================================================
 void CTurtle::OnCleanup() {
-	CEntity::OnCleanup();
+	CEntity::OnCleanup();//entity version
 }
 
 //=============================================================================
 void CTurtle::OnAnimate() {
+	//reference sprite sheet
 	Anim_Control.MaxFrames = 6;
 	CurrentFrameRow = 0;
 	if(MoveLeft) {
@@ -64,14 +65,14 @@ void CTurtle::OnAnimate() {
 	} else {
 		CurrentFrameCol = 0;
 	}
-	CEntity::OnAnimate();
+	CEntity::OnAnimate();//entity version
 }
 //=============================================================================
 bool CTurtle::OnCollision(CEntity* Entity) {
 
-	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){
-		Entity->health++;
-		Entity->healthTimer = 0;
+	if(Entity->Type == ENTITY_TYPE_PLAYER && Entity->healthTimer >= 100){//if the turtle collides with a player whos health tiemr is greater then 100
+		Entity->health++;//increment player health
+		Entity->healthTimer = 0;//reset player healh timer
 	}
 
 

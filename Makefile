@@ -1,11 +1,4 @@
-# Automatically generated Makefile for project: sdl_maps
-# Created on  by gaten for sdltutorials.com
-# Comments, suggestions and bugs email: gaten DOT net AT gmail DOT com
 
-# this is modified makefile from 7th tutorial
-# 2009-06-07 haqu
-
-# Compiler
 CC=g++
 
 # Objects
@@ -25,4 +18,3 @@ main: CApp.cpp
 clean:
 	rm -rf $(OBJECTS) *~
 
-# EOF

@@ -7,19 +7,19 @@ class CSword : public CEntity {
 
 	public:
 		
-		CSword();
+		CSword();//constructer
 		
-		bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+		bool OnLoad(char* File, int Width, int Height, int MaxFrames);//load image
 
-     	void OnLoop();
+     	void OnLoop();//update data
 
-		void OnRender(SDL_Surface* Surf_Display);
+		void OnRender(SDL_Surface* Surf_Display);//render image
 
-		void OnCleanup();
+		void OnCleanup();//clean up object
 
-		void OnAnimate();
+		void OnAnimate();//animate image
 
-		bool OnCollision(CEntity* Entity);
+		bool OnCollision(CEntity* Entity);//when it collides with something
 
 };
 
