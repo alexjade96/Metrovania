@@ -1,12 +1,28 @@
 METROVANIA
+==========
+
+Created by: Cody Barron, Andres Martin, AJ Yeh, DeVonte Appliwhite
 
 
-check if .git exists.
-if it does `rm -rf .git`
-`git init`
-`git remote add origin https://YOUR_USER_NAME@bitbucket.org/cbarron1/metrovania.git`
-`git fetch`
-`git pull origin master`
-`git add FILES YOU CHANGED/*`
-`git commit -m 'comment the commit'`
-`git push -u origin --all`
+Project Overview
+----------------
+
+
+
+Installing
+----------
+
+Before building the program the user will need to install the SDL, SDL\_image, and SDL\_mixer libraries. Apart from that, all that should be necessary is a C++ compiler. 
+
+The user runs 'make' to build the program. It has been tested on both Ubuntu and Red Hat Enterprise Linux, but should work on other platforms as well. 
+
+Controls
+--------
+
+
+
+
+
+
+
+
