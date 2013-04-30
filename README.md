@@ -20,24 +20,36 @@ Controls
 --------
 
 Main Menu:
-	Up/Down: Cycle selection between Samus and Simon
-	Enter: Choose player
+
+	    Up/Down: Cycle selection between Samus and Simon
+
+	    Enter: Choose player
 
 Movement:
-	Left/Right: move character left or right
-	Up: aim up
-	Down: Crouch
-	Space: Jump
+
+	    Left/Right: move character left or right
+
+	    Up: aim up
+
+	    Down: Crouch
+
+	    Space: Jump
 
 Samus:
-	W: aim diagonally up
-	S: aim diagonally down
-	Q: shoot / (Deploy bomb if in morph ball)
-	Down: Enter morph ball (if already crouching)
+
+	    W: aim diagonally up
+
+	    S: aim diagonally down
+
+	    Q: shoot / (Deploy bomb if in morph ball)
+
+	    Down: Enter morph ball (if already crouching)
 
 Simon:
-	Q: use whip
-	A: taunt
+
+	    Q: use whip
+
+	    A: taunt
 	 
 Press ESC to exit program
 
