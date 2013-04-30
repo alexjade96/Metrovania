@@ -14,7 +14,7 @@ CEvent::~CEvent() {
 void CEvent::OnEvent(SDL_Event* Event) {
 	switch(Event->type) {
 		case SDL_ACTIVEEVENT: {
-			switch(Event->active.state) {
+			switch(Event->active.state) {//check to see what event has occured
 				case SDL_APPMOUSEFOCUS: {
 					if ( Event->active.gain )	OnMouseFocus();
 					else				OnMouseBlur();
@@ -37,22 +37,22 @@ void CEvent::OnEvent(SDL_Event* Event) {
 			break;
 		}
 
-		case SDL_KEYDOWN: {
+		case SDL_KEYDOWN: {//on key down pass in what was pressed
 			OnKeyDown(Event->key.keysym.sym,Event->key.keysym.mod,Event->key.keysym.unicode);
 			break;
 		}
 
-		case SDL_KEYUP: {
+		case SDL_KEYUP: {//on key up pass in what was depressed
 			OnKeyUp(Event->key.keysym.sym,Event->key.keysym.mod,Event->key.keysym.unicode);
 			break;
 		}
 
-		case SDL_MOUSEMOTION: {
+		case SDL_MOUSEMOTION: {//
 			OnMouseMove(Event->motion.x,Event->motion.y,Event->motion.xrel,Event->motion.yrel,(Event->motion.state&SDL_BUTTON(SDL_BUTTON_LEFT))!=0,(Event->motion.state&SDL_BUTTON(SDL_BUTTON_RIGHT))!=0,(Event->motion.state&SDL_BUTTON(SDL_BUTTON_MIDDLE))!=0);
 			break;
 		}
 
-		case SDL_MOUSEBUTTONDOWN: {
+		case SDL_MOUSEBUTTONDOWN: {//if the button on the mouse is pressed pass in its x and y
 			switch(Event->button.button) {
 				case SDL_BUTTON_LEFT: {
 					OnLButtonDown(Event->button.x,Event->button.y);
@@ -88,7 +88,7 @@ void CEvent::OnEvent(SDL_Event* Event) {
 			break;
 		}
 
-		case SDL_JOYAXISMOTION: {
+		case SDL_JOYAXISMOTION: {//stuff we dont use
 			OnJoyAxis(Event->jaxis.which,Event->jaxis.axis,Event->jaxis.value);
 			break;
 		}
@@ -112,10 +112,11 @@ void CEvent::OnEvent(SDL_Event* Event) {
 			break;
 		}
 
-		case SDL_QUIT: {
+		case SDL_QUIT: {//if SDL is quit then run the exit function
 			OnExit();
 			break;
 		}
+		//more stufff we dont use
 
 		case SDL_SYSWMEVENT: {
 			//Ignore

@@ -6,23 +6,23 @@
 class CExplode : public CEntity
 {
 	public:
-		//this first finction is the constructor
+		//this first function is the constructor
 		CExplode();
 		
-		bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+		bool OnLoad(char* File, int Width, int Height, int MaxFrames);//load the image of the effect
 
-     		void OnLoop();
+     		void OnLoop();//update data
 
-		void OnRender(SDL_Surface* Surf_Display);
+		void OnRender(SDL_Surface* Surf_Display);//draw effect
 
-		void OnCleanup();
+		void OnCleanup();//clean up effect
 
-		void OnAnimate();
+		void OnAnimate();//animate effect
 
-		bool OnCollision(CEntity* Entity);
+		bool OnCollision(CEntity* Entity);//check to see if effect has collided
 
-		bool isbomb;
-		int cycle;
+		bool isbomb;//is it a bomb?
+		int cycle;//important for timing
 		int fm; //max frames
 		int cyclelimit; //how many iterations
 		int altframemax; //alternate max frames
