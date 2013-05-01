@@ -7,33 +7,33 @@
 //=============================================================================
 class CSimon : public CEntity {
     public:
-        CSimon();
+        CSimon();//constructer
 
-	bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+	bool OnLoad(char* File, int Width, int Height, int MaxFrames);//load the image
 
-        void OnLoop();
+        void OnLoop();//loop the data
 
-        void OnRender(SDL_Surface* Surf_Display);
+        void OnRender(SDL_Surface* Surf_Display);//render the image
 
-        void OnCleanup();
+        void OnCleanup();//clean him up
 
-        void OnAnimate();
+        void OnAnimate();//animate simon
 
-        bool OnCollision(CEntity* Entity);
+        bool OnCollision(CEntity* Entity);//when he collides with something
 
-	bool	Crouch;
+	bool	Crouch;//is simon crouching?
 
-	bool	Taunt;
+	bool	Taunt;//is he taunting?
 
-	bool	Attack;
+	bool	Attack;//is he attacking?
 
-	int	AttackTimer;
+	int	AttackTimer;//helps time attacks
 
-	SDL_Surface*	Surf_Health;
+	SDL_Surface*	Surf_Health;//surface for health bar
 
-	SDL_Surface*	Surf_Whip;
+	SDL_Surface*	Surf_Whip;//surface for the brandishing part of whip
 
-	bool	PointUp;
+	bool	PointUp;//is he pointing up?
 };
 
 //=============================================================================

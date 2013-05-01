@@ -7,7 +7,7 @@
 //=============================================================================
 CExplode::CExplode(){
 	Flags = ENTITY_FLAG_NONE;
-	Type = 	ENTITY_TYPE_EFFECT;///////////changed this
+	Type = 	ENTITY_TYPE_EFFECT;//the explosion is of type effect
 	cycle = 0;
 	MaxSpeedX = 0;
 	MaxSpeedY = 0;
@@ -19,7 +19,7 @@ CExplode::CExplode(){
 
 //-----------------------------------------------------------------------------
 bool CExplode::OnLoad(char* File, int Width, int Height, int MaxFrames){
-	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {
+	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {//call entity version of onload
    	     return false;
 	}
 	
@@ -28,18 +28,18 @@ bool CExplode::OnLoad(char* File, int Width, int Height, int MaxFrames){
 //-----------------------------------------------------------------------------
 void CExplode::OnLoop() {
 
-	CEntity::OnLoop();
+	CEntity::OnLoop();//entity version
 }
 
 
 //-----------------------------------------------------------------------------
 void CExplode::OnRender(SDL_Surface* Surf_Display) {
-	CEntity::OnRender(Surf_Display);
+	CEntity::OnRender(Surf_Display);//entity version
 }
 
 //------------------------------------------------------------------------------
 void CExplode::OnCleanup() {
-	CEntity::OnCleanup();
+	CEntity::OnCleanup();//entity version
 }
 
 //------------------------------------------------------------------------------

@@ -7,9 +7,10 @@
 //==============================================================================
 class CEvent {
 	public:
-		CEvent();
+		CEvent();//construcer
 
-		virtual ~CEvent();
+		virtual ~CEvent();//deconstructer
+		//the rest are virtual functions that may or may not be used depending on what we check for
 
 		virtual void OnEvent(SDL_Event* Event);
 

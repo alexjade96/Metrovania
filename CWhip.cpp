@@ -15,7 +15,7 @@ CWhip::CWhip(){
 
 //-----------------------------------------------------------------------------
 bool CWhip::OnLoad(char* File, int Width, int Height, int MaxFrames){
-	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {
+	if(CEntity::OnLoad(File, Width, Height, MaxFrames) == false) {//entity version
    	     return false;
 	}
 	
@@ -23,31 +23,32 @@ bool CWhip::OnLoad(char* File, int Width, int Height, int MaxFrames){
 }
 //-----------------------------------------------------------------------------
 void CWhip::OnLoop() {
-	CEntity::OnLoop();
+	CEntity::OnLoop();//entity version
 }
 
 
 //-----------------------------------------------------------------------------
 void CWhip::OnRender(SDL_Surface* Surf_Display) {
-	CEntity::OnRender(Surf_Display);
+	CEntity::OnRender(Surf_Display);//entity version
 }
 
 //------------------------------------------------------------------------------
 void CWhip::OnCleanup() {
-	CEntity::OnCleanup();
+	CEntity::OnCleanup();//entity version
 }
 
 //------------------------------------------------------------------------------
 void CWhip::OnAnimate() {
+	//reference spritesheet
 	Anim_Control.MaxFrames = 0;
 	CurrentFrameRow = 0;
-	CEntity::OnAnimate();
-	OnCleanup();
+	CEntity::OnAnimate();//entity version
+	OnCleanup();//clean it up after every animation attempt
 }
 
 //------------------------------------------------------------------------------
 bool CWhip::OnCollision(CEntity* Entity) {
-	return true;
+	return true;//do nothing if it collides with something
 }
 
 //===============================================================

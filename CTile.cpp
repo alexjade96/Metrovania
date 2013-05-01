@@ -3,7 +3,7 @@
 
 //==============================================================================
 CTile::CTile() {
-    TileID = 0;
+    TileID = 0;//set the initial ID and type to 0
     TypeID = TILE_TYPE_NONE;
 }
 

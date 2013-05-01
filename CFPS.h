@@ -9,26 +9,26 @@
 //==============================================================================
 class CFPS {
 	public:
-		static CFPS FPSControl;
+		static CFPS FPSControl;//class is static
 
 	private:
-		int     OldTime;
+		int     OldTime;//time variables
 		int     LastTime;
 
-		float 	SpeedFactor;
+		float 	SpeedFactor;//variable to decide how much we multiply to match framerate
 
-		int		NumFrames;
+		int		NumFrames;//frame variables
 		int     Frames;
 
 	public:
-		CFPS();
+		CFPS();//constructer
 
-		void    OnLoop();
+		void    OnLoop();//update data
 
 	public:
-		int     GetFPS();
+		int     GetFPS();//get frames per second
 
-		float   GetSpeedFactor();
+		float   GetSpeedFactor();//get speed factor
 };
 
 //==============================================================================

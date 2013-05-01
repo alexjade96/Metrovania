@@ -7,31 +7,31 @@
 //=============================================================================
 class CSamus : public CEntity {
     public:
-        CSamus();
+        CSamus();//constructer
 
-	bool OnLoad(char* File, int Width, int Height, int MaxFrames);
+	bool OnLoad(char* File, int Width, int Height, int MaxFrames);//load samus
 
-        void OnLoop();
+        void OnLoop();//update her data
 
-        void OnRender(SDL_Surface* Surf_Display);
+        void OnRender(SDL_Surface* Surf_Display);//render her
 
-        void OnCleanup();
+        void OnCleanup();//clean her up
 
-        void OnAnimate();
+        void OnAnimate();//animate her
 
-        bool OnCollision(CEntity* Entity);
+        bool OnCollision(CEntity* Entity);//if she collides with something
 
-	void BulletDeincrement();
+	void BulletDeincrement();//timer
 
-	bool	Crouch;
-	bool	PointUpDiagonal;
-	bool	PointDownDiagonal;
-	bool	morphBall;
-	bool	PointUp;
+	bool	Crouch;//is she crouching?
+	bool	PointUpDiagonal;//is she pointing up diagonally?
+	bool	PointDownDiagonal;//is she pointing down diagonally?
+	bool	morphBall;//is she in morphball?
+	bool	PointUp;//is she pointing up?
 
-	int 	shotTimer;
+	int 	shotTimer;//timer for shots
 
-	SDL_Surface*	Surf_Health;
+	SDL_Surface*	Surf_Health;//surface that health is blited to
 };
 
 //=============================================================================
